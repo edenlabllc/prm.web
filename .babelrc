@@ -1,0 +1,18 @@
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [
+    "transform-runtime",
+    "transform-decorators-legacy",
+    [
+      "module-resolver",
+      {
+        "root": ["./app/common"],
+        "alias": {
+          "tests": "./tests",
+          "withStyles": "nebo15-isomorphic-style-loader/lib/withStyles",
+          "public": "./public"
+        }
+      }
+    ],
+  ]
+}

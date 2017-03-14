@@ -1,0 +1,246 @@
+
+.wrap {
+  position: relative;
+}
+
+.label {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  pointer-events: none;
+  transform: none;
+}
+
+.input {
+  display: inline-block;
+  width: 100%;
+  cursor: text;
+
+  &__el {
+    display: inline-block;
+    width: 100%;
+    color: inherit;
+    font-size: inherit;
+
+    &::placeholder {
+      transition: none;
+      opacity: 0;
+    }
+
+    .active &::placeholder {
+      transition: opacity 0.1s ease-in 0.2s;
+      opacity: 1;
+    }
+  }
+}
+
+.error {
+  position: absolute;
+}
+
+.theme-default {
+  /* Style for "+380 93 38" */
+  .input {
+    color: #242423;
+    font-weight: 400;
+    font-size: 14px;
+    border-bottom: 1px solid #e8e6e4;
+
+    .input__el {
+      padding: 8px 0;
+      background: transparent;
+    }
+  }
+
+  .label {
+    color: #c3c0b9;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .error {
+    margin-top: 11px;
+    color: #d22b2f;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13px;
+  }
+
+  &.floated .label {
+    color: #242423;
+    font-weight: 400;
+    font-size: 14px;
+    transform: translateY(28px);
+  }
+
+  &.active .input {
+    border-color: #f09714;
+  }
+
+  &.errored {
+    .input {
+      border-color: #d22b2f;
+    }
+
+    .error {
+      color: #d22b2f;
+    }
+  }
+}
+
+.theme-white {
+  .input {
+    margin-top: 37px;
+    font-size: 0;
+    line-height: 1;
+
+    .input__el {
+      color: #fff;
+      width: 247px;
+      line-height: 46px;
+      height: 48px;
+      border: 1px solid #fff;
+      font-size: 18px;
+      font-weight: 400;
+      padding: 0 24px;
+      background: transparent;
+      caret-color: #fff;
+      vertical-align: top;
+      display: inline-block;
+
+      &::placeholder {
+        color: inherit;
+      }
+    }
+  }
+
+  .label {
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+  }
+
+  .error {
+    margin-top: 11px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13px;
+  }
+
+  &.floated .label {
+    font-size: 18px;
+    transform: translate3d(24px, 50px, 0);
+  }
+}
+
+.theme-popup {
+  @extend .theme-default;
+
+  .error {
+    position: relative;
+  }
+
+  &.errored {
+    .label,
+    .input {
+      color: #d22b2f;
+    }
+  }
+}
+
+.theme-profile {
+  .input {
+    border-bottom: 1px solid #e8e6e4;
+  }
+
+  .input__el {
+    padding: 4px 0;
+    color: #242423;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .label {
+    height: 22px;
+    color: #949392;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &.floated .label {
+    color: #94918c;
+    font-size: 18px;
+    font-weight: 400;
+    transform: translateY(28px);
+  }
+
+  .error {
+    position: static;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  &.errored {
+    .label,
+    .input,
+    .input__el,
+    .error {
+      color: #d22b2f;
+    }
+
+    .input {
+      border-color: #d22b2f;
+    }
+  }
+
+  &.disabled {
+    .input {
+      border-color: transparent;
+    }
+
+    .input__el,
+    .label,
+    &.floated .label {
+      color: #242423;
+    }
+
+    .error {
+      color: transparent;
+    }
+  }
+}
+
+.theme-card {
+  @extend .theme-default;
+
+  .input {
+    color: #242423;
+    font-weight: 400;
+    font-size: 17px;
+    border: none;
+    margin-top: 11px;
+
+    &__el {
+      text-transform: uppercase;
+      padding-bottom: 0 !important;
+    }
+  }
+
+  .label {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    position: absolute;
+  }
+
+  &.floated .label {
+    color: #94918c;
+    font-size: 16px !important;
+    transform: translateY(20px);
+  }
+
+  .error {
+    margin-top: 0;
+    position: absolute;
+    font-size: 13px;
+  }
+}

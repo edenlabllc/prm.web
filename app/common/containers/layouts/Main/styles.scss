@@ -1,0 +1,17 @@
+
+.main {
+  min-width: 960px;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  &__in {
+    display: block;
+    background-color: #fff;
+  }
+
+  &__wrap {
+    padding: 31px 45px 63px;
+  }
+}

@@ -1,0 +1,49 @@
+.header {
+  position: relative;
+  margin: 33px auto 29px;
+
+  &__title {
+    margin-top: 4px;
+    display: block;
+    color: #292b37;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+
+    .bold {
+      font-weight: 700;
+    }
+  }
+
+  &__account {
+    position: absolute;
+    right: 35px;
+    top: -4px;
+
+    &__logo {
+      display: inline-block;
+      height: 34px;
+      width: 34px;
+      border-radius: 50%;
+      background-color: #cdd1d4;
+      margin-right: 11px;
+    }
+
+    &__name {
+      display: inline-block;
+      font-weight: 700;
+      vertical-align: top;
+      line-height: 34px;
+    }
+
+    &__select {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 9px solid black;
+      margin-left: 9px;
+    }
+  }
+}

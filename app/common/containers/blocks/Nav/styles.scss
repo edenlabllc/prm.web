@@ -1,0 +1,27 @@
+.nav {
+  display: block;
+  padding: 22px 42px;
+  border-bottom: 1px solid #d3dce6;
+
+  &__item {
+    display: inline-block;
+    margin-right: 43px;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 700;
+
+    a {
+      color: #292b37;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 400;
+      }
+
+      &.is-active {
+        font-weight: 400;
+      }
+    }
+  }
+}

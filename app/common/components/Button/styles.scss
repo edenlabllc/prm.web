@@ -1,0 +1,119 @@
+
+.button {
+  display: inline-block;
+  line-height: 1.2;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 20px;
+  min-width: 186px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.5;
+    background-image: none;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &.block {
+    width: 100%;
+  }
+
+  .icon {
+    margin-right: 5px;
+
+    i {
+      vertical-align: middle;
+    }
+  }
+
+  .iconRight {
+    margin-left: 5px;
+
+    i {
+      vertical-align: middle;
+    }
+  }
+}
+
+.buttonsGroup {
+  margin-left: -40px;
+  margin-top: -20px;
+
+  .buttonsGroupItem {
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+}
+
+.theme-white {
+  background: white;
+  color: #f09714;
+  padding: 17px 20px;
+
+  &:hover,
+  &:active,
+  &.active {
+    color: #e08908;
+  }
+}
+
+.theme-popup {
+  color: #f09714;
+  padding: 34px;
+  min-width: 0;
+
+  &:hover,
+  &:active,
+  &.active {
+    color: #e08908;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 1;
+    color: #d3cfc8;
+  }
+}
+
+.theme-popup-clean {
+  color: #949392;
+  font-size: 13px;
+  font-weight: 400;
+  min-width: 0;
+  padding: 6px 8px;
+  text-transform: none;
+
+  &:hover,
+  &:active,
+  &.active {
+    color: #949392;
+  }
+}
+
+.theme-transfer {
+  color: #f09714;
+  padding: 32px 37px;
+  min-width: 0;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &.active {
+    color: #e08908;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 1;
+    color: #d3cfc8;
+  }
+}

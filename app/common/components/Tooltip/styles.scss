@@ -1,0 +1,26 @@
+.tooltip {
+  display: inline-block;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: -15px;
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}

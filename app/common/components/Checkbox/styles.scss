@@ -1,0 +1,54 @@
+.wrap {
+  position: relative;
+}
+
+.theme-default {
+  .label {
+    cursor: pointer;
+  }
+
+  .input {
+    input:disabled + .view {
+      opacity: 0.5;
+    }
+
+    input:focus + .view {
+      border-color: #f38b00;
+    }
+
+    input:checked + .view span {
+      opacity: 1;
+    }
+  }
+
+  input {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .view {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: #e3dfd7 1px solid;
+    border-radius: 3px;
+    vertical-align: top;
+    margin-right: 10px;
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      vertical-align: top;
+      border-radius: 3px;
+      background-color: #f38b00;
+      margin: 4px;
+      opacity: 0;
+    }
+  }
+}
