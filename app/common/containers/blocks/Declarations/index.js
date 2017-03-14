@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 
 import { H1 } from 'components/Title';
+import Table from 'components/Table';
 
 import styles from './styles.scss';
 
@@ -12,6 +13,7 @@ export default class Declarations extends React.Component {
       <div>
         <div className={styles.title}>
           <H1>Декларації</H1>
+          <Table />
         </div>
       </div>
     );
