@@ -1,8 +1,8 @@
 {
-  "name": "mastercard.web",
+  "name": "prm.web",
   "version": "0.1.34",
-  "description": "MasterCard p2p web application",
-  "repository": "https://github.com/Nebo15/mastercard.web.git",
+  "description": "prm.web application",
+  "repository": "https://github.com/Nebo15/prm.web.git",
   "scripts": {
     "postinstall": "[ $PREBUILD ] && npm run build || exit 0",
     "predev": "npm run webpack",
