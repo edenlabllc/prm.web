@@ -1,5 +1,15 @@
 .declaration {
   display: block;
+
+  &__title {
+    margin-bottom: 29px;
+  }
+
+  &__form {
+    &__title {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .options {

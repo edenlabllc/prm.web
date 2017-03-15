@@ -23,7 +23,6 @@ export default class Declarations extends React.Component {
               <span>Створити нову публікацію</span>
             </Link>
           </div>
-
         </div>
         <Table />
       </section>

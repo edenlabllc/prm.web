@@ -1,0 +1,19 @@
+.form {
+  &__row {
+    display: block;
+    padding-bottom: 19px;
+
+    & > * {
+      display: inline-block;
+      margin-right: 19px;
+    }
+  }
+
+  &__btns {
+    margin-top: 30px;
+
+    button {
+      margin-right: 29px;
+    }
+  }
+}

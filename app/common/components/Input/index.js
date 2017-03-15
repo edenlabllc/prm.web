@@ -6,7 +6,7 @@ import MaskedInputComponent from 'modules/react-nebo15-mask';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
-const THEMES = ['default', 'white', 'popup', 'profile'];
+const THEMES = ['default'];
 
 @withStyles(styles)
 export default class Input extends React.Component {
