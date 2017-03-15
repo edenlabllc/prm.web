@@ -12,6 +12,15 @@
       margin-right: 19px;
       line-height: 53px;
       vertical-align: middle;
+
+      & > div {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
