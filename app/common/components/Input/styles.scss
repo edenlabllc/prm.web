@@ -67,3 +67,20 @@
     width: 192px !important;
   }
 }
+
+.theme-space-between {
+  @extend .theme-small;
+
+  .label {
+    flex: 1 1 50%;
+  }
+}
+
+.theme-space-default {
+  @extend .theme-small;
+
+  .label {
+    flex: 1 1 20%;
+  }
+}
+

@@ -50,7 +50,7 @@ export default class Checkbox extends React.Component {
             <div className={styles.view}>
               <span />
             </div>
-            {label}
+            <span className={styles.label_text}>{ label }</span>
           </div>
         </label>
         <div className={styles.error}>

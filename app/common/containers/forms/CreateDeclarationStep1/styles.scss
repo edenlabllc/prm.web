@@ -7,13 +7,11 @@
     padding-bottom: 19px;
     justify-content: flex-end;
 
-    & > div {
-      flex: 1 1 auto;
+    &__item {
+      flex: 1 1 50%;
       margin-right: 19px;
-
-      &:last-child {
-        margin-right: 0;
-      }
+      line-height: 53px;
+      vertical-align: middle;
     }
   }
 

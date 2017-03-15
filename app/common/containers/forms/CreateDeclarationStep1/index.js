@@ -42,29 +42,39 @@ export default class CreateDeclarationStep1 extends React.Component {
     return (
       <form className={styles.form} onSubmit={() => handleSubmit()}>
         <div className={styles.form__row}>
-          <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
-          <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
+          <div className={styles.form__row__item}>
+            <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
+          <div className={styles.form__row__item}>
+            <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
         </div>
         <div className={styles.form__row}>
-          <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
-          <Field theme="small" label="Дата народження" mask="ДД/ММ/РР" name="birth_date" component={DateInput}>
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
+          <div className={styles.form__row__item}>
+            <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
+          <div className={styles.form__row__item}>
+            <Field theme="space-between" label="Дата народження" placeholder="ДД/ММ/РР" name="birth_date" component={DateInput}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
         </div>
         <div className={styles.form__row}>
-          <Field placeholder="ІПН" type="number" name="national_id" component={Input}>
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
+          <div className={styles.form__row__item}>
+            <Field placeholder="ІПН" type="number" name="national_id" component={Input}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
         </div>
         <div className={styles.form__btns}>
           <Button type="submit">Зберегти зміни</Button>
-          <Button to="profile" onClick={() => { console.log('next step'); }} theme="blue">Далі</Button>
+          <Button to="patient" theme="blue">Далі</Button>
         </div>
       </form>
     );

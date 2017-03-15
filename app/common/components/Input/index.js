@@ -6,7 +6,7 @@ import MaskedInputComponent from 'modules/react-nebo15-mask';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
-const THEMES = ['default', 'small'];
+const THEMES = ['default', 'small', 'space-default', 'space-between'];
 
 @withStyles(styles)
 export default class Input extends React.Component {
@@ -64,6 +64,9 @@ export default class Input extends React.Component {
 
 export const Textarea = props =>
   <Input component="textarea" {...props} />;
+
+export const CheckboxInput = props =>
+  <Input type="checkbox" {...props} />;
 
 export const MaskedInput = props =>
   <Input component={MaskedInputComponent} {...props} />;

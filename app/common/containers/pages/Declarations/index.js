@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import { H1 } from 'components/Title';
 import Table from 'components/Table';
-import add from './images/add.svg';
+import add from 'public/images/add.svg';
 
 import styles from './styles.scss';
 
