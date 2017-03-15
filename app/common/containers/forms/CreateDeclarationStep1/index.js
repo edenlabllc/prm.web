@@ -3,7 +3,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 
-import Input, { MaskedInput } from 'components/Input';
+import Input, { DateInput } from 'components/Input';
 import Button from 'components/Button';
 
 import validate, { ErrorMessage } from 'modules/validate';
@@ -40,7 +40,7 @@ export default class CreateDeclarationStep1 extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={() => handleSubmit()}>
         <div className={styles.form__row}>
           <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
             <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
@@ -53,7 +53,7 @@ export default class CreateDeclarationStep1 extends React.Component {
           <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
             <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
           </Field>
-          <Field type="text" mask="ДД/ММ/РР" name="birth_date" component={MaskedInput}>
+          <Field theme="small" label="Дата народження" mask="ДД/ММ/РР" name="birth_date" component={DateInput}>
             <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
           </Field>
         </div>
@@ -63,8 +63,8 @@ export default class CreateDeclarationStep1 extends React.Component {
           </Field>
         </div>
         <div className={styles.form__btns}>
-          <Button>Зберегти зміни</Button>
-          <Button theme="blue">Далі</Button>
+          <Button type="submit">Зберегти зміни</Button>
+          <Button to="profile" onClick={() => { console.log('next step'); }} theme="blue">Далі</Button>
         </div>
       </form>
     );

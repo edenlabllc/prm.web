@@ -6,7 +6,7 @@ import MaskedInputComponent from 'modules/react-nebo15-mask';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
-const THEMES = ['default'];
+const THEMES = ['default', 'small'];
 
 @withStyles(styles)
 export default class Input extends React.Component {
@@ -41,7 +41,9 @@ export default class Input extends React.Component {
           this.floated && styles.floated,
         )}
       >
-        <label className={styles.label}>{label}</label>
+        {
+          label && <label className={styles.label}>{label}</label>
+        }
         <div className={styles.input}>
           {
             React.createElement(component, {
@@ -65,3 +67,6 @@ export const Textarea = props =>
 
 export const MaskedInput = props =>
   <Input component={MaskedInputComponent} {...props} />;
+
+export const DateInput = props =>
+  <Input type="date" component={MaskedInputComponent} {...props} />;
