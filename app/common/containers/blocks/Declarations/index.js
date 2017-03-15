@@ -1,5 +1,6 @@
 import React from 'react';
 import withStyles from 'withStyles';
+import { Link } from 'react-router';
 
 import { H1 } from 'components/Title';
 import Table from 'components/Table';
@@ -17,10 +18,10 @@ export default class Declarations extends React.Component {
         </div>
         <div className={styles.options}>
           <div className={styles.options__new}>
-            <a onClick={() => (console.log('click me!'))}>
+            <Link to="/create">
               <img src={add} alt="" />
               <span>Створити нову публікацію</span>
-            </a>
+            </Link>
           </div>
 
         </div>

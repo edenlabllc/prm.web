@@ -1,0 +1,19 @@
+.create {
+  &__header {
+    padding: 22px 42px;
+    border-bottom: 1px solid #d3dce6;
+
+    a {
+      color: #5791ef;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 17px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    padding: 31px 45px 63px;
+  }
+}
