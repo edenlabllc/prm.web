@@ -19,26 +19,10 @@ import styles from './styles.scss';
 @reduxForm({
   form: 'card',
   validate: validate({
-    first_name: {
+    doctor: {
       required: true,
-    },
-    last_name: {
-      required: true,
-    },
-    second_name: {
-      required: true,
-    },
-    birth_date: {
-      required: true,
-    },
-    national_id: {
-      required: true,
-      min: 10,
     },
   }),
-  initialValues: {
-    primary: true,
-  },
 })
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
@@ -79,29 +63,40 @@ export default class CreateDeclarationStep1 extends React.Component {
           </div>
           <div className={styles.form__row__item}>
             <div>
-              <div className={styles.form__row__text}>Стать</div>
-              <Field
-                theme="radiobtn"
-                label="Жінка"
-                selected={this.state.gender === 'female'}
-                value="female"
-                name="gender"
-                component={RadioButtonInput}
-                onChange={v => this.onChange(v)}
-              >
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
-              <Field
-                theme="radiobtn"
-                label="Чоловік"
-                selected={this.state.gender === 'male'}
-                value="male"
-                name="gender"
-                component={RadioButtonInput}
-                onChange={v => this.onChange(v)}
-              >
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
+              <div
+                className={
+                  classnames(
+                    styles.form__row__text,
+                    styles.s,
+                  )
+                }
+              >Стать</div>
+              <div className={styles.s}>
+                <Field
+                  theme="radiobtn"
+                  label="Жінка"
+                  selected={this.state.gender === 'female'}
+                  value="female"
+                  name="gender"
+                  component={RadioButtonInput}
+                  onChange={v => this.onChange(v)}
+                >
+                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+                </Field>
+              </div>
+              <div className={styles.s}>
+                <Field
+                  theme="radiobtn"
+                  label="Чоловік"
+                  selected={this.state.gender === 'male'}
+                  value="male"
+                  name="gender"
+                  component={RadioButtonInput}
+                  onChange={v => this.onChange(v)}
+                >
+                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+                </Field>
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +149,7 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.form__row__item}>
             <div>
               <div className={styles.s}>
-                <Field placeholder="Вул" type="text" name="addresses.street" component={Input}>
+                <Field theme="small" placeholder="Вул" type="text" name="addresses.street" component={Input}>
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
@@ -166,17 +161,17 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.form__row__item}>
             <div>
               <div className={styles.xs}>
-                <Field placeholder="Буд" type="text" name="addresses.building" component={Input}>
+                <Field theme="small" placeholder="Буд" type="text" name="addresses.building" component={Input}>
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
               <div className={styles.xs}>
-                <Field placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
+                <Field theme="small" placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
               <div className={styles.s}>
-                <Field placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
+                <Field theme="small" placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
@@ -227,7 +222,7 @@ export default class CreateDeclarationStep1 extends React.Component {
             <div className={styles.form__row__item}>
               <div>
                 <div className={styles.s}>
-                  <Field placeholder="Вул" type="text" name="addresses.street" component={Input}>
+                  <Field theme="small" placeholder="Вул" type="text" name="addresses.street" component={Input}>
                     <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                   </Field>
                 </div>
@@ -239,17 +234,17 @@ export default class CreateDeclarationStep1 extends React.Component {
             <div className={styles.form__row__item}>
               <div>
                 <div className={styles.xs}>
-                  <Field placeholder="Буд" type="text" name="addresses.building" component={Input}>
+                  <Field theme="small" placeholder="Буд" type="text" name="addresses.building" component={Input}>
                     <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                   </Field>
                 </div>
                 <div className={styles.xs}>
-                  <Field placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
+                  <Field theme="small" placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
                     <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                   </Field>
                 </div>
                 <div className={styles.s}>
-                  <Field placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
+                  <Field theme="small" placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
                     <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                   </Field>
                 </div>

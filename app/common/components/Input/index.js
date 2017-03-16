@@ -7,7 +7,7 @@ import RadioInput from 'components/RadioInput';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
-const THEMES = ['default', 'space-between', 'radiobtn', 'medium', 'checkbox', 's', 'xs'];
+const THEMES = ['default', 'space-between', 'radiobtn', 'medium', 'checkbox', 'small'];
 
 @withStyles(styles)
 export default class Input extends React.Component {
