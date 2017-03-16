@@ -68,24 +68,6 @@
   }
 }
 
-.theme-xs {
-  @extend .theme-default;
-
-  .input {
-    flex: 1 1 20%;
-    margin-right: 20px;
-  }
-}
-
-.theme-s {
-  @extend .theme-default;
-
-  .input {
-    flex: 1 1 30%;
-    margin-right: 20px;
-  }
-}
-
 .theme-radiobtn {
   @extend .theme-default;
 
