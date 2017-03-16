@@ -19,7 +19,6 @@ export default class Checkbox extends React.Component {
       component = 'input',
       theme = THEMES[0],
       disabled,
-      label,
       children,
       input,
       meta,
@@ -46,11 +45,10 @@ export default class Checkbox extends React.Component {
                 checked: input.checked,
               })
             }
-
             <div className={styles.view}>
               <span />
             </div>
-            <span className={styles.label_text}>{ label }</span>
+
           </div>
         </label>
         <div className={styles.error}>

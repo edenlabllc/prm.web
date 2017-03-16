@@ -26,7 +26,7 @@
     font-size: 16px;
 
     .input__el {
-      width: 355px;
+      width: 100%;
       height: 51px;
       padding: 18px 26px;
       background: transparent;
@@ -60,27 +60,61 @@
   }
 }
 
-.theme-small {
+.theme-medium {
   @extend .theme-default;
 
-  .input__el {
-    width: 192px !important;
+  .input {
+    max-width: 355px;
+  }
+}
+
+.theme-xs {
+  @extend .theme-default;
+
+  .input {
+    flex: 1 1 20%;
+    margin-right: 20px;
+  }
+}
+
+.theme-s {
+  @extend .theme-default;
+
+  .input {
+    flex: 1 1 30%;
+    margin-right: 20px;
+  }
+}
+
+.theme-radiobtn {
+  @extend .theme-default;
+
+  .input {
+    border-color: transparent;
   }
 }
 
 .theme-space-between {
-  @extend .theme-small;
+  @extend .theme-default;
 
-  .label {
+  .label,
+  .input {
     flex: 1 1 50%;
+    margin-right: 0;
   }
 }
 
-.theme-space-default {
-  @extend .theme-small;
+.theme-radiobtn {
+  @extend .theme-default;
 
-  .label {
-    flex: 1 1 20%;
+  .input {
+    border-color: transparent;
   }
 }
 
+.theme-checkbox {
+  .input__el {
+    width: 26px;
+    height: 26px;
+  }
+}

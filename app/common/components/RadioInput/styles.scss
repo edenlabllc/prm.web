@@ -1,0 +1,45 @@
+.wrap {
+  cursor: pointer;
+  user-select: none;
+  line-height: 54px;
+  vertical-align: middle;
+
+  input {
+    display: none;
+  }
+}
+
+.view {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border: #e3dfd7 1px solid;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 54px;
+  vertical-align: middle;
+  margin-right: 10px;
+
+  &::before {
+    content: '';
+    vertical-align: top;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #5791ef;
+    opacity: 0;
+    margin: 6px;
+    border-radius: 100%;
+  }
+
+  input:disabled + & {
+    opacity: 0.5;
+  }
+
+  input:checked + & {
+    &::before {
+      opacity: 1;
+    }
+  }
+}

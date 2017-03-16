@@ -7,6 +7,11 @@
     padding-bottom: 19px;
     justify-content: flex-end;
 
+    &__text {
+      color: #3c4858;
+      font-size: 18px;
+    }
+
     &__item {
       flex: 1 1 50%;
       margin-right: 19px;
@@ -17,24 +22,8 @@
         display: flex;
         flex-flow: row nowrap;
 
-        &.default {
-          justify-content: flex-start;
-
-          & > * {
-            margin-right: 30px;
-          }
-        }
-
-        &.center {
-          justify-content: space-between;
-        }
-
-        &.end {
-          justify-content: flex-end;
-
-          & > * {
-            margin-left: 30px;
-          }
+        & > * {
+          flex: 1 1 auto;
         }
       }
 
@@ -46,9 +35,11 @@
 
   &__title {
     display: block;
-    color: #3c4858;
     font-weight: 700;
-    margin-bottom: 25px;
+
+    &__inline {
+      display: inline-block;
+    }
   }
 
   &__plus {
@@ -92,5 +83,27 @@
     button {
       margin-right: 29px;
     }
+  }
+}
+
+.disable {
+  &.is-disabled {
+    input {
+      pointer-events: none;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: #d3dce6;
+    margin-top: 18px;
+  }
+}
+
+.align {
+  &__right {
+    text-align: right;
   }
 }

@@ -145,5 +145,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   opacity: 1;
 }
 
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  color: #62758f;
+}
 
 /* stylelint-enable */
