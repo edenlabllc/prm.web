@@ -73,4 +73,4 @@ export const RadioButtonInput = props =>
   <Input component={RadioInput} {...props} />;
 
 export const DateInput = props =>
-  <Input type="date" component={MaskedInputComponent} {...props} />;
+  <Input type="date" {...props} />;

@@ -7,7 +7,7 @@ import Icon, { icons } from 'components/Icon';
 
 import styles from './styles.scss';
 
-const THEMES = ['default', 'blue'];
+const THEMES = ['default', 'blue', 'light'];
 const URL_TEST_REG_EXP = /^((?:[a-z]+:)?\/\/)|mailto:/i;
 
 const Button = (props) => {

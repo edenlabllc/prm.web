@@ -6,6 +6,8 @@ import styles from './icons.font';
 export const icons = [
   'add',
   'search',
+  'close',
+  'exit',
 ];
 
 const Icon = ({ name }) => React.createElement('i', {

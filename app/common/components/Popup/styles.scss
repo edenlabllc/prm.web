@@ -1,4 +1,4 @@
-$popup-bg-color: rgba(0, 0, 0, 0.4);
+$popup-bg-color: rgba(239, 242, 247, 0.8);
 
 $success-color: #11d8fb;
 $error-color: #f52740;
@@ -33,20 +33,20 @@ $error-color: #f52740;
     cursor: default;
     z-index: 2;
     transform: translateZ(0);
-    padding-top: 59px;
+    padding: 32px 41px;
   }
 
   &__header {
     padding: 0 35px;
-    font-size: 23px;
-    font-weight: 400;
-    line-height: 29px;
+    font-size: 15px;
+    line-height: 17px;
     margin-bottom: 10px;
-  }
+    text-align: center;
+    color: #292b37;
 
-  &__description {
-    margin-bottom: 10px;
-    padding: 0 35px;
+    & > p:first-child {
+      font-weight: 700;
+    }
   }
 
   &__content {
@@ -57,26 +57,23 @@ $error-color: #f52740;
 
   &__footer {
     border-top: 1px solid #e8e6e4;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    display: block;
+    width: 351px;
+    margin: 0 auto;
+    text-align: center;
 
     &__button {
-      flex: 1 1 auto;
-      white-space: nowrap;
-
-      & + & {
-        border-left: 1px solid #e8e6e4;
-      }
+      display: block;
     }
   }
 
   &__close {
     position: absolute;
-    top: 18px;
-    right: 16px;
-    font-size: 15px;
-    color: #dededb;
+    right: 41px;
+    top: 31px;
+    font-size: 30px;
+    color: #292b37;
+    opacity: 0.5;
   }
 
   &.active {
@@ -129,7 +126,7 @@ $error-color: #f52740;
 
 .theme-default {
   .in {
-    width: 420px;
+    width: 672px;
   }
 }
 

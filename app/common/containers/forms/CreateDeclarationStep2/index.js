@@ -39,7 +39,7 @@ export default class CreateDeclarationStep1 extends React.Component {
     });
   }
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, showPopup } = this.props;
     return (
       <form className={styles.form} onSubmit={() => handleSubmit()}>
         <div className={styles.form__title}>
@@ -268,7 +268,7 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <div className={styles.form__btns}>
           <Button type="submit">Зберегти зміни</Button>
-          <Button onClick={() => { console.log('next step'); }} theme="blue">Далі</Button>
+          <Button onClick={() => showPopup()} theme="blue">Далі</Button>
         </div>
       </form>
     );
