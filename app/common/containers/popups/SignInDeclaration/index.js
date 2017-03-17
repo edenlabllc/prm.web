@@ -70,6 +70,7 @@ export default class SignInDeclaration extends React.Component {
           <H3>Накласти Електронний цифровий підпис</H3>
         </div>
         <SignInDeclarationForm />
+        <div className={styles.br} />
       </Popup>
     );
   }

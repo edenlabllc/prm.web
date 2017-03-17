@@ -3,6 +3,14 @@
   max-width: 351px;
   margin: 0 auto;
 
+  &::after {
+    margin-top: 15px;
+    content: '';
+    height: 1px;
+    display: block;
+    background-color: #d3dce6;
+  }
+
   &__row {
     padding-bottom: 19px;
   }
