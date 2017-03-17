@@ -47,10 +47,6 @@
       opacity: 1;
     }
   }
-
-  input:focus + & {
-    border-color: #11d8fb;
-  }
 }
 
 .label {

@@ -5,8 +5,7 @@ import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 import styles from './styles.scss';
 
 export const RadioInput = ({
-  selected = false,
-  onChange = e => e, error,
+  input, error,
   disabled, value, name, labelText, prefix,
 }) => (
   <label className={classnames(styles.wrap, prefix && styles.prefixed, error && styles.errored)}>
@@ -14,8 +13,7 @@ export const RadioInput = ({
     <input
       type="radio"
       {...{
-        onChange: () => !disabled && onChange(value),
-        checked: selected,
+        ...input,
         value,
         name,
         disabled,

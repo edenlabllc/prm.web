@@ -71,7 +71,7 @@ export const MaskedInput = props =>
   <Input component={MaskedInputComponent} {...props} />;
 
 export const RadioButtonInput = props =>
-  <Input component={RadioInput} {...props} />;
+  <Input component={RadioInputComponent} {...props} />;
 
 export const DateInput = props =>
   <Input type="date" {...props} />;
@@ -79,9 +79,9 @@ export const DateInput = props =>
 export const RadioInput = props => (
   <Input
     component={RadioInputComponent}
+    selected={props.checked}
+    value={props.value}
     {...props}
-    selected={props.input.checked}
-    value={props.input.value}
   />
 );
 

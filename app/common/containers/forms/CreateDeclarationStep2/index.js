@@ -4,7 +4,7 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 import classnames from 'classnames';
 
-import Input, { DateInput, RadioInput, MaskedInput } from 'components/Input';
+import Input, { DateInput, RadioButtonInput, MaskedInput } from 'components/Input';
 
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
@@ -78,8 +78,7 @@ export default class CreateDeclarationStep1 extends React.Component {
                   selected={this.state.gender === 'female'}
                   value="female"
                   name="gender"
-                  component={RadioInput}
-                  onChange={v => this.onChange(v)}
+                  component={RadioButtonInput}
                 >
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
@@ -91,8 +90,7 @@ export default class CreateDeclarationStep1 extends React.Component {
                   selected={this.state.gender === 'male'}
                   value="male"
                   name="gender"
-                  component={RadioInput}
-                  onChange={v => this.onChange(v)}
+                  component={RadioButtonInput}
                 >
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
