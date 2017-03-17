@@ -1,17 +1,16 @@
 import React, { PropTypes } from 'react';
-import withStyles from 'withStyles';
+import classnames from 'classnames';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 
 import styles from './styles.scss';
 
-export const RadioInputComponent = ({
+export const RadioInput = ({
   selected = false,
-  onChange = e => e,
-  disabled,
-  value,
-  name,
-  label,
+  onChange = e => e, error,
+  disabled, value, name, labelText, prefix,
 }) => (
-  <label className={styles.wrap}>
+  <label className={classnames(styles.wrap, prefix && styles.prefixed, error && styles.errored)}>
+    {prefix && <div className={styles.prefix}>{prefix}</div>}
     <input
       type="radio"
       {...{
@@ -20,20 +19,20 @@ export const RadioInputComponent = ({
         value,
         name,
         disabled,
-        label,
       }}
     />
     <span className={styles.view} />
-    <span>{label}</span>
+
+    {labelText && <div className={styles.label}>{labelText}</div>}
   </label>
 );
 
-RadioInputComponent.PropTypes = {
+RadioInput.PropTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.isRequired,
+  value: PropTypes.isReqiored,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
-export default withStyles(styles)(RadioInputComponent);
+export default withStyles(styles)(RadioInput);

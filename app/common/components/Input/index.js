@@ -1,8 +1,9 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import classnames from 'classnames';
+
 import MaskedInputComponent from 'modules/react-nebo15-mask';
-import RadioInput from 'components/RadioInput';
+import RadioInputComponent from 'components/RadioInput';
 
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
@@ -74,3 +75,24 @@ export const RadioButtonInput = props =>
 
 export const DateInput = props =>
   <Input type="date" {...props} />;
+
+export const RadioInput = props => (
+  <Input
+    component={RadioInputComponent}
+    {...props}
+    selected={props.input.checked}
+    value={props.input.value}
+  />
+);
+
+export const GroupRadioInput = ({ options, componentGroup = 'span', component = RadioInput, ...rest }) =>
+  React.createElement(componentGroup, {}, options.map(({ value, ...inputRest }) => (
+    <Input
+      {...rest}
+      {...inputRest}
+      key={value}
+      value={value}
+      component={component}
+    />
+  )
+));
