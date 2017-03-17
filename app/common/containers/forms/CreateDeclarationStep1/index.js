@@ -3,7 +3,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 
-import Input, { DateInput } from 'components/Input';
+import Input, { DateInput, MaskedInput } from 'components/Input';
 import Button from 'components/Button';
 
 import validate, { ErrorMessage } from 'modules/validate';
@@ -29,10 +29,11 @@ import styles from './styles.scss';
       required: true,
       min: 10,
     },
+    'phones.mobile': {
+      required: true,
+      phone_number: /^0\d{9}$/,
+    },
   }),
-  initialValues: {
-    primary: true,
-  },
 })
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
@@ -69,6 +70,12 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.form__row__item}>
             <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+            </Field>
+          </div>
+          <div className={styles.form__row__item}>
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput}>
+              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+              <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
             </Field>
           </div>
         </div>

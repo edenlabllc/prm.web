@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { provideHooks } from 'redial';
+
 import withStyles from 'withStyles';
 import classnames from 'classnames';
 
-import styles from './styles.scss';
+import { getDeclarationList } from './redux';
 
+import styles from './styles.scss';
 
 const LIST_BODY = [{
   declarationId: 758857,
@@ -37,8 +41,17 @@ const LIST_BODY = [{
   status: 'Не підписано',
 }];
 
+@provideHooks({
+  fetch: ({ dispatch }) => dispatch(getDeclarationList()),
+})
+@connect(state => state, { getDeclarationList })
 @withStyles(styles)
 export default class Table extends React.Component {
+
+  componentDidMount() {
+    this.props.getDeclarationList();
+  }
+
   render() {
     const { data = LIST_BODY } = this.props;
 
@@ -57,7 +70,7 @@ export default class Table extends React.Component {
           <tbody className={styles.table__body}>
             {
             data.map(item => (
-              <tr key={item.medId}>
+              <tr key={item.declarationId}>
                 <td>
                   {item.declarationId}
                 </td>

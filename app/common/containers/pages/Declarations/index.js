@@ -3,7 +3,7 @@ import withStyles from 'withStyles';
 import { Link } from 'react-router';
 
 import { H1 } from 'components/Title';
-import Table from 'components/Table';
+import Table from 'containers/blocks/Table';
 import add from 'public/images/add.svg';
 
 import styles from './styles.scss';
@@ -20,7 +20,7 @@ export default class Declarations extends React.Component {
           <div className={styles.options__new}>
             <Link to="/create">
               <img src={add} alt="" />
-              <span>Створити нову публікацію</span>
+              <span>Створити нову декларацію</span>
             </Link>
           </div>
         </div>
