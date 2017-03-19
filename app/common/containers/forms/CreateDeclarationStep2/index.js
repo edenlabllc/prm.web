@@ -16,6 +16,44 @@ import validate, { ErrorMessage } from 'modules/validate';
 
 import styles from './styles.scss';
 
+const STREET = [{
+  name: 'Вул',
+
+}, {
+  name: 'Бул',
+
+}, {
+  name: 'Пл',
+}];
+
+
+const REGION = [
+  'Вінницька область',
+  'Волинська область',
+  'Дніпропетровська область',
+  'Донецька область',
+  'Житомирська область',
+  'Закарпатська область',
+  'Запорізька область ',
+  'Івано-Франківська область',
+  'Київська область',
+  'Кіровоградська область',
+  'Луганська область',
+  'Львівська область',
+  'Миколаївська область',
+  'Одеська область',
+  'Полтавська область',
+  'Рівненська область',
+  'Сумська область',
+  'Тернопільська область',
+  'Харківська область',
+  'Херсонська область',
+  'Хмельницька область',
+  'Черкаська область',
+  'Чернігівська область',
+  'Чернівецька область',
+];
+
 @reduxForm({
   form: 'card',
   validate: validate({
@@ -133,7 +171,14 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Область" type="text" name="addresses.area" component={Input}>
+            <Field
+              component={SelectInput}
+              name="addresses.area"
+              placeholder="Область"
+              options={REGION.map(item => ({
+                title: item, name: item,
+              }))}
+            >
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>
@@ -148,20 +193,16 @@ export default class CreateDeclarationStep1 extends React.Component {
             <div>
               <div className={styles.s}>
                 <Field
+                  theme="small"
                   component={SelectInput}
-                  // name={`${rule}.term_to_maturity`}
-                  theme="light"
-                  placeholder="Select..."
-                //   options={termGroups.map(item => ({
-                //   title: item.name, name: item,
-                // }))}
-                />
-                {
-                  // <Field theme="small" placeholder="Вул" type="text" name="addresses.street"
-                  // component={FieldSelect}>
-                  //   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                  // </Field>
-                }
+                  name="street_type"
+                  placeholder="Вул"
+                  options={STREET.map(item => ({
+                    title: item.name, name: item.name,
+                  }))}
+                >
+                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+                </Field>
               </div>
               <Field placeholder="Назва вулиці" type="text" name="addresses.street" component={Input}>
                 <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
@@ -218,7 +259,14 @@ export default class CreateDeclarationStep1 extends React.Component {
         >
           <div className={styles.form__row}>
             <div className={styles.form__row__item}>
-              <Field placeholder="Область" type="text" name="addresses.area" component={Input}>
+              <Field
+                component={SelectInput}
+                name="addresses.area"
+                placeholder="Область"
+                options={REGION.map(item => ({
+                  title: item, name: item,
+                }))}
+              >
                 <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
               </Field>
             </div>
@@ -232,7 +280,15 @@ export default class CreateDeclarationStep1 extends React.Component {
             <div className={styles.form__row__item}>
               <div>
                 <div className={styles.s}>
-                  <Field theme="small" placeholder="Вул" type="text" name="addresses.street" component={Input}>
+                  <Field
+                    theme="small"
+                    component={SelectInput}
+                    name="street_type"
+                    placeholder="Вул"
+                    options={STREET.map(item => ({
+                      title: item.name, name: item.name,
+                    }))}
+                  >
                     <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                   </Field>
                 </div>
@@ -284,3 +340,4 @@ export default class CreateDeclarationStep1 extends React.Component {
     );
   }
 }
+

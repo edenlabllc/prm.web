@@ -1,5 +1,5 @@
 $border-color: #dadcde;
-$placeholder-color: #999;
+$placeholder-color: #62758f;
 $hovered-bg: #f5f5f5;
 $active-color: #11d8fb;
 $errored-color: #ff1f44;
@@ -21,6 +21,7 @@ $disabled-bg: #f5f5f5;
     left: 0;
     top: 0;
     opacity: 0;
+    border: none;
   }
 
   .input:focus + .control {
@@ -29,6 +30,8 @@ $disabled-bg: #f5f5f5;
 
   .placeholder {
     color: $placeholder-color;
+    font-size: 16px;
+    font-weight: 400;
   }
 
   &.disabled .control {
@@ -44,14 +47,11 @@ $disabled-bg: #f5f5f5;
   .control {
     position: relative;
     width: 100%;
-    min-width: 120px;
-    min-height: 35px;
+    height: 51px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 10px 30px 10px 10px;
-    line-height: 15px;
-    font-size: 14px;
+    padding-left: 22px;
     box-shadow: 0 0 0 1px $border-color;
     cursor: pointer;
   }
@@ -82,7 +82,7 @@ $disabled-bg: #f5f5f5;
       }
 
       &.active {
-        color: $active-color;
+        font-weight: 700;
       }
 
       &.disabled {
@@ -100,7 +100,7 @@ $disabled-bg: #f5f5f5;
         top: 50%;
         transform: translateY(-50%);
         font-size: 12px;
-        color: $active-color;
+        font-weight: 700;
       }
 
       &:first-child {
@@ -137,19 +137,19 @@ $disabled-bg: #f5f5f5;
       top: 100%;
       left: 0;
       right: 0;
-      z-index: 2;
+      z-index: 3;
       margin-top: 1px;
+      max-height: 200px;
+      overflow-y: scroll;
     }
 
-    .arrow {
+    .arrow__in {
       transform: translateY(-50%) rotate(180deg);
     }
   }
 
   &.top {
     .list {
-      top: auto;
-      bottom: 100%;
       margin-top: 0;
 
       li:first-child {
@@ -190,16 +190,32 @@ $disabled-bg: #f5f5f5;
 }
 
 .arrow {
+  width: 57px;
+  height: 51px;
+  border: 1px solid rgba(181, 190, 202, 0.5);
+  background-color: #eff2f7;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+.title {
+  color: $placeholder-color;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.arrow__in {
   display: block;
   width: 0;
   height: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #282828;
+  right: 22px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #282828;
   z-index: 2;
   transition: transform 0.2s ease;
   will-change: transform;

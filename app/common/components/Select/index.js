@@ -113,10 +113,12 @@ class Select extends React.Component {
               className={styles.control}
             >
               <span hidden={activeItem.title} className={styles.placeholder}>{placeholder}</span>
-              <span hidden={!activeItem.title}>
+              <span className={styles.title} hidden={!activeItem.title}>
                 {activeItem && activeItem.title}
               </span>
-              <span className={styles.arrow} />
+              <span className={styles.arrow}>
+                <span className={styles.arrow__in} />
+              </span>
             </div>
             <ul ref={ref => (this.listNode = ref)} className={styles.list}>
               {
