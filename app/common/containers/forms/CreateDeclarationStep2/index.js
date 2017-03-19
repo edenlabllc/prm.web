@@ -4,7 +4,7 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 import classnames from 'classnames';
 
-import Input, { DateInput, RadioButtonInput, MaskedInput } from 'components/Input';
+import Input, { DateInput, RadioButtonInput, MaskedInput, SelectInput } from 'components/Input';
 
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
@@ -147,9 +147,21 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.form__row__item}>
             <div>
               <div className={styles.s}>
-                <Field theme="small" placeholder="Вул" type="text" name="addresses.street" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                <Field
+                  component={SelectInput}
+                  // name={`${rule}.term_to_maturity`}
+                  theme="light"
+                  placeholder="Select..."
+                //   options={termGroups.map(item => ({
+                //   title: item.name, name: item,
+                // }))}
+                />
+                {
+                  // <Field theme="small" placeholder="Вул" type="text" name="addresses.street"
+                  // component={FieldSelect}>
+                  //   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+                  // </Field>
+                }
               </div>
               <Field placeholder="Назва вулиці" type="text" name="addresses.street" component={Input}>
                 <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
