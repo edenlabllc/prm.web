@@ -11,7 +11,7 @@ import validate, { ErrorMessage } from 'modules/validate';
 import styles from './styles.scss';
 
 @reduxForm({
-  form: 'card',
+  form: 'registrationForm',
   validate: validate({
     first_name: {
       required: true,
@@ -38,10 +38,10 @@ import styles from './styles.scss';
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { onSubmit } = this.props;
 
     return (
-      <form className={styles.form} onSubmit={() => handleSubmit()}>
+      <form className={styles.form} onSubmit={() => onSubmit()}>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
@@ -80,8 +80,11 @@ export default class CreateDeclarationStep1 extends React.Component {
           </div>
         </div>
         <div className={styles.form__btns}>
-          <Button type="submit">Зберегти зміни</Button>
-          <Button to="/create/patient" theme="blue">Далі</Button>
+          <Button type="reset">Зберегти зміни</Button>
+          <Button onClick={() => onSubmit()} theme="blue">Далі</Button>
+          {
+            // <Button to="/create/patient" theme="blue">Далі</Button>
+          }
         </div>
       </form>
     );

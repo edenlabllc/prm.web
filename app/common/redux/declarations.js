@@ -1,13 +1,14 @@
-import { PRM_HOST } from 'config';
+import { PRM_URL } from 'config';
 import { handleAction } from 'redux-actions';
+import { combineReducers } from 'redux';
 import { normalize, Schema, arrayOf } from 'normalizr';
+
 import { invoke } from './api';
-// import { combineReducers } from 'redux';
 
 const declarationsSchema = new Schema('declarations');
 
 export const fetchDeclarations = () => dispatch => dispatch(invoke({
-  endpoint: `${PRM_HOST}/declarations`,
+  endpoint: `${PRM_URL}/declarations`,
   method: 'get',
   types: [
     'declarations/FETCH_DECLARATIONS_REQUEST', {
@@ -18,11 +19,14 @@ export const fetchDeclarations = () => dispatch => dispatch(invoke({
     'declarations/FETCH_DECLARATIONS_FAILER',
   ],
 }));
-
-export default handleAction('declarations/FETCH_DECLARATIONS_SUCCESS',
+const declarations = handleAction('declarations/FETCH_DECLARATIONS_SUCCESS',
   (state, action) => ({
     ...state,
-    ...action.payload.declarations,
+    ...action.payload.entities.declarations,
   }),
   []
 );
+
+export default combineReducers({
+  declarations,
+});

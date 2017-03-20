@@ -5,6 +5,7 @@ import { fetchDoctor } from 'redux/doctor';
 
 export const getDeclarationList = () => dispatch =>
   dispatch(fetchDeclarations()).then((resp) => {
+    console.log(resp);
     if (resp.error) return null;
     return resp.payload.result.map(i =>
       dispatch(Promise.all([

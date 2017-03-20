@@ -4,11 +4,12 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 import classnames from 'classnames';
 
-import Input, { DateInput, RadioButtonInput, MaskedInput, SelectInput } from 'components/Input';
+import Input, { DateInput, RadioButtonInput, MaskedInput } from 'components/Input';
 
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import { H3 } from 'components/Title';
+import Addresses from 'containers/forms/Addresses';
 
 import add from 'public/images/add.svg';
 
@@ -16,54 +17,39 @@ import validate, { ErrorMessage } from 'modules/validate';
 
 import styles from './styles.scss';
 
-const STREET = [{
-  name: 'Вул',
-
-}, {
-  name: 'Бул',
-
-}, {
-  name: 'Пл',
-}];
-
-
-const REGION = [
-  'Вінницька область',
-  'Волинська область',
-  'Дніпропетровська область',
-  'Донецька область',
-  'Житомирська область',
-  'Закарпатська область',
-  'Запорізька область ',
-  'Івано-Франківська область',
-  'Київська область',
-  'Кіровоградська область',
-  'Луганська область',
-  'Львівська область',
-  'Миколаївська область',
-  'Одеська область',
-  'Полтавська область',
-  'Рівненська область',
-  'Сумська область',
-  'Тернопільська область',
-  'Харківська область',
-  'Херсонська область',
-  'Хмельницька область',
-  'Черкаська область',
-  'Чернігівська область',
-  'Чернівецька область',
-];
-
 @reduxForm({
   form: 'card',
   validate: validate({
     doctor: {
       required: true,
     },
+    birth_place: {
+      required: true,
+    },
+    gender: {
+      required: true,
+    },
+    'documents.numbe': {
+      required: true,
+    },
+    'documents.issued_by': {
+      required: true,
+    },
+    'documents.issue_date': {
+      required: true,
+    },
+    'phones.mobile': {
+      required: true,
+      phone_number: /^0\d{9}$/,
+    },
+    email: {
+      required: true,
+      email: true,
+    },
   }),
 })
 @withStyles(styles)
-export default class CreateDeclarationStep1 extends React.Component {
+export default class CreateDeclarationStep2 extends React.Component {
 
   state = {
     addDocument: false,
@@ -138,7 +124,7 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Паспорт" type="text" name="documents.type" component={Input}>
+            <Field placeholder="Паспорт" disabled={true} type="text" value="Паспорт" name="documents.type" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>
@@ -169,66 +155,12 @@ export default class CreateDeclarationStep1 extends React.Component {
         <div className={styles.form__title}>
           <H3>Адреса реєстрації Пацієнта</H3>
         </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field
-              component={SelectInput}
-              name="addresses.area"
-              placeholder="Область"
-              options={REGION.map(item => ({
-                title: item, name: item,
-              }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
-          </div>
-          <div className={styles.form__row__item}>
-            <Field placeholder="Місто" type="text" name="addresses.city" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <div>
-              <div className={styles.s}>
-                <Field
-                  theme="small"
-                  component={SelectInput}
-                  name="street_type"
-                  placeholder="Вул"
-                  options={STREET.map(item => ({
-                    title: item.name, name: item.name,
-                  }))}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <Field placeholder="Назва вулиці" type="text" name="addresses.street" component={Input}>
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
-            </div>
-          </div>
-          <div className={styles.form__row__item}>
-            <div>
-              <div className={styles.xs}>
-                <Field theme="small" placeholder="Буд" type="text" name="addresses.building" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <div className={styles.xs}>
-                <Field theme="small" placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <div className={styles.s}>
-                <Field theme="small" placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <Addresses
+          disabled={false}
+          name="REGISTRATION"
+        />
+
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <H3>Адреса проживання Пацієнта</H3>
@@ -238,6 +170,7 @@ export default class CreateDeclarationStep1 extends React.Component {
               <span className={styles.form__row__text}>Співпадає з місцем реєстрації</span>
               <Field
                 name="checked"
+                checked={this.state.disabled}
                 label="Співпадає з місцем реєстрації"
                 component={Checkbox}
                 onClick={() => this.setState({
@@ -249,79 +182,14 @@ export default class CreateDeclarationStep1 extends React.Component {
             </div>
           </div>
         </div>
-        <div
-          className={
-            classnames(
-              styles.disable,
-              !this.state.disabled && styles.is_disabled
-            )
-          }
-        >
-          <div className={styles.form__row}>
-            <div className={styles.form__row__item}>
-              <Field
-                component={SelectInput}
-                name="addresses.area"
-                placeholder="Область"
-                options={REGION.map(item => ({
-                  title: item, name: item,
-                }))}
-              >
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
-            </div>
-            <div className={styles.form__row__item}>
-              <Field placeholder="Місто" type="text" name="addresses.city" component={Input}>
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
-            </div>
-          </div>
-          <div className={styles.form__row}>
-            <div className={styles.form__row__item}>
-              <div>
-                <div className={styles.s}>
-                  <Field
-                    theme="small"
-                    component={SelectInput}
-                    name="street_type"
-                    placeholder="Вул"
-                    options={STREET.map(item => ({
-                      title: item.name, name: item.name,
-                    }))}
-                  >
-                    <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                  </Field>
-                </div>
-                <Field placeholder="Назва вулиці" type="text" name="addresses.street" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-            </div>
-            <div className={styles.form__row__item}>
-              <div>
-                <div className={styles.xs}>
-                  <Field theme="small" placeholder="Буд" type="text" name="addresses.building" component={Input}>
-                    <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                  </Field>
-                </div>
-                <div className={styles.xs}>
-                  <Field theme="small" placeholder="Кв" type="text" name="addresses.apartment" component={Input}>
-                    <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                  </Field>
-                </div>
-                <div className={styles.s}>
-                  <Field theme="small" placeholder="Індекс" type="text" name="addresses.zip" component={Input}>
-                    <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                  </Field>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className={styles.disable}>
+          <Addresses disabled={this.state.disabled} name="RESIDENCE" />
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+              <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
             </Field>
           </div>
         </div>
@@ -329,6 +197,7 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.form__row__item}>
             <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
+              <ErrorMessage when="email">Не вірно вказаний email</ErrorMessage>
             </Field>
           </div>
         </div>

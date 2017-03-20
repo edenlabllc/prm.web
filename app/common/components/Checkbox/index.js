@@ -22,6 +22,7 @@ export default class Checkbox extends React.Component {
       children,
       input,
       meta,
+      checked,
       ...rest,
     } = this.props;
 
@@ -42,7 +43,7 @@ export default class Checkbox extends React.Component {
                 ...input,
                 ...rest,
                 type: 'checkbox',
-                checked: input.checked,
+                checked,
               })
             }
             <div className={styles.view}>

@@ -25,7 +25,7 @@ export default class Input extends React.Component {
     const {
       component = 'input',
       theme = THEMES[0],
-      disabled,
+      disabled = false,
       label,
       children,
       input,

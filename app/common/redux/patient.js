@@ -1,7 +1,7 @@
 import { handleAction } from 'redux-actions';
 import { normalize, Schema, arrayOf } from 'normalizr';
-import { MPI_HOST, PRM_HOST } from 'config';
-// import { combineReducers } from 'redux';
+import { MPI_URL } from 'config';
+import { combineReducers } from 'redux';
 
 import { invoke } from './api';
 
@@ -9,36 +9,43 @@ const patientSchema = new Schema('patients');
 
 
 export const fetchPatient = id => dispatch => dispatch(invoke({
-  endpoint: `${MPI_HOST}/persons/${id}`,
+  endpoint: `${MPI_URL}/persons/${id}`,
   method: 'get',
   types: [
-    'declarations/FETCH_PATIENT_REQUEST', {
-      type: 'declarations/FETCH_PATIENT_SUCCESS',
-      payload: (action, state, res) => res.json().then(json =>
-        normalize(json.data, arrayOf(patientSchema))),
+    'patient/FETCH_PATIENT_REQUEST', {
+      type: 'patient/FETCH_PATIENT_SUCCESS',
+      payload: (action, state, res) => res.json().then((json) => {
+        console.log(normalize(json.data, arrayOf(patientSchema)));
+        return normalize(json.data, arrayOf(patientSchema));
+      }),
+
     },
-    'declarations/FETCH_PATIENT_FAILER',
+    'patient/FETCH_PATIENT_FAILER',
   ],
 }));
 
 
-export const searchPerson = body => dispatch => dispatch(invoke({
-  endpoint: `${PRM_HOST}/persons/${body}`,
+export const searchPatient = body => dispatch => dispatch(invoke({
+  endpoint: `${MPI_URL}/persons?${body}`,
   method: 'get',
   types: [
-    'declarations/SEARCH_PATIENT_REQUEST', {
-      type: 'declarations/SEARCH_PATIENT_SUCCESS',
+    'patient/SEARCH_PATIENT_REQUEST', {
+      type: 'patient/SEARCH_PATIENT_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
           normalize(json.data, arrayOf(patientSchema))),
     },
-    'declarations/SEARCH_PATIENT_FAILER',
+    'patient/SEARCH_PATIENT_FAILER',
   ],
 }));
 
-export default handleAction('declarations/FETCH_PATIENT_SUCCESS',
+const patients = handleAction('patient/FETCH_PATIENT_SUCCESS',
   (state, action) => ({
     ...state,
-    ...action.payload.patients,
+    ...action.payload.result,
   }),
   []
 );
+
+export default combineReducers({
+  patients,
+});

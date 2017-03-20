@@ -21,6 +21,12 @@
   position: absolute;
 }
 
+.disabled {
+  opacity: 0.8;
+  background-color: #f5f5f5;
+  pointer-events: none;
+}
+
 .theme-default {
   .input {
     color: #62758f;
