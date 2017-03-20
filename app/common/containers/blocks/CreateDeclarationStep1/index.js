@@ -1,11 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import withStyles from 'withStyles';
 
+import { show } from 'components/Popup';
 import { H1, H3 } from 'components/Title';
 import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep1';
+import SearchDeclarationPopup from 'containers/popups/SearchDeclaration';
 
 import styles from './styles.scss';
 
+@connect(null, { show })
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
@@ -20,6 +25,7 @@ export default class CreateDeclarationStep1 extends React.Component {
           </div>
           <CreateDeclarationForm onSubmit={() => {}} />
         </div>
+        <SearchDeclarationPopup />
       </section>
     );
   }
