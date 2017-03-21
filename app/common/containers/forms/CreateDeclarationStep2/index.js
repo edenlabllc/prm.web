@@ -18,33 +18,33 @@ import validate, { ErrorMessage } from 'modules/validate';
 import styles from './styles.scss';
 
 @reduxForm({
-  form: 'card',
+  form: 'personRegistrationStep2',
   validate: validate({
-    doctor: {
-      required: true,
-    },
     birth_place: {
       required: true,
     },
     gender: {
       required: true,
     },
-    'documents.numbe': {
+    'documents.number': {
       required: true,
     },
-    'documents.issued_by': {
+    'REGISTRATION.addresses.city': {
       required: true,
     },
-    'documents.issue_date': {
+    'REGISTRATION.addresses.street': {
       required: true,
     },
-    'phones.mobile': {
+    'REGISTRATION.addresses.building': {
       required: true,
-      phone_number: /^0\d{9}$/,
     },
     email: {
       required: true,
       email: true,
+    },
+    'phones.mobile': {
+      required: true,
+      phone_number: /^0\d{9}$/,
     },
   }),
 })
@@ -65,7 +65,7 @@ export default class CreateDeclarationStep2 extends React.Component {
   render() {
     const { handleSubmit, showPopup } = this.props;
     return (
-      <form className={styles.form} onSubmit={() => handleSubmit()}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.form__title}>
           <H3>Лікар</H3>
         </div>
@@ -100,7 +100,7 @@ export default class CreateDeclarationStep2 extends React.Component {
                   theme="radiobtn"
                   label="Жінка"
                   selected={this.state.gender === 'female'}
-                  value="female"
+                  value="FEMALE"
                   name="gender"
                   component={RadioButtonInput}
                 >
@@ -112,7 +112,7 @@ export default class CreateDeclarationStep2 extends React.Component {
                   theme="radiobtn"
                   label="Чоловік"
                   selected={this.state.gender === 'male'}
-                  value="male"
+                  value="MALE"
                   name="gender"
                   component={RadioButtonInput}
                 >
@@ -124,7 +124,7 @@ export default class CreateDeclarationStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Паспорт" disabled={true} type="text" value="Паспорт" name="documents.type" component={Input}>
+            <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>

@@ -22,23 +22,38 @@ export const fetchPerson = id => dispatch => dispatch(invoke({
 }));
 
 
-export const searchPatient = options => dispatch => dispatch(invoke({
+export const searchPersons = options => dispatch => dispatch(invoke({
   endpoint: createUrl(`${MPI_URL}/persons`, options),
   method: 'get',
   types: [
     'person/SEARCH_PERSON_REQUEST', {
       type: 'person/SEARCH_PERSON_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
-          normalize(json.data, arrayOf(personsSchema))),
+        normalize(json.data, arrayOf(personsSchema))),
     },
     'person/SEARCH_PERSON_FAILER',
   ],
 }));
 
+// export const createPerson = (body) => dispatch => dispatch(invoke({
+//   endpoint: createUrl(`${MPI_URL}/persons`),
+//   method: 'post',
+//   types: [
+//     'person/CREATE_PERSON_REQUEST', {
+//       type: 'person/CREATE_PERSON_SUCCESS',
+//       payload: (action, state, res) => res.json().then(json =>
+//         normalize(json.data, personsSchema)),
+//     },
+//     'person/CREATE_PERSON_FAILER',
+//   ],
+//   body
+// }));
+
+
 const persons = handleAction(
   combineActions(
     'person/FETCH_PERSON_SUCCESS',
-    'SEARCH_PERSON_SUCCESS'
+    'person/SEARCH_PERSON_SUCCESS',
   ),
   (state, action) => ({
     ...state,

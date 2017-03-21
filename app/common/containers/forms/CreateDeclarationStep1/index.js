@@ -1,17 +1,16 @@
 import React from 'react';
-
-import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
+import withStyles from 'withStyles';
+import validate, { ErrorMessage } from 'modules/validate';
+
 
 import Input, { DateInput, MaskedInput } from 'components/Input';
 import Button from 'components/Button';
 
-import validate, { ErrorMessage } from 'modules/validate';
-
 import styles from './styles.scss';
 
 @reduxForm({
-  form: 'registrationForm',
+  form: 'personRegistrationStep1',
   validate: validate({
     first_name: {
       required: true,
@@ -19,29 +18,20 @@ import styles from './styles.scss';
     last_name: {
       required: true,
     },
-    second_name: {
-      required: true,
-    },
     birth_date: {
       required: true,
-    },
-    national_id: {
-      required: true,
-      min: 10,
-    },
-    'phones.mobile': {
-      required: true,
-      phone_number: /^0\d{9}$/,
     },
   }),
 })
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
-    const { onSubmit } = this.props;
+    const {
+      handleSubmit,
+    } = this.props;
 
     return (
-      <form className={styles.form} onSubmit={() => onSubmit()}>
+      <form onSubmit={handleSubmit} className={styles.form} >
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
@@ -61,7 +51,13 @@ export default class CreateDeclarationStep1 extends React.Component {
             </Field>
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата народження" placeholder="ДД/ММ/РР" name="birth_date" component={DateInput}>
+            <Field
+              theme="space-between"
+              label="Дата народження"
+              placeholder="ДД/ММ/РР"
+              name="birth_date"
+              component={DateInput}
+            >
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>
@@ -80,11 +76,17 @@ export default class CreateDeclarationStep1 extends React.Component {
           </div>
         </div>
         <div className={styles.form__btns}>
-          <Button type="reset">Зберегти зміни</Button>
-          <Button onClick={() => onSubmit()} theme="blue">Далі</Button>
-          {
-            // <Button to="/create/patient" theme="blue">Далі</Button>
-          }
+          <Button type="reset" disabled={true}>Зберегти зміни</Button>
+          <Button
+            theme="blue"
+            type="submit"
+            to="/create/declaration"
+          >
+            Далі
+            {
+              // disabled={ submitting || !valid}
+            }
+          </Button>
         </div>
       </form>
     );

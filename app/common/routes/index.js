@@ -15,7 +15,7 @@ export const configureRoutes = () => (
     <Route component={MainLayout}>
       <Route path="create" component={CreateDeclarationLayout}>
         <IndexRoute component={CreateDeclarationStep1} />
-        <Route path="patient" component={CreateDeclarationStep2} />
+        <Route path="declaration" component={CreateDeclarationStep2} />
       </Route>
       <Route path="/" component={NavigationLayout}>
         <IndexRedirect to="declarations" />

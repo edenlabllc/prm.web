@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { isInvalid, isSubmitting } from 'redux-form';
 import withStyles from 'withStyles';
-
 // import { show } from 'components/Popup';
+
 import { H1, H3 } from 'components/Title';
 import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep1';
 import SearchDeclarationPopup from 'containers/popups/SearchDeclaration';
@@ -12,11 +12,18 @@ import { onSubmit } from './redux';
 
 import styles from './styles.scss';
 
-@connect(null, { onSubmit })
+@connect(state => ({
+  invalid: isInvalid('createDeclarationForm')(state),
+  submitting: isSubmitting('createDeclarationForm')(state),
+}), { onSubmit })
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
-    const { onSubmit } = this.props;
+    const {
+      onSubmit,
+      invalid,
+      submitting,
+    } = this.props;
 
     return (
       <section className={styles.declaration}>
@@ -27,7 +34,11 @@ export default class CreateDeclarationStep1 extends React.Component {
           <div className={styles.declaration__form__title}>
             <H3>1. Реєстрація декларації</H3>
           </div>
-          <CreateDeclarationForm onSubmit={() => onSubmit()} />
+          <CreateDeclarationForm
+            onSubmit={onSubmit}
+            valid={invalid}
+            submitting={submitting}
+          />
         </div>
         <SearchDeclarationPopup />
       </section>
