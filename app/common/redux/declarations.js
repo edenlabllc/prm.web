@@ -1,6 +1,5 @@
 import { PRM_URL } from 'config';
 import { handleAction } from 'redux-actions';
-import { combineReducers } from 'redux';
 import { normalize, Schema, arrayOf } from 'normalizr';
 
 import { invoke } from './api';
@@ -19,6 +18,7 @@ export const fetchDeclarations = () => dispatch => dispatch(invoke({
     'declarations/FETCH_DECLARATIONS_FAILER',
   ],
 }));
+
 const declarations = handleAction('declarations/FETCH_DECLARATIONS_SUCCESS',
   (state, action) => ({
     ...state,
@@ -27,6 +27,4 @@ const declarations = handleAction('declarations/FETCH_DECLARATIONS_SUCCESS',
   []
 );
 
-export default combineReducers({
-  declarations,
-});
+export default declarations;
