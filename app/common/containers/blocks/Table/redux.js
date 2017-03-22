@@ -3,14 +3,19 @@ import { combineReducers } from 'redux';
 
 import { fetchDeclarations } from 'redux/declarations';
 import { fetchPerson } from 'redux/person';
-import { fetchDoctor } from 'redux/doctor';
+import { fetchDoctor, fetchDoctors } from 'redux/doctor';
 
 const setDeclarations = createAction('table/SET_DECLARATIONS');
+const setDoctors = createAction('table/SET_DOCTORS');
 
 export const getDeclarationList = () => dispatch =>
   dispatch(fetchDeclarations()).then((resp) => {
     const declarations = resp.payload.result;
     dispatch(setDeclarations(declarations));
+
+    dispatch(fetchDoctors()).then(doctors =>
+      dispatch(setDoctors(doctors))
+    );
 
     if (resp.error) return null;
 
@@ -28,6 +33,11 @@ const declarations = handleActions({
   [setDeclarations]: (state, action) => action.payload,
 }, []);
 
+const doctors = handleActions({
+  [setDoctors]: (state, action) => action.payload,
+}, []);
+
 export default combineReducers({
   declarations,
+  doctors,
 });

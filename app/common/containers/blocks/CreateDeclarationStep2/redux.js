@@ -4,7 +4,7 @@ import { createDeclaration } from 'redux/declarations';
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();
-  // const doctor_id = values.doctor;
+  const doctor_id = values.doctor;
 
   const obj = {
     ...state.blocks.CreateDeclarationStep1.currentPerson,
@@ -26,6 +26,7 @@ export const onCreate = values => (dispatch, getState) => {
       zip: values.REGISTRATION.addresses.zip,
     }],
   };
+
   return dispatch(createPerson(obj)).then((newPatient) => {
     const patientsObj = newPatient.payload.entities.persons;
     const person_id = patientsObj[Object.keys(patientsObj)[0]].id;
@@ -34,13 +35,18 @@ export const onCreate = values => (dispatch, getState) => {
       const mspsObj = mspObj.payload.entities.msps;
       const msp_id = mspsObj[Object.keys(mspsObj)[0]].id;
 
+      const start_date = new Date().toJSON();
+      const end_date = (new Date(new Date().setFullYear(new Date().getFullYear() + 1))).toJSON();
+
       const obj = {
         declaration: {
           patient_id: person_id,
-          doctor_id: '998d6ebe-12ac-4484-91a4-9a0356c3e827',
+          doctor_id,
           msp_id,
           scope: 'family_doctor',
           status: 'pending_signature',
+          start_date,
+          end_date,
         },
       };
 

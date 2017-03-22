@@ -10,7 +10,7 @@
     background-color: #f9fafc;
 
     th {
-      padding: 22px 35px;
+      padding: 22px 25px;
       text-transform: uppercase;
       text-align: left;
       font-size: 12px;
@@ -28,7 +28,7 @@
     td {
       color: #3c4858;
       position: relative;
-      padding: 10px 34px;
+      padding: 10px 20px;
       vertical-align: middle;
       line-height: 20px;
       word-wrap: break-word;
@@ -51,11 +51,11 @@
     }
 
     tr td:nth-child(4) {
-      max-width: 74px;
+      width: 74px;
     }
 
     tr td:nth-child(5) {
-      max-width: 74px;
+      width: 74px;
     }
   }
 

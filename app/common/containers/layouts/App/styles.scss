@@ -135,14 +135,15 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-right: -26px;
   background-image: url('/images/calendar_icon.png');
   background-repeat: no-repeat;
-  padding: 13px 16px;
+  padding: 15px 16px 11px;
   width: 26px;
-  height: 25px;
+  height: 24px;
   background-position: center;
   background-size: 25px 25px;
   color: rgba(204,204,204,0);
   background-color: #eff2f7;
   opacity: 1;
+  z-index: 0;
 }
 
 input::placeholder {

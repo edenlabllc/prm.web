@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import withStyles from 'withStyles';
-
 import { ErrorMessages } from 'modules/validate';
 
-import Icon from 'components/Icon';
 import OuterClick from 'components/OuterClick';
 
 import styles from './styles.scss';
@@ -132,7 +130,6 @@ class Select extends React.Component {
                     key={item.name instanceof Object ? JSON.stringify(item.name) : item.name}
                   >
                     {item.title}
-                    {item.name === activeItem.name && <span className={styles.icon}><Icon name="check-right" /></span>}
                   </li>
                 ))
               }

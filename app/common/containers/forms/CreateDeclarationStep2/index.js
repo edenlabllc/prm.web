@@ -1,24 +1,24 @@
 import React from 'react';
-
-import withStyles from 'withStyles';
+// import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import validate, { ErrorMessage } from 'modules/validate';
 import classnames from 'classnames';
 
-import Input, { DateInput, RadioButtonInput, MaskedInput, SelectInput } from 'components/Input';
+import withStyles from 'withStyles';
 
+import Input, { DateInput, RadioButtonInput, MaskedInput, SelectInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import { H3 } from 'components/Title';
 import Addresses from 'containers/forms/Addresses';
 
+// import { getDoctors } from 'reducers';
+
 import add from 'public/images/add.svg';
-
-import validate, { ErrorMessage } from 'modules/validate';
-
 import styles from './styles.scss';
 
 const doctors = {
-  '998d6ebe-12ac-448491a4-9a0356c3e827': {
+  '998d6ebe-12ac-4484-91a4-9a0356c3e827': {
     updated_by: null,
     status: null,
     name: 'Alexis Ohanian',
@@ -32,9 +32,47 @@ const doctors = {
     active: false,
     type: 'doctor',
   },
+  '52fe7f70-d33c-49f0-8706-b7cbd8c64fc3': {
+    updated_by: null,
+    status: null,
+    name: 'Petro Lymych',
+    mpi_id: null,
+    licenses: null,
+    jobs: null,
+    id: '52fe7f70-d33c-49f0-8706-b7cbd8c64fc3',
+    education: null,
+    created_by: null,
+    certificates: null,
+    active: false,
+  },
+  '3674753a-4a2e-43f9-8d38-ef8b871bcf28': {
+    updated_by: null,
+    status: null,
+    name: 'Ievgen Pyrogov',
+    mpi_id: null,
+    licenses: null,
+    jobs: null,
+    id: '3674753a-4a2e-43f9-8d38-ef8b871bcf28',
+    education: null,
+    created_by: null,
+    certificates: null,
+    active: false,
+  },
+  '03a5092d-a354-46da-82aa-2ba3d2830ffc': {
+    updated_by: null,
+    status: null,
+    name: 'Dmytro Ivchenko',
+    mpi_id: null,
+    jobs: null,
+    id: '03a5092d-a354-46da-82aa-2ba3d2830ffc',
+    created_by: null,
+    active: false,
+  },
 };
 
-
+// @connect(state => ({
+//   doctors: getDoctors(state),
+// }))
 @reduxForm({
   form: 'personRegistrationStep2',
   validate: validate({
@@ -42,8 +80,6 @@ const doctors = {
       required: true,
     },
     // gender: {
-    //   required: true,
-    // },gender: {
     //   required: true,
     // },
     'documents.number': {
@@ -84,6 +120,7 @@ export default class CreateDeclarationStep2 extends React.Component {
   }
   render() {
     const { handleSubmit, showPopup } = this.props;
+
     return (
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.form__title}>

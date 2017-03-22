@@ -31,7 +31,11 @@ export default combineReducers({
 
 
 export const getPerson = (state, id) => state.persons[id];
+
 export const getDoctor = (state, id) => state.doctors[id];
+
+export const getDoctors = state =>
+  state.doctors.map(i => getDoctor(state, i));
 
 export const getDeclaration = (state, id) => {
   const declaration = state.declarations[id];
@@ -48,6 +52,5 @@ export const getDeclarations = (state, ids) =>
 
 
 export const getMSP = (state, id) => state.msp[id];
-
 export const getMSPS = state =>
   state.msps.map(i => getMSP(state, i));
