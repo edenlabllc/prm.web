@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import Popup, { popup } from 'components/Popup';
 import { H3 } from 'components/Title';
 import SignInDeclarationForm from 'containers/forms/SignInDeclarationForm';
+import LookupDeclarationForm from 'containers/forms/LookupDeclarationForm';
+
 
 // import { onSubmit } from './redux';
 
@@ -19,24 +21,15 @@ import styles from './styles.scss';
   name: 'signInDeclaration',
 })
 export default class SignInDeclaration extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.onSubmit = this.onSubmit.bind(this);
-  // }
 
   state = {
     signIn: false,
+    lookup: false,
   };
-
-  onSubmit() {
+  onSign() {
     this.setState({
-      signIn: true,
+      lookup: true,
     });
-    // return this.props.onSubmit(...args).then(() => {
-    //   this.setState({
-    //     signIn: true,
-    //   });
-    // });
   }
 
   render() {
@@ -56,6 +49,23 @@ export default class SignInDeclaration extends React.Component {
         </Popup>
       );
     }
+    if (this.state.lookup) {
+      return (
+        <Popup
+          {...popup}
+          onClose={handleClose}
+          buttons={[
+            { children: 'Назад', theme: 'light', onClick: () => this.setState({ lookup: false }) },
+            { children: 'Підтвердити', theme: 'blue', onClick: () => { this.setState({ lookup: false, signIn: true }); } },
+          ]}
+        >
+          <div className={classnames(styles.title, styles.title_wide)}>
+            <H3>Введіть код з смс</H3>
+            <LookupDeclarationForm />
+          </div>
+        </Popup>
+      );
+    }
 
     return (
       <Popup
@@ -63,7 +73,7 @@ export default class SignInDeclaration extends React.Component {
         onClose={handleClose}
         buttons={[
           { children: 'Друкувати декларацію', theme: 'light', onClick: () => { alert('print'); } },
-          { children: 'НАКЛАСТИ ЕЦП', theme: 'blue', onClick: () => this.onSubmit() },
+          { children: 'НАКЛАСТИ ЕЦП', theme: 'blue', onClick: () => this.onSign() },
         ]}
       >
         <div className={styles.title}>
