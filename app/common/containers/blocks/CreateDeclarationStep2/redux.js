@@ -40,6 +40,7 @@ export const onCreate = values => (dispatch, getState) => {
           doctor_id: '998d6ebe-12ac-4484-91a4-9a0356c3e827',
           msp_id,
           scope: 'family_doctor',
+          status: 'pending_signature',
         },
       };
 
