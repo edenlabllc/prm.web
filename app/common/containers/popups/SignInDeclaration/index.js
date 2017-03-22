@@ -47,7 +47,7 @@ export default class SignInDeclaration extends React.Component {
           {...popup}
           onClose={handleClose}
           buttons={[
-            { children: 'ЗАКРИТИ', theme: 'blue', onClick: () => handleClose() },
+            { children: 'ЗАКРИТИ', theme: 'blue', onClick: () => handleClose(), to: '/declarations' },
           ]}
         >
           <div className={classnames(styles.title, styles.title_wide)}>

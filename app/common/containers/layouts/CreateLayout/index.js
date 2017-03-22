@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import styles from './styles.scss';
 
 @withStyles(styles)
-export default class CreateDeclaration extends React.Component {
+export default class CreateLayout extends React.Component {
   render() {
     const { children } = this.props;
     return (

@@ -22,8 +22,8 @@ export default class EmptySearchPopup extends React.Component {
         {...popup}
         onClose={handleClose}
         buttons={[
-          { children: 'Продовжити пошук', theme: 'light', to: '/create' },
-          { children: 'Створити нову декларацію', theme: 'blue', to: '/create/declaration' },
+          { children: 'Продовжити пошук', theme: 'light', to: '/declaration' },
+          { children: 'Створити нову декларацію', theme: 'blue', to: '/declarationStep2' },
           { children: 'Закрити', theme: 'light', onClick: () => handleClose() },
         ]}
       >

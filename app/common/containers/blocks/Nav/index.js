@@ -12,7 +12,7 @@ const NAV_LIST = [{
   link: '/clinic-profile',
   title: 'Профіль кліники',
 }, {
-  link: '/declaraions',
+  link: '/doctors',
   title: 'Реєстр Лікарів',
 }, {
   link: '/patients',
