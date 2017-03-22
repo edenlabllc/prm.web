@@ -69,23 +69,19 @@ export default class CreateDeclarationStep1 extends React.Component {
             </Field>
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput}>
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.number" component={MaskedInput}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
               <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
             </Field>
           </div>
         </div>
         <div className={styles.form__btns}>
-          <Button type="reset" disabled={true}>Зберегти зміни</Button>
+          <Button type="submit" >Зберегти зміни</Button>
           <Button
             theme="blue"
-            type="submit"
             to="/create/declaration"
           >
             Далі
-            {
-              // disabled={ submitting || !valid}
-            }
           </Button>
         </div>
       </form>

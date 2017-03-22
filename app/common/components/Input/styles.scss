@@ -50,8 +50,7 @@
   }
 
   .error {
-    bottom: -16px;
-    padding-left: 26px;
+    top: 57px;
     color: #d22b2f;
     font-size: 12px;
     font-weight: 400;
@@ -108,6 +107,20 @@
 
   .input {
     border-color: transparent;
+  }
+
+  .error {
+    display: none;
+  }
+
+  &.errored {
+    .input {
+      border-color: transparent;
+    }
+
+    & > .view {
+      border: 1px solid red;
+    }
   }
 }
 

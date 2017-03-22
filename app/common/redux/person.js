@@ -35,19 +35,19 @@ export const searchPersons = options => dispatch => dispatch(invoke({
   ],
 }));
 
-// export const createPerson = (body) => dispatch => dispatch(invoke({
-//   endpoint: createUrl(`${MPI_URL}/persons`),
-//   method: 'post',
-//   types: [
-//     'person/CREATE_PERSON_REQUEST', {
-//       type: 'person/CREATE_PERSON_SUCCESS',
-//       payload: (action, state, res) => res.json().then(json =>
-//         normalize(json.data, personsSchema)),
-//     },
-//     'person/CREATE_PERSON_FAILER',
-//   ],
-//   body
-// }));
+export const createPerson = body => dispatch => dispatch(invoke({
+  endpoint: createUrl(`${MPI_URL}/persons`),
+  method: 'post',
+  types: [
+    'person/CREATE_PERSON_REQUEST', {
+      type: 'person/CREATE_PERSON_SUCCESS',
+      payload: (action, state, res) => res.json().then(json =>
+        normalize(json.data, personsSchema)),
+    },
+    'person/CREATE_PERSON_FAILER',
+  ],
+  body,
+}));
 
 
 const persons = handleAction(

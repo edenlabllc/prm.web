@@ -8,9 +8,11 @@ import doctors from 'redux/doctor';
 import persons from 'redux/person';
 
 import Table from 'containers/blocks/Table/redux';
+import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
 
 const blocks = combineReducers({
   Table,
+  CreateDeclarationStep1,
 });
 
 export default combineReducers({

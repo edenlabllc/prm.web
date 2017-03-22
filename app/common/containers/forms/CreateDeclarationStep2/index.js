@@ -23,9 +23,11 @@ import styles from './styles.scss';
     birth_place: {
       required: true,
     },
-    gender: {
-      required: true,
-    },
+    // gender: {
+    //   required: true,
+    // },gender: {
+    //   required: true,
+    // },
     'documents.number': {
       required: true,
     },
