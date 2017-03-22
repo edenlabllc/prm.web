@@ -80,8 +80,6 @@ export const DateInput = props =>
 export const RadioInput = props => (
   <Input
     component={RadioInputComponent}
-    selected={props.checked}
-    value={props.value}
     {...props}
   />
 );

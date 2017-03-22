@@ -79,9 +79,9 @@ const doctors = {
     birth_place: {
       required: true,
     },
-    // gender: {
-    //   required: true,
-    // },
+    gender: {
+      required: true,
+    },
     'documents.number': {
       required: true,
     },
@@ -103,6 +103,9 @@ const doctors = {
       phone_number: /^0\d{9}$/,
     },
   }),
+  initialValues: {
+    gender: 'FEMALE',
+  },
 })
 @withStyles(styles)
 export default class CreateDeclarationStep2 extends React.Component {
@@ -164,7 +167,7 @@ export default class CreateDeclarationStep2 extends React.Component {
                 <Field
                   theme="radiobtn"
                   label="Жінка"
-                  selected={this.state.gender === 'female'}
+                  type="radio"
                   value="FEMALE"
                   name="gender"
                   component={RadioButtonInput}
@@ -176,7 +179,7 @@ export default class CreateDeclarationStep2 extends React.Component {
                 <Field
                   theme="radiobtn"
                   label="Чоловік"
-                  selected={this.state.gender === 'male'}
+                  type="radio"
                   value="MALE"
                   name="gender"
                   component={RadioButtonInput}

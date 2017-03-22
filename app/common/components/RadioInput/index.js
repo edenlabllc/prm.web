@@ -6,7 +6,7 @@ import styles from './styles.scss';
 
 export const RadioInput = ({
   input, error,
-  disabled, value, name, labelText, prefix,
+  disabled, value, name, labelText, prefix, ...rest,
 }) => (
   <label className={classnames(styles.wrap, prefix && styles.prefixed, error && styles.errored)}>
     {prefix && <div className={styles.prefix}>{prefix}</div>}
@@ -14,6 +14,7 @@ export const RadioInput = ({
       type="radio"
       {...{
         ...input,
+        ...rest,
         value,
         name,
         disabled,
@@ -27,7 +28,7 @@ export const RadioInput = ({
 
 RadioInput.PropTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.isReqiored,
+  value: PropTypes.isRequired,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   onChange: PropTypes.func,

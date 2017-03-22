@@ -8,7 +8,7 @@ export const onCreate = values => (dispatch, getState) => {
 
   const obj = {
     ...state.blocks.CreateDeclarationStep1.currentPerson,
-    gender: 'MALE',
+    gender: values.gender,
     documents: [{
       type: 'PASSPORT',
       number: values.documents.number,
@@ -40,13 +40,13 @@ export const onCreate = values => (dispatch, getState) => {
 
       const obj = {
         declaration: {
-          patient_id: person_id,
-          doctor_id,
-          msp_id,
-          scope: 'family_doctor',
-          status: 'pending_signature',
           start_date,
+          doctor_id,
           end_date,
+          msp_id,
+          patient_id: person_id,
+          status: 'pending_signature',
+          scope: 'family_doctor',
         },
       };
 

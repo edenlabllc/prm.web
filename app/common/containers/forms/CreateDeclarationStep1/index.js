@@ -39,14 +39,14 @@ export default class CreateDeclarationStep1 extends React.Component {
             </Field>
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
+            <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
+            <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>

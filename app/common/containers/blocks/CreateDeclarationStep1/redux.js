@@ -4,10 +4,9 @@ import { searchPersons } from 'redux/person';
 
 
 const setCurrentPerson = createAction('person/SET_CURRENT_PERSON');
+const setCurrentPersonsList = createAction('person/SET_CURRENT_PERSONS_LIST');
 
 export const onSubmit = values => (dispatch) => {
-  console.log((new Date(values.birth_date)).toJSON());
-
   const body = {
     ...values,
     birth_date: (new Date(values.birth_date)).toJSON(),
@@ -16,8 +15,8 @@ export const onSubmit = values => (dispatch) => {
       number: values.phones ? `+38${values.phones.number}` : null,
     }],
   };
-  console.log(body);
-  dispatch(setCurrentPerson(body));
+
+  // dispatch(setCurrentPerson(body));
   return dispatch(searchPersons(body)).then((resp) => {
     console.log(resp);
   });
@@ -27,6 +26,11 @@ const currentPerson = handleActions({
   [setCurrentPerson]: (state, action) => action.payload,
 }, []);
 
+const currentPersonList = handleActions({
+  [setCurrentPersonsList]: (state, action) => action.payload,
+}, []);
+
 export default combineReducers({
   currentPerson,
+  currentPersonList,
 });
