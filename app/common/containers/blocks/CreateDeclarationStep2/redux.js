@@ -1,8 +1,11 @@
+import { fetchMSPS } from 'redux/msp';
 import { createPerson } from 'redux/person';
+import { createDeclaration } from 'redux/declarations';
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();
-  console.log(values, state);
+  // const doctor_id = values.doctor;
+
   const obj = {
     ...state.blocks.CreateDeclarationStep1.currentPerson,
     gender: 'MALE',
@@ -23,8 +26,26 @@ export const onCreate = values => (dispatch, getState) => {
       zip: values.REGISTRATION.addresses.zip,
     }],
   };
-  console.log(obj);
-  return dispatch(createPerson(obj)).then((resp) => {
-    console.log(resp);
+  return dispatch(createPerson(obj)).then((newPatient) => {
+    const patientsObj = newPatient.payload.entities.persons;
+    const person_id = patientsObj[Object.keys(patientsObj)[0]].id;
+
+    dispatch(fetchMSPS()).then((mspObj) => {
+      const mspsObj = mspObj.payload.entities.msps;
+      const msp_id = mspsObj[Object.keys(mspsObj)[0]].id;
+
+      const obj = {
+        declaration: {
+          patient_id: person_id,
+          doctor_id: '998d6ebe-12ac-4484-91a4-9a0356c3e827',
+          msp_id,
+          scope: 'family_doctor',
+        },
+      };
+
+      dispatch(createDeclaration(obj)).then((resp) => {
+        console.log(resp);
+      });
+    });
   });
 };

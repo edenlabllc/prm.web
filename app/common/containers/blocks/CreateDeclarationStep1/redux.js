@@ -11,10 +11,10 @@ export const onSubmit = values => (dispatch) => {
   const body = {
     ...values,
     birth_date: (new Date(values.birth_date)).toJSON(),
-    phones: {
+    phones: [{
       type: 'MOBILE',
       number: values.phones ? `+38${values.phones.number}` : null,
-    },
+    }],
   };
   console.log(body);
   dispatch(setCurrentPerson(body));
