@@ -4,7 +4,7 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 import classnames from 'classnames';
 
-import Input, { DateInput, RadioButtonInput, MaskedInput } from 'components/Input';
+import Input, { DateInput, RadioButtonInput, MaskedInput, SelectInput } from 'components/Input';
 
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
@@ -16,6 +16,24 @@ import add from 'public/images/add.svg';
 import validate, { ErrorMessage } from 'modules/validate';
 
 import styles from './styles.scss';
+
+const doctors = {
+  '998d6ebe-12ac-448491a4-9a0356c3e827': {
+    updated_by: null,
+    status: null,
+    name: 'Alexis Ohanian',
+    mpi_id: null,
+    licenses: null,
+    jobs: null,
+    id: '998d6ebe-12ac-4484-91a4-9a0356c3e827',
+    education: null,
+    created_by: null,
+    certificates: null,
+    active: false,
+    type: 'doctor',
+  },
+};
+
 
 @reduxForm({
   form: 'personRegistrationStep2',
@@ -73,7 +91,15 @@ export default class CreateDeclarationStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Вибрати з довідника" type="text" name="doctor" component={Input}>
+            <Field
+              theme="medium"
+              component={SelectInput}
+              name="doctor"
+              placeholder="Вибрати з довідника"
+              options={Object.keys(doctors).map(item => ({
+                title: doctors[item].name || '', name: item,
+              }))}
+            >
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>

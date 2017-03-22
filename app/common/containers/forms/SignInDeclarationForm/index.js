@@ -28,7 +28,8 @@ export default class SignInDeclarationForm extends React.Component {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.form__row}>
           <Field
-            type="text"
+            type="file"
+            accept=".csv"
             name="password"
             placeholder="Файл з сертифікатом відкритого ключа"
             component={Input}
@@ -38,7 +39,7 @@ export default class SignInDeclarationForm extends React.Component {
         </div>
         <div className={styles.form__row}>
           <Field
-            type="text"
+            type="password"
             name="passwordSecond"
             placeholder="Пароль до закритого ключа"
             component={Input}
