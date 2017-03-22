@@ -2,6 +2,7 @@ import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { searchPersons } from 'redux/person';
 
+import { show } from 'components/Popup';
 
 const setCurrentPerson = createAction('person/SET_CURRENT_PERSON');
 const setCurrentPersonsList = createAction('person/SET_CURRENT_PERSONS_LIST');
@@ -16,9 +17,13 @@ export const onSubmit = values => (dispatch) => {
     }],
   };
 
-  // dispatch(setCurrentPerson(body));
+  dispatch(setCurrentPerson(body));
   return dispatch(searchPersons(body)).then((resp) => {
-    console.log(resp);
+    if (resp.payload.result.length !== 0) {
+      dispatch(setCurrentPersonsList(resp.payload.entities.persons));
+      return dispatch(show('searchDeclarationPopup'));
+    }
+    return dispatch(show('emptySearchPopup'));
   });
 };
 
@@ -26,11 +31,11 @@ const currentPerson = handleActions({
   [setCurrentPerson]: (state, action) => action.payload,
 }, []);
 
-const currentPersonList = handleActions({
+const currentPersonsList = handleActions({
   [setCurrentPersonsList]: (state, action) => action.payload,
 }, []);
 
 export default combineReducers({
   currentPerson,
-  currentPersonList,
+  currentPersonsList,
 });

@@ -54,3 +54,4 @@ export const getDeclarations = (state, ids) =>
 export const getMSP = (state, id) => state.msp[id];
 export const getMSPS = state =>
   state.msps.map(i => getMSP(state, i));
+

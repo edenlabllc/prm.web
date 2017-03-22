@@ -76,11 +76,8 @@ export default class CreateDeclarationStep1 extends React.Component {
           </div>
         </div>
         <div className={styles.form__btns}>
-          <Button type="submit" >Зберегти зміни</Button>
-          <Button
-            theme="blue"
-            to="/create/declaration"
-          >
+          <Button disabled={true}>Зберегти зміни</Button>
+          <Button theme="blue" type="submit">
             Далі
           </Button>
         </div>

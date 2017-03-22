@@ -5,8 +5,28 @@
   line-height: 25px;
   text-transform: uppercase;
   text-align: center;
+}
 
-  &_wide {
-    margin: 55px 0;
+.form {
+  padding: 20px 0;
+  text-align: left;
+  display: block;
+
+  &__item {
+    display: block;
+
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        display: block;
+        padding: 5px 0;
+      }
+    }
   }
+}
+
+.bold {
+  font-weight: 700;
 }

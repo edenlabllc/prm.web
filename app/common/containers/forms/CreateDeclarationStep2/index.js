@@ -70,9 +70,7 @@ const doctors = {
   },
 };
 
-// @connect(state => ({
-//   doctors: getDoctors(state),
-// }))
+
 @reduxForm({
   form: 'personRegistrationStep2',
   validate: validate({
