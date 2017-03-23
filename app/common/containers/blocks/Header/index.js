@@ -11,7 +11,7 @@ export default class Header extends React.Component {
     return (
       <div className={styles.header}>
         <div className={styles.header__title}>
-          <p className={styles.bold}>Commercial Medical</p>
+          <p className={styles.bold}>Medical</p>
           <p>Information System</p>
         </div>
         <div className={styles.header__account}>

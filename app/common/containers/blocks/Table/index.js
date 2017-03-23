@@ -29,7 +29,7 @@ export default class Table extends React.Component {
           <thead className={styles.table__header}>
             <tr>
               <th>ID декларації</th>
-              <th>ПІБ пацієнта</th>
+              <th>ПІБ лікаря</th>
               <th>ПІБ пацієнта</th>
               <th>MPI пацієнта</th>
               <th>Діє з</th>

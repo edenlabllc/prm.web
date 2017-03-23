@@ -19,7 +19,10 @@ export const onSubmit = values => (dispatch) => {
 
   dispatch(setCurrentPerson(body));
   return dispatch(searchPersons(body)).then((resp) => {
-    if (resp.payload.result.length !== 0) {
+    console.log(resp);
+    if (resp.payload.status === 403) {
+      return dispatch(show('specifySearchPopup'));
+    } else if (resp.payload.result && resp.payload.result.length !== 0) {
       dispatch(setCurrentPersonsList(resp.payload.entities.persons));
       return dispatch(show('searchDeclarationPopup'));
     }

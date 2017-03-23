@@ -9,6 +9,7 @@ import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep1';
 
 import SearchDeclarationPopup from 'containers/popups/SearchDeclaration';
 import EmptySearchPopup from 'containers/popups/EmptySearchPopup';
+import SpecifySearchPopup from 'containers/popups/SpecifySearchPopup';
 
 import { onSubmit } from './redux';
 
@@ -44,6 +45,7 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <SearchDeclarationPopup />
         <EmptySearchPopup />
+        <SpecifySearchPopup />
       </section>
     );
   }

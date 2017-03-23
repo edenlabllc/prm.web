@@ -21,7 +21,7 @@ const PopupComponent = ({
     <div className={styles.in}>
       <button className={styles.popup__close} onClick={onClose}><Icon name="close" /></button>
       <header className={styles.popup__header}>
-        <p>Commercial Medical</p>
+        <p>Medical</p>
         <p>Information System</p>
       </header>
       <article className={styles.popup__content}>

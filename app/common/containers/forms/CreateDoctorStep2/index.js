@@ -218,7 +218,6 @@ export default class CreateDoctorStep2 extends React.Component {
             <span>Додати місце роботи</span>
           </a>
         </div>
-
         <div className={styles.form__btns}>
           <Button to="/doctor">Назад</Button>
           <Button type="submit">Зберегти зміни</Button>
