@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import { ErrorMessage } from 'modules/validate';
+import { reduxForm, Field, isInvalid, isSubmitting } from 'redux-form';
+import validate, { ErrorMessage } from 'modules/validate';
 import { RadioButtonInput } from 'components/Input';
 import withStyles from 'withStyles';
 
@@ -12,27 +12,34 @@ import { onSubmit } from './redux';
 
 import styles from './styles.scss';
 
-@connect(state => ({
-  currentPersons: state.blocks.CreateDeclarationStep1.currentPersonsList,
-}), { onSubmit })
 @withStyles(styles)
 @popup({
   name: 'searchDeclarationPopup',
 })
 @reduxForm({
   form: 'searchDeclarationList',
+  validate: validate({
+    selectedPerson: {
+      required: true,
+    },
+  }),
 })
+@connect(state => ({
+  currentPersons: state.blocks.CreateDeclarationStep1.currentPersonsList,
+  invalid: isInvalid('searchDeclarationList')(state),
+  submitting: isSubmitting('searchDeclarationList')(state),
+}), { onSubmit })
 export default class SearchDeclaration extends React.Component {
 
   render() {
-    const { popup, handleClose, currentPersons, onSubmit } = this.props;
+    const { popup, handleClose, currentPersons, onSubmit, invalid, submitting } = this.props;
 
     return (
       <Popup
         {...popup}
         onClose={handleClose}
         buttons={[
-          { children: 'Знайти декларацію', theme: 'blue', onClick: () => onSubmit() },
+          { children: 'Знайти декларацію', disabled: invalid || submitting, theme: 'blue', onClick: () => onSubmit() },
           { children: 'Назад', theme: 'light', onClick: () => handleClose() },
         ]}
       >
@@ -57,8 +64,9 @@ export default class SearchDeclaration extends React.Component {
                     </Field>
                   </div>
                   <div>
-                    <span>{currentPersons[item].first_name}</span>
-                    <span>{currentPersons[item].last_name}</span>
+                    <span className={styles.bold}>
+                      {currentPersons[item].first_name} {currentPersons[item].last_name}
+                    </span>
                     <span>{`#${currentPersons[item].id}`}</span>
                     {
                       currentPersons[item].birth_place !== null &&

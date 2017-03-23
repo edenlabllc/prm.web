@@ -10,10 +10,12 @@ import msp from 'redux/msp';
 
 import Table from 'containers/blocks/Table/redux';
 import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
+import SelectedPerson from 'containers/popups/SearchDeclaration/redux';
 
 const blocks = combineReducers({
   Table,
   CreateDeclarationStep1,
+  SelectedPerson,
 });
 
 export default combineReducers({

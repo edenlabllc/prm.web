@@ -32,8 +32,10 @@ export default class SpecifySearchPopup extends React.Component {
             <H3>Пошук пацієнта</H3>
             <H3>{emptyPerson.first_name} {emptyPerson.last_name}</H3>
           </div>
-          <p>Вам потрібно вказати дані пацієнта більш детально.</p>
-          <p>Кількість людей, що підійшли за данними параметрами більше 15.</p>
+          <p className={styles.item}>Вам потрібно вказати дані пацієнта більш детально.</p>
+          <p className={styles.item}>
+            Кількість людей, що підійшли за данними параметрами більше 15.
+          </p>
         </div>
       </Popup>
     );
