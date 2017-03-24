@@ -18,13 +18,14 @@ export const onCreate = values => (dispatch, getState) => {
     documents: [{
       type: 'PASSPORT',
       number: values.documents.number,
-      issue_date: values.documents.issue_date,
+      issue_date: (new Date(values.documents.issue_date)).toJSON(),
       issue_by: values.documents.issued_by,
     }],
     addresses,
   };
 
   return dispatch(createPerson(obj)).then((newPatient) => {
+    console.log(newPatient);
     const patientsObj = newPatient.payload.entities.persons;
     const person_id = patientsObj[Object.keys(patientsObj)[0]].id;
 
