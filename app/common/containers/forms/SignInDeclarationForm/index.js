@@ -1,10 +1,10 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import validate, { ErrorMessage } from 'modules/validate';
+import validate from 'modules/validate';
 
 import withStyles from 'withStyles';
 
-import Input from 'components/Input';
+import Input, { SelectFileInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
 
 import styles from './styles.scss';
@@ -28,14 +28,11 @@ export default class SignInDeclarationForm extends React.Component {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.form__row}>
           <Field
-            type="file"
             accept=".csv"
-            name="password"
+            name="file"
             placeholder="Файл з сертифікатом відкритого ключа"
-            component={Input}
-          >
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
+            component={SelectFileInput}
+          />
         </div>
         <div className={styles.form__row}>
           <Field
@@ -43,18 +40,14 @@ export default class SignInDeclarationForm extends React.Component {
             name="passwordSecond"
             placeholder="Пароль до закритого ключа"
             component={Input}
-          >
-            <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-          </Field>
+          />
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__flex}>
             <Field
               name="signed"
               component={Checkbox}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
             <span>Пацієнт підписав декларацію</span>
           </div>
         </div>
