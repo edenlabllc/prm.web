@@ -1,4 +1,4 @@
-import { fetchMSPS } from 'redux/msp';
+import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration } from 'redux/declarations';
 

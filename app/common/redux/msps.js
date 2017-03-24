@@ -24,13 +24,13 @@ export const fetchMSPS = () => dispatch => dispatch(invoke({
 
 const msps = handleAction(
   combineActions(
-    'MSPS/FETCH_DOCTOR_SUCCESS',
+    'MSPS/FETCH_MSPS_SUCCESS',
   ),
   (state, action) => ({
     ...state,
     ...action.payload.entities.msps,
   }),
-  []
+  {}
 );
 
 export default msps;
