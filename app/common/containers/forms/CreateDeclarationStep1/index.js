@@ -34,21 +34,15 @@ export default class CreateDeclarationStep1 extends React.Component {
       <form onSubmit={handleSubmit} className={styles.form} >
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Прізвище" type="text" name="last_name" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Ім’я" type="text" name="first_name" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <Field
@@ -57,9 +51,7 @@ export default class CreateDeclarationStep1 extends React.Component {
               placeholder="ДД/ММ/РР"
               name="birth_date"
               component={DateInput}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__row}>

@@ -25,6 +25,7 @@ export default class CreateDoctorStep1 extends React.Component {
         <div className={styles.declaration__form}>
           <CreateDoctorForm
             onSubmit={onCreate}
+            disabled
           />
         </div>
       </section>

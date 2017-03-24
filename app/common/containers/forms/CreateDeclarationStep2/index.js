@@ -1,7 +1,7 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import validate, { ErrorMessage } from 'modules/validate';
+import { connect } from 'react-redux';
+import { reduxForm, Field, FormSection, getFormValues } from 'redux-form';
+import validate from 'modules/validate';
 import classnames from 'classnames';
 
 import withStyles from 'withStyles';
@@ -83,14 +83,23 @@ const doctors = {
     'documents.number': {
       required: true,
     },
-    'REGISTRATION.addresses.city': {
+    'addresses.REGISTRATION.city': {
       required: true,
     },
-    'REGISTRATION.addresses.street': {
+    'addresses.REGISTRATION.street': {
       required: true,
     },
-    'REGISTRATION.addresses.building': {
+    'addresses.REGISTRATION.building': {
       required: true,
+    },
+    'addresses.RESIDENCE.city': {
+      required: (props, value, values) => !values.checked,
+    },
+    'addresses.RESIDENCE.street': {
+      required: (props, value, values) => !values.checked,
+    },
+    'addresses.RESIDENCE.building': {
+      required: (props, value, values) => !values.checked,
     },
     email: {
       required: true,
@@ -105,22 +114,13 @@ const doctors = {
     gender: 'FEMALE',
   },
 })
+@connect(state => ({
+  values: getFormValues('personRegistrationStep2')(state),
+}))
 @withStyles(styles)
 export default class CreateDeclarationStep2 extends React.Component {
-
-  state = {
-    addDocument: false,
-    addGuardian: false,
-    gender: 'male',
-    disabled: true,
-  };
-  onChange(value) {
-    this.setState({
-      value,
-    });
-  }
   render() {
-    const { handleSubmit, showPopup } = this.props;
+    const { handleSubmit, showPopup, values } = this.props;
 
     return (
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -137,9 +137,7 @@ export default class CreateDeclarationStep2 extends React.Component {
               options={Object.keys(doctors).map(item => ({
                 title: doctors[item].name || '', name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__title}>
@@ -147,9 +145,7 @@ export default class CreateDeclarationStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Місто народження" type="text" name="birth_place" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Місто народження" type="text" name="birth_place" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <div>
@@ -169,9 +165,7 @@ export default class CreateDeclarationStep2 extends React.Component {
                   value="FEMALE"
                   name="gender"
                   component={RadioButtonInput}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </div>
               <div className={styles.s}>
                 <Field
@@ -181,35 +175,25 @@ export default class CreateDeclarationStep2 extends React.Component {
                   value="MALE"
                   name="gender"
                   component={RadioButtonInput}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Виданий" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Виданий" type="text" name="documents.issued_by" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__plus}>
@@ -222,10 +206,9 @@ export default class CreateDeclarationStep2 extends React.Component {
           <H3>Адреса реєстрації Пацієнта</H3>
         </div>
 
-        <Addresses
-          disabled={false}
-          name="REGISTRATION"
-        />
+        <FormSection name="addresses.REGISTRATION">
+          <Addresses />
+        </FormSection>
 
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
@@ -234,37 +217,23 @@ export default class CreateDeclarationStep2 extends React.Component {
           <div className={styles.form__row__item}>
             <div className={styles.align__right}>
               <span className={styles.form__row__text}>Співпадає з місцем реєстрації</span>
-              <Field
-                name="checked"
-                checked={this.state.disabled}
-                label="Співпадає з місцем реєстрації"
-                component={Checkbox}
-                onClick={() => this.setState({
-                  disabled: !this.state.disabled,
-                })}
-              >
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
+              <Field name="checked" label="Співпадає з місцем реєстрації" component={Checkbox} />
             </div>
           </div>
         </div>
         <div className={styles.disable}>
-          <Addresses disabled={this.state.disabled} name="RESIDENCE" />
+          <FormSection name="addresses.RESIDENCE">
+            <Addresses disabled={values.checked} />
+          </FormSection>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              <ErrorMessage when="email">Не вірно вказаний email</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
           </div>
         </div>
         <div className={styles.form__btns}>

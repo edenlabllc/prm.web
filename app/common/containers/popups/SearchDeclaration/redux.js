@@ -6,14 +6,17 @@ import { fetchDoctor } from 'redux/doctor';
 import { fetchPerson } from 'redux/person';
 import { fetchMSPS } from 'redux/msps';
 import { show, hide } from 'components/Popup';
+import { getFormValues } from 'redux-form';
 
 const setDeclaration = createAction('person/SET_DECLARATION');
 
 export const onSubmit = () => (dispatch, getState) => {
   const state = getState();
+  const values = getFormValues('searchDeclarationList')(state);
   const selectedPatient = {
-    patient_id: state.form.searchDeclarationList.values.selectedPerson || null,
+    patient_id: values.selectedPerson || null,
   };
+
   return dispatch(searchDeclation(selectedPatient)).then((resp) => {
     const declarations = resp.payload.entities.declarations;
 

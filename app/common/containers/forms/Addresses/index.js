@@ -48,14 +48,14 @@ const REGION = [
 @withStyles(styles)
 export default class Addresses extends React.Component {
   render() {
-    const { name, disabled = false } = this.props;
+    const { disabled = false } = this.props;
     return (
       <div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <Field
               component={SelectInput}
-              name={`${name}.addresses.area`}
+              name="area"
               placeholder="Область"
               disabled={disabled}
               options={REGION.map(item => ({
@@ -66,7 +66,7 @@ export default class Addresses extends React.Component {
             </Field>
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Місто" type="text" name={`${name}.addresses.city`} component={Input} disabled={disabled}>
+            <Field placeholder="Місто" type="text" name="city" component={Input} disabled={disabled}>
               <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
             </Field>
           </div>
@@ -79,7 +79,7 @@ export default class Addresses extends React.Component {
                   disabled={disabled}
                   theme="small"
                   component={SelectInput}
-                  name={`${name}.addresses.street_type`}
+                  name="street_type"
                   placeholder="Вул"
                   options={STREET.map(item => ({
                     title: item.name, name: item.name,
@@ -88,7 +88,7 @@ export default class Addresses extends React.Component {
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
-              <Field disabled={disabled} placeholder="Назва вулиці" type="text" name={`${name}.addresses.street`} component={Input}>
+              <Field disabled={disabled} placeholder="Назва вулиці" type="text" name="street" component={Input}>
                 <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
               </Field>
             </div>
@@ -101,7 +101,7 @@ export default class Addresses extends React.Component {
                   theme="small"
                   placeholder="Буд"
                   type="text"
-                  name={`${name}.addresses.building`}
+                  name="building"
                   component={Input}
                 >
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
@@ -113,14 +113,14 @@ export default class Addresses extends React.Component {
                   theme="small"
                   placeholder="Кв"
                   type="text"
-                  name={`${name}.addresses.apartment`}
+                  name="apartment"
                   component={Input}
                 >
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>
               <div className={styles.s}>
-                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name={`${name}.addresses.zip`} component={Input}>
+                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name="zip" component={Input}>
                   <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
                 </Field>
               </div>

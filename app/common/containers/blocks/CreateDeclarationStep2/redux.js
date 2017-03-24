@@ -6,25 +6,22 @@ export const onCreate = values => (dispatch, getState) => {
   const state = getState();
   const doctor_id = values.doctor;
 
+  const addresses = Object.entries(values.addresses).map(([type, value]) => ({
+    country: 'UA',
+    ...value,
+    type,
+  }));
+
   const obj = {
     ...state.blocks.CreateDeclarationStep1.currentPerson,
     gender: values.gender,
     documents: [{
       type: 'PASSPORT',
       number: values.documents.number,
-      issue_date: (new Date(values.documents.issue_date)).toJSON(),
+      issue_date: values.documents.issue_date,
       issue_by: values.documents.issued_by,
     }],
-    addresses: [{
-      type: 'REGISTRATION',
-      country: 'UA',
-      area: values.REGISTRATION.addresses.area,
-      city: values.REGISTRATION.addresses.city,
-      street: values.REGISTRATION.addresses.street,
-      building: values.REGISTRATION.addresses.building,
-      apartment: values.REGISTRATION.addresses.apartment,
-      zip: values.REGISTRATION.addresses.zip,
-    }],
+    addresses,
   };
 
   return dispatch(createPerson(obj)).then((newPatient) => {

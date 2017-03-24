@@ -1,7 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import validate, { ErrorMessage } from 'modules/validate';
+import validate from 'modules/validate';
 
 import withStyles from 'withStyles';
 
@@ -77,9 +77,7 @@ export default class CreateDoctorStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Атестована спеціальність" type="text" name="birth_place" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Атестована спеціальність" type="text" name="birth_place" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <Field
@@ -90,21 +88,15 @@ export default class CreateDoctorStep2 extends React.Component {
               options={category.map(item => ({
                 title: item || '', name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата атестації" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Дата атестації" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Номер сертифікату" type="text" name="birth_place" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Номер сертифікату" type="text" name="birth_place" component={Input} />
           </div>
         </div>
         <div className={styles.form__plus}>
@@ -115,9 +107,7 @@ export default class CreateDoctorStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
@@ -130,9 +120,7 @@ export default class CreateDoctorStep2 extends React.Component {
               options={level.map(item => ({
                 title: item || '', name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
           <div className={styles.form__row__item}>
             <Field
@@ -143,28 +131,20 @@ export default class CreateDoctorStep2 extends React.Component {
               options={level.map(item => ({
                 title: item || '', name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Рік початку" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Рік початку" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Рік випуску" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Рік випуску" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
           </div>
         </div>
         <div className={styles.form__plus}>
@@ -175,26 +155,18 @@ export default class CreateDoctorStep2 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="ЄДРПОУ" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="ЄДРПОУ" type="text" name="documents.issued_by" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Назва закладу" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Назва закладу" type="text" name="documents.issued_by" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Посада" type="text" name="birth_place" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__row}>
@@ -207,9 +179,7 @@ export default class CreateDoctorStep2 extends React.Component {
               options={level.map(item => ({
                 title: item || '', name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__plus}>

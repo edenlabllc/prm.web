@@ -1,7 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import validate, { ErrorMessage } from 'modules/validate';
+import validate from 'modules/validate';
 import classnames from 'classnames';
 
 import withStyles from 'withStyles';
@@ -76,21 +76,15 @@ export default class CreateDoctorStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Прізвище" type="text" name="last_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Прізвище" type="text" name="last_name" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Ім’я" type="text" name="first_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Ім’я" type="text" name="first_name" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="По-батькові" type="text" name="second_name" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <Field
@@ -99,23 +93,17 @@ export default class CreateDoctorStep1 extends React.Component {
               placeholder="ДД/ММ/РР"
               name="birth_date"
               component={DateInput}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Місто народження" type="text" name="birth_place" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Місто народження" type="text" name="birth_place" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <div>
@@ -135,9 +123,7 @@ export default class CreateDoctorStep1 extends React.Component {
                   value="FEMALE"
                   name="gender"
                   component={RadioButtonInput}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </div>
               <div className={styles.s}>
                 <Field
@@ -147,35 +133,25 @@ export default class CreateDoctorStep1 extends React.Component {
                   value="MALE"
                   name="gender"
                   component={RadioButtonInput}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="Виданий" type="text" name="documents.issued_by" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field placeholder="Виданий" type="text" name="documents.issued_by" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__plus}>
@@ -208,9 +184,7 @@ export default class CreateDoctorStep1 extends React.Component {
                 onClick={() => this.setState({
                   disabled: !this.state.disabled,
                 })}
-              >
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
+              />
             </div>
           </div>
         </div>
@@ -219,18 +193,12 @@ export default class CreateDoctorStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              <ErrorMessage when="email">Не вірно вказаний email</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
           </div>
         </div>
         <div className={styles.form__btns}>
