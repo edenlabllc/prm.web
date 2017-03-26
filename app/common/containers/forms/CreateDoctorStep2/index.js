@@ -1,17 +1,11 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import validate from 'modules/validate';
+import { Field } from 'redux-form';
 
 import withStyles from 'withStyles';
 
 import Input, { DateInput, SelectInput } from 'components/Input';
-// import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import { H3 } from 'components/Title';
-// import Addresses from 'containers/forms/Addresses';
-
-// import { getDoctors } from 'reducers';
 
 import add from 'public/images/add.svg';
 import styles from './styles.scss';
@@ -19,40 +13,6 @@ import styles from './styles.scss';
 const category = ['PD', 'вища', 'середня'];
 const level = ['PD', 'вища', 'середня'];
 
-@reduxForm({
-  form: 'doctorRegistrationStep1',
-  validate: validate({
-    birth_place: {
-      required: true,
-    },
-    gender: {
-      required: true,
-    },
-    'documents.number': {
-      required: true,
-    },
-    'REGISTRATION.addresses.city': {
-      required: true,
-    },
-    'REGISTRATION.addresses.street': {
-      required: true,
-    },
-    'REGISTRATION.addresses.building': {
-      required: true,
-    },
-    email: {
-      required: true,
-      email: true,
-    },
-    'phones.mobile': {
-      required: true,
-      phone_number: /^0\d{9}$/,
-    },
-  }),
-  initialValues: {
-    gender: 'FEMALE',
-  },
-})
 @withStyles(styles)
 export default class CreateDoctorStep2 extends React.Component {
 
