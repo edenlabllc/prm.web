@@ -11,7 +11,11 @@ import Addresses from 'containers/forms/Addresses';
 import add from 'public/images/add.svg';
 import styles from './styles.scss';
 
-const country = ['1', '2', '3'];
+const category = [
+  'вища категорія',
+  '1 категорія',
+  '2 категорія',
+];
 
 @reduxForm({
   form: 'clinicRegistrationStep3',
@@ -55,7 +59,7 @@ export default class CreateClinicStep3 extends React.Component {
                 component={SelectInput}
                 name="country"
                 placeholder="Категорія"
-                options={country.map(item => ({
+                options={category.map(item => ({
                   title: item, name: item,
                 }))}
               />
@@ -106,9 +110,9 @@ export default class CreateClinicStep3 extends React.Component {
               <Field
                 theme="medium"
                 component={SelectInput}
-                name="country"
+                name="type"
                 placeholder="Тип"
-                options={country.map(item => ({
+                options={category.map(item => ({
                   title: item, name: item,
                 }))}
               />

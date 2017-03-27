@@ -11,7 +11,15 @@ import Addresses from 'containers/forms/Addresses';
 import add from 'public/images/add.svg';
 import styles from './styles.scss';
 
-const category = ['1', '2', '3'];
+const forms = [
+  'бюджетні установи',
+  'державні  підприємства',
+  'комунальні  підприємства',
+  'господарські товариства',
+  'приватні підприємства та об\'єднання підприємств',
+  'іноземні підприємства',
+  'виробничий коорератив',
+];
 
 @reduxForm({
   form: 'clinicRegistrationStep1',
@@ -39,7 +47,7 @@ export default class CreateClinicStep1 extends React.Component {
               component={SelectInput}
               name="doctor"
               placeholder="Організаційно-правова форма"
-              options={category.map(item => ({
+              options={forms.map(item => ({
                 title: item || '', name: item,
               }))}
             />

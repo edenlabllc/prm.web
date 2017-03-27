@@ -76,17 +76,12 @@ export default class CreateClinicStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <div className={styles.form__row__item}>
-              <Field
-                theme="medium"
-                component={SelectInput}
-                name="country"
-                placeholder="Країна народження"
-                options={country.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </div>
+            <Field
+              theme="medium"
+              component={Input}
+              name="country"
+              placeholder="Місто народження"
+            />
           </div>
           <div className={styles.form__row__item}>
             <div>
@@ -128,24 +123,6 @@ export default class CreateClinicStep1 extends React.Component {
                 theme="medium"
                 component={SelectInput}
                 name="country"
-                placeholder="Місто народження"
-                options={country.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </div>
-          </div>
-          <div className={styles.form__row__item}>
-            <Field placeholder="номер ID карти" type="text" name="name" component={Input} />
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <div className={styles.form__row__item}>
-              <Field
-                theme="medium"
-                component={SelectInput}
-                name="country"
                 placeholder="Паспорт"
                 disabled={true}
                 options={country.map(item => ({
@@ -161,6 +138,9 @@ export default class CreateClinicStep1 extends React.Component {
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
             <Field theme="medium" placeholder="ІНН" type="number" name="national_id" component={Input} />
+          </div>
+          <div className={styles.form__row__item}>
+            <Field placeholder="номер ID карти" type="text" name="name" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
