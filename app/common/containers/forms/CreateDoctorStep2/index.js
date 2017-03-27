@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import withStyles from 'withStyles';
 
@@ -13,20 +13,12 @@ import styles from './styles.scss';
 const category = ['PD', 'вища', 'середня'];
 const level = ['PD', 'вища', 'середня'];
 
+@reduxForm({
+  form: 'doctorRegistrationStep2',
+})
 @withStyles(styles)
 export default class CreateDoctorStep2 extends React.Component {
 
-  state = {
-    addDocument: false,
-    addGuardian: false,
-    gender: 'male',
-    disabled: true,
-  };
-  onChange(value) {
-    this.setState({
-      value,
-    });
-  }
   render() {
     const { handleSubmit, showPopup } = this.props;
 
