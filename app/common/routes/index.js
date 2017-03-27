@@ -4,8 +4,15 @@ import { Route, IndexRedirect } from 'react-router';
 import App from 'containers/layouts/App';
 import MainLayout from 'containers/layouts/Main';
 import NavigationLayout from 'containers/layouts/NavigationLayout';
+
+import LandingLayout from 'containers/layouts/LandingLayout';
+import LandingLayoutMenu from 'containers/layouts/LandingLayoutMenu';
+
 import DeclarationsPage from 'containers/pages/Declarations';
 import DoctorsPage from 'containers/pages/Doctors';
+
+import StartPage from 'containers/pages/StartPage';
+import ModulesPage from 'containers/pages/ModulesPage';
 
 import CreateLayout from 'containers/layouts/CreateLayout';
 
@@ -42,6 +49,14 @@ export const configureRoutes = () => (
         <Route path="declarations" component={DeclarationsPage} />
         <Route path="doctors" component={DoctorsPage} />
       </Route>
+    </Route>
+    <Route component={LandingLayout}>
+      <Route path="main" component={StartPage} />
+      <Route component={LandingLayoutMenu}>
+        <Route path="modules" component={ModulesPage} />
+      </Route>
+
+
     </Route>
   </Route>
 );

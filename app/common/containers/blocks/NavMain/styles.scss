@@ -1,0 +1,27 @@
+.nav {
+  display: block;
+
+  &__item {
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 23px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      color: #292b37;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 400;
+      }
+
+      &.is-active {
+        font-weight: 400;
+      }
+    }
+  }
+}
