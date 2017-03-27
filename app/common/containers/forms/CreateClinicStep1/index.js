@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import withStyles from 'withStyles';
-import { Field, FormSection } from 'redux-form';
+import { Field, FormSection, reduxForm, getFormValues } from 'redux-form';
 import Input, { SelectInput } from 'components/Input';
 import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
@@ -10,16 +11,21 @@ import Addresses from 'containers/forms/Addresses';
 import add from 'public/images/add.svg';
 import styles from './styles.scss';
 
-const category = ['PD', 'вища', 'середня'];
+const category = ['1', '2', '3'];
 
+@reduxForm({
+  form: 'clinicRegistrationStep1',
+})
+@connect(state => ({
+  values: getFormValues('clinicRegistrationStep1')(state),
+}))
 @withStyles(styles)
 export default class CreateClinicStep1 extends React.Component {
-
   render() {
-    const { handleSubmit } = this.props;
+    // const { values } = this.props;
 
     return (
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form}>
         <div className={styles.form__title}>
           <H3>Лікар</H3>
         </div>
@@ -94,8 +100,8 @@ export default class CreateClinicStep1 extends React.Component {
             </div>
           </div>
         </div>
-        <FormSection name="addresses.REGISTRATION">
-          <Addresses />
+        <FormSection name="addresses.RESIDENCE">
+          <Addresses disabled={true} />
         </FormSection>
         <div className={styles.form__btns}>
           <Button type="submit">Зберегти зміни</Button>

@@ -19,7 +19,7 @@ export default class SelectFileBtn extends React.Component {
         {...this.props}
       >
         <span className={styles.plus}>
-          <Icon name="plus" />
+          <Icon name="exit" />
         </span>
       </SelectFile>);
   }
