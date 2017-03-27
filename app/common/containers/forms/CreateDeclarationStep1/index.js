@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from 'withStyles';
-import validate, { ErrorMessage } from 'modules/validate';
+import validate from 'modules/validate';
 
 
 import Input, { DateInput, MaskedInput } from 'components/Input';
@@ -56,15 +56,10 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.number" component={MaskedInput}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              <ErrorMessage when="phone_number">Не вірно вказаний телефон</ErrorMessage>
-            </Field>
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.number" component={MaskedInput} />
           </div>
         </div>
         <div className={styles.form__btns}>

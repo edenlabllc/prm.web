@@ -18,55 +18,19 @@ import add from 'public/images/add.svg';
 import styles from './styles.scss';
 
 const doctors = {
-  '998d6ebe-12ac-4484-91a4-9a0356c3e827': {
+  'be802077-ddf0-4980-a390-6bfb513381ae': {
     updated_by: null,
     status: null,
     name: 'Alexis Ohanian',
     mpi_id: null,
     licenses: null,
     jobs: null,
-    id: '998d6ebe-12ac-4484-91a4-9a0356c3e827',
+    id: 'be802077-ddf0-4980-a390-6bfb513381ae',
     education: null,
     created_by: null,
     certificates: null,
     active: false,
     type: 'doctor',
-  },
-  '52fe7f70-d33c-49f0-8706-b7cbd8c64fc3': {
-    updated_by: null,
-    status: null,
-    name: 'Petro Lymych',
-    mpi_id: null,
-    licenses: null,
-    jobs: null,
-    id: '52fe7f70-d33c-49f0-8706-b7cbd8c64fc3',
-    education: null,
-    created_by: null,
-    certificates: null,
-    active: false,
-  },
-  '3674753a-4a2e-43f9-8d38-ef8b871bcf28': {
-    updated_by: null,
-    status: null,
-    name: 'Ievgen Pyrogov',
-    mpi_id: null,
-    licenses: null,
-    jobs: null,
-    id: '3674753a-4a2e-43f9-8d38-ef8b871bcf28',
-    education: null,
-    created_by: null,
-    certificates: null,
-    active: false,
-  },
-  '03a5092d-a354-46da-82aa-2ba3d2830ffc': {
-    updated_by: null,
-    status: null,
-    name: 'Dmytro Ivchenko',
-    mpi_id: null,
-    jobs: null,
-    id: '03a5092d-a354-46da-82aa-2ba3d2830ffc',
-    created_by: null,
-    active: false,
   },
 };
 
