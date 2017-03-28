@@ -1,4 +1,6 @@
 
+import moment from 'moment';
+
 let config = {};
 
 if (global.__CLIENT__ && window && window.__CONFIG__) {
@@ -25,3 +27,5 @@ export const PUBLIC_INDEX_ROUTE = '/';
 // for internal app usage. for example for XHR requests or server side rendering
 export const PRM_URL = typeof window !== 'undefined' ? PRM_PROXY_PATH : PRM_HOST;
 export const MPI_URL = typeof window !== 'undefined' ? MPI_PROXY_PATH : MPI_HOST;
+
+moment.locale('uk');

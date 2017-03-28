@@ -13,15 +13,6 @@
       line-height: 53px;
       vertical-align: middle;
 
-      & > div {
-        display: flex;
-        flex-flow: row nowrap;
-
-        & > * {
-          flex: 1 1 auto;
-        }
-      }
-
       &:last-child {
         margin-right: 0;
       }

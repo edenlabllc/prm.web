@@ -102,6 +102,42 @@
   }
 }
 
+.theme-date {
+  @extend .theme-space-between;
+
+  .input {
+    position: relative;
+    overflow: hidden;
+
+    .input__el {
+      padding-right: 65px;
+      padding-left: 15px;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      text-align: center;
+      background-color: #eff2f7;
+      border-left: 1px solid rgba(181, 190, 202, 0.5);
+      pointer-events: none;
+      cursor: pointer;
+    }
+  }
+
+  &.errored .input__icon {
+    border-color: #d22b2f;
+    color: #d22b2f;
+  }
+
+  .error {
+    left: 50%;
+  }
+}
+
 .theme-radiobtn {
   @extend .theme-default;
 

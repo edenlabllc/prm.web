@@ -29,6 +29,7 @@ export default class Input extends React.Component {
       children,
       input,
       meta,
+      iconRight,
       ...rest,
     } = this.props;
 
@@ -55,6 +56,7 @@ export default class Input extends React.Component {
               className: classnames(styles.input__el, rest.className, input.className),
             })
           }
+          { iconRight && <div className={styles.input__icon}>{iconRight}</div> }
         </div>
         <div className={styles.error}>
           { this.errored && <ErrorMessages error={meta.error}>{ children }</ErrorMessages> }
@@ -72,9 +74,6 @@ export const MaskedInput = props =>
 
 export const RadioButtonInput = props =>
   <Input component={RadioInputComponent} {...props} />;
-
-export const DateInput = props =>
-  <Input type="date" {...props} />;
 
 export const RadioInput = props => (
   <Input

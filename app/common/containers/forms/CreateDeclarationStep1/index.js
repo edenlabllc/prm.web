@@ -4,7 +4,8 @@ import withStyles from 'withStyles';
 import validate from 'modules/validate';
 
 
-import Input, { DateInput, MaskedInput } from 'components/Input';
+import Input, { MaskedInput } from 'components/Input';
+import Datepicker from 'components/Datepicker';
 import Button from 'components/Button';
 
 import styles from './styles.scss';
@@ -49,8 +50,11 @@ export default class CreateDeclarationStep1 extends React.Component {
               theme="space-between"
               label="Дата народження"
               placeholder="ДД/ММ/РР"
+              dateFormat="DD/MM/YY"
               name="birth_date"
-              component={DateInput}
+              showMonthDropdown
+              showYearDropdown
+              component={Datepicker}
             />
           </div>
         </div>
