@@ -57,8 +57,6 @@ export const configureRoutes = () => (
       <Route component={LandingLayoutMenu}>
         <Route path="modules" component={ModulesPage} />
       </Route>
-
-
     </Route>
   </Route>
 );
