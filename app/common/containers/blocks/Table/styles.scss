@@ -1,7 +1,8 @@
 
 
 .table {
-  display: block;
+  width: 100%;
+  table-layout: fixed;
   margin-top: 29px;
   border: 1px solid rgba(181, 190, 202, 0.5);
 
@@ -10,12 +11,23 @@
     background-color: #f9fafc;
 
     th {
-      padding: 22px 25px;
+      padding: 22px 15px;
       text-transform: uppercase;
       text-align: left;
       font-size: 12px;
       vertical-align: middle;
       color: #62758f;
+    }
+  }
+
+  th,
+  td {
+    &:first-child {
+      padding-left: 25px;
+    }
+
+    &:last-child {
+      padding-right: 25px;
     }
   }
 
@@ -28,10 +40,9 @@
     td {
       color: #3c4858;
       position: relative;
-      padding: 10px 20px;
+      padding: 10px 15px;
       vertical-align: middle;
       line-height: 20px;
-      word-wrap: break-word;
     }
 
     tr:nth-child(2n) {

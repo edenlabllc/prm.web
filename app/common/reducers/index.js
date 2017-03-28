@@ -46,7 +46,7 @@ export const getDeclaration = (state, id) => {
     ...state.declarations[id],
     patient: getPerson(state, declaration.patient_id),
     doctor: getDoctor(state, declaration.doctor_id),
-    msp: getAllMSPS(state)[0],
+    msp: getAllMSPS(state)[0], // TODO: replace with valid msp
   };
 };
 
@@ -56,4 +56,3 @@ export const getDeclarations = (state, ids) =>
 
 export const getMSP = (state, id) => state.msps[id];
 export const getAllMSPS = state => Object.values(state.msps);
-

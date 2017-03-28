@@ -59,7 +59,7 @@ const persons = handleAction(
     ...state,
     ...action.payload.entities.persons,
   }),
-  []
+  {}
 );
 
 export default persons;

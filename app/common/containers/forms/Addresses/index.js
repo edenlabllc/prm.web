@@ -1,12 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import withStyles from 'withStyles';
 
 import Input, { SelectInput } from 'components/Input';
-
-import { ErrorMessage } from 'modules/validate';
-
-import styles from './styles.scss';
+import { FormRow, FormColumn } from 'components/Form';
 
 const STREET = [{
   name: 'Вул',
@@ -45,14 +41,13 @@ const REGION = [
   'Чернівецька область',
 ];
 
-@withStyles(styles)
 export default class Addresses extends React.Component {
   render() {
     const { disabled = false } = this.props;
     return (
       <div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
+        <FormRow>
+          <FormColumn>
             <Field
               component={SelectInput}
               name="area"
@@ -61,20 +56,16 @@ export default class Addresses extends React.Component {
               options={REGION.map(item => ({
                 title: item, name: item,
               }))}
-            >
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
-          </div>
-          <div className={styles.form__row__item}>
-            <Field placeholder="Місто" type="text" name="city" component={Input} disabled={disabled}>
-              <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-            </Field>
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <div>
-              <div className={styles.s}>
+            />
+          </FormColumn>
+          <FormColumn>
+            <Field placeholder="Місто" theme="small" type="text" name="city" component={Input} disabled={disabled} />
+          </FormColumn>
+        </FormRow>
+        <FormRow>
+          <FormColumn>
+            <FormRow>
+              <FormColumn size="1/3">
                 <Field
                   disabled={disabled}
                   theme="small"
@@ -84,49 +75,41 @@ export default class Addresses extends React.Component {
                   options={STREET.map(item => ({
                     title: item.name, name: item.name,
                   }))}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <Field disabled={disabled} placeholder="Назва вулиці" type="text" name="street" component={Input}>
-                <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-              </Field>
-            </div>
-          </div>
-          <div className={styles.form__row__item}>
-            <div>
-              <div className={styles.xs}>
+                />
+              </FormColumn>
+              <FormColumn size="2/3">
+                <Field disabled={disabled} placeholder="Назва вулиці" type="text" name="street" component={Input} />
+              </FormColumn>
+            </FormRow>
+          </FormColumn>
+          <FormColumn>
+            <FormRow>
+              <FormColumn>
                 <Field
                   disabled={disabled}
-                  theme="small"
                   placeholder="Буд"
+                  theme="small"
                   type="text"
                   name="building"
                   component={Input}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <div className={styles.xs}>
+                />
+              </FormColumn>
+              <FormColumn>
                 <Field
                   disabled={disabled}
-                  theme="small"
                   placeholder="Кв"
+                  theme="small"
                   type="text"
                   name="apartment"
                   component={Input}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-              <div className={styles.s}>
-                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name="zip" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
-              </div>
-            </div>
-          </div>
-        </div>
+                />
+              </FormColumn>
+              <FormColumn>
+                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name="zip" component={Input} />
+              </FormColumn>
+            </FormRow>
+          </FormColumn>
+        </FormRow>
       </div>
     );
   }

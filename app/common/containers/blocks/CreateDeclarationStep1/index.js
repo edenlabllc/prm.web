@@ -4,7 +4,7 @@ import { isInvalid, isSubmitting } from 'redux-form';
 import withStyles from 'withStyles';
 import { show } from 'components/Popup';
 
-import { H1, H3 } from 'components/Title';
+import { H1 } from 'components/Title';
 import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep1';
 
 import SearchDeclarationPopup from 'containers/popups/SearchDeclaration';
@@ -35,13 +35,11 @@ export default class CreateDeclarationStep1 extends React.Component {
           <H1>Створити нову декларцію. Крок 1</H1>
         </div>
         <div className={styles.declaration__form}>
-          <div className={styles.declaration__form__title}>
-            <H3>1. Реєстрація декларації</H3>
-          </div>
           <CreateDeclarationForm
             onSubmit={onSubmit}
             valid={invalid}
             submitting={submitting}
+            title="1. Реєстрація декларації"
           />
         </div>
         <div>

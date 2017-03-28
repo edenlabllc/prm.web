@@ -1,37 +1,41 @@
-import React, { PropTypes } from 'react';
-import classnames from 'classnames';
+import React from 'react';
+import { Field } from 'redux-form';
 import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 
 import styles from './styles.scss';
 
 export const RadioInput = ({
-  input, error,
-  disabled, value, name, labelText, prefix, ...rest,
+  input, label, meta, ...rest, // eslint-disable-line
 }) => (
-  <label className={classnames(styles.wrap, prefix && styles.prefixed, error && styles.errored)}>
-    {prefix && <div className={styles.prefix}>{prefix}</div>}
+  <label className={styles.wrap}>
     <input
       type="radio"
       {...{
         ...input,
         ...rest,
-        value,
-        name,
-        disabled,
       }}
     />
     <span className={styles.view} />
-
-    {labelText && <div className={styles.label}>{labelText}</div>}
+    {label && <span className={styles.label}>{label}</span>}
   </label>
 );
 
-RadioInput.PropTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.isRequired,
-  disabled: PropTypes.bool,
-  selected: PropTypes.bool,
-  onChange: PropTypes.func,
-};
-
 export default withStyles(styles)(RadioInput);
+
+const RadioInputGroupComponent = ({ items = [], name, label }) => <div className={styles.radios}>
+  <div className={styles.radios__title}>{label}</div>
+  <div className={styles.radios__items}>
+    { items.map(item => (
+      <div key={item.value} className={styles.radios__item}>
+        <Field
+          {...item}
+          name={name}
+          type="radio"
+          component={RadioInput}
+        />
+      </div>
+    ))}
+  </div>
+</div>;
+
+export const RadioInputGroup = withStyles(styles)(RadioInputGroupComponent);
