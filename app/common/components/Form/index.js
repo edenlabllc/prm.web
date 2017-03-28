@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import styles from './styles.scss';
 
 const FormComponent = props =>
-  <div className={classnames(styles.form)} {...props} />;
+  <form className={classnames(styles.form)} {...props} />;
 
 export default withStyles(styles)(FormComponent);
 

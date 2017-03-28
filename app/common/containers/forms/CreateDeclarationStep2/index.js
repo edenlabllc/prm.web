@@ -78,21 +78,23 @@ const doctors = {
 }))
 export default class UpdateDeclarationStep2 extends React.Component {
   render() {
-    const { handleSubmit, showPopup, values, checked = false } = this.props;
+    const { handleSubmit, showPopup, values, allowed = false } = this.props;
 
     return (
       <Form onSubmit={handleSubmit}>
         {
-          checked && (
-            <FormRow>
-              <FormColumn>
-                <Field
-                  label="Пацієнт дав згоду на розірвання попередньої декларації"
-                  name="agree"
-                  component={Checkbox}
-                />
-              </FormColumn>
-            </FormRow>
+          allowed && (
+            <FormBlock>
+              <FormRow>
+                <FormColumn>
+                  <Field
+                    label="Пацієнт дав згоду на розірвання попередньої декларації"
+                    name="agree"
+                    component={Checkbox}
+                  />
+                </FormColumn>
+              </FormRow>
+            </FormBlock>
           )
         }
         <FormBlock title="Лікар">
@@ -156,7 +158,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
             <span>Додати документ</span>
           </a>
         </div> */}
-        <FormBlock title="Адреса реєстрації Пацієнта" big>
+        <FormBlock title="Адреса реєстрації Пацієнта">
           <FormSection name="addresses.REGISTRATION">
             <Addresses />
           </FormSection>
@@ -184,7 +186,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
         <FormButtons>
           <ButtonsGroup>
             <Button type="submit">Зберегти зміни</Button>
-            <Button disabled={!values.agree} onClick={() => showPopup()} theme="blue">Далі</Button>
+            <Button onClick={() => showPopup()} theme="blue">Далі</Button>
           </ButtonsGroup>
         </FormButtons>
       </Form>

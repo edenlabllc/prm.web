@@ -33,7 +33,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
           <CreateDeclarationStep2
             showPopup={() => show('signInDeclaration')}
             onSubmit={onCreate}
-            checked={true}
+            allowed={true}
           />
         </div>
         <SignInDeclarationPopup />

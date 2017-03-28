@@ -4,8 +4,6 @@ import { Field } from 'redux-form';
 import Input, { SelectInput } from 'components/Input';
 import { FormRow, FormColumn } from 'components/Form';
 
-import { ErrorMessage } from 'modules/validate';
-
 const STREET = [{
   name: 'Вул',
 }, {
@@ -61,7 +59,7 @@ export default class Addresses extends React.Component {
             />
           </FormColumn>
           <FormColumn>
-            <Field placeholder="Місто" type="text" name="city" component={Input} disabled={disabled} />
+            <Field placeholder="Місто" theme="small" type="text" name="city" component={Input} disabled={disabled} />
           </FormColumn>
         </FormRow>
         <FormRow>
@@ -86,34 +84,28 @@ export default class Addresses extends React.Component {
           </FormColumn>
           <FormColumn>
             <FormRow>
-              <FormColumn size="1/4">
+              <FormColumn>
                 <Field
                   disabled={disabled}
-                  theme="small"
                   placeholder="Буд"
+                  theme="small"
                   type="text"
                   name="building"
                   component={Input}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </FormColumn>
-              <FormColumn size="1/4">
+              <FormColumn>
                 <Field
                   disabled={disabled}
-                  theme="small"
                   placeholder="Кв"
+                  theme="small"
                   type="text"
                   name="apartment"
                   component={Input}
-                >
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+                />
               </FormColumn>
-              <FormColumn size="2/4">
-                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name="zip" component={Input}>
-                  <ErrorMessage when="required">Обов'язкове поле</ErrorMessage>
-                </Field>
+              <FormColumn>
+                <Field disabled={disabled} theme="small" placeholder="Індекс" type="text" name="zip" component={Input} />
               </FormColumn>
             </FormRow>
           </FormColumn>
