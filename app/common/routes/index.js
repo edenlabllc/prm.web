@@ -63,12 +63,5 @@ export const configureRoutes = () => (
         <Route path="doctors" component={DoctorsPage} />
       </Route>
     </Route>
-
-    <Route component={LandingLayout}>
-      <Route path="main" component={StartPage} />
-      <Route component={LandingLayoutMenu}>
-        <Route path="modules" component={ModulesPage} />
-      </Route>
-    </Route>
   </Route>
 );
