@@ -6,10 +6,10 @@ import { Link } from 'react-router';
 import styles from './styles.scss';
 
 const NAV_LIST = [{
-  link: '/main',
+  link: '/',
   title: 'Головна',
 }, {
-  link: '/aboutus',
+  link: '/project',
   title: 'Про проект',
 }, {
   link: '/aims',
@@ -24,7 +24,7 @@ const NAV_LIST = [{
 
 
 @withStyles(styles)
-export default class Main extends React.Component {
+export default class NSZNav extends React.Component {
   render() {
     return (
       <div className={styles.nav}>

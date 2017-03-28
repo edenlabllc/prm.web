@@ -12,12 +12,14 @@ export default class MainLayout extends React.Component {
     const { children } = this.props;
     return (
       <div className={styles.main}>
-        <header>
-          <Header />
-        </header>
-        <main className={styles.main__in}>
-          { children }
-        </main>
+        <div className={styles.main__wrap}>
+          <header>
+            <Header />
+          </header>
+          <main className={styles.main__in}>
+            { children }
+          </main>
+        </div>
       </div>
     );
   }

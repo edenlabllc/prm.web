@@ -1,18 +1,20 @@
 import React from 'react';
-import { Route, IndexRedirect } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import App from 'containers/layouts/App';
 import MainLayout from 'containers/layouts/Main';
 import NavigationLayout from 'containers/layouts/NavigationLayout';
 
-import LandingLayout from 'containers/layouts/LandingLayout';
-import LandingLayoutMenu from 'containers/layouts/LandingLayoutMenu';
+import NSZLayout from 'containers/layouts/NSZLayout';
+import NSZLayoutMenu from 'containers/layouts/NSZLayoutMenu';
+import NSZModulesPage from 'containers/pages/NSZModulesPage';
+
+import MISLayout from 'containers/layouts/MISLayout';
 
 import DeclarationsPage from 'containers/pages/Declarations';
 import DoctorsPage from 'containers/pages/Doctors';
 
-import StartPage from 'containers/pages/StartPage';
-import ModulesPage from 'containers/pages/ModulesPage';
+import MainPage from 'containers/pages/MainPage';
 
 import CreateLayout from 'containers/layouts/CreateLayout';
 
@@ -30,6 +32,17 @@ import CreateClinicStep3 from 'containers/blocks/CreateClinicStep3';
 
 export const configureRoutes = () => (
   <Route component={App}>
+
+    <Route path="/" component={NSZLayout}>
+      <Route component={NSZLayoutMenu}>
+        <IndexRoute component={NSZModulesPage} />
+      </Route>
+    </Route>
+
+    <Route component={MISLayout}>
+      <Route path="main" component={MainPage} />
+    </Route>
+
     <Route component={MainLayout}>
       <Route component={CreateLayout}>
         <Route path="declaration" component={CreateDeclarationStep1} />
@@ -46,19 +59,11 @@ export const configureRoutes = () => (
         <Route path="clinicStep3" component={CreateClinicStep3} />
       </Route>
 
-      <Route path="/" component={NavigationLayout}>
-        <IndexRedirect to="declarations" />
+      <Route component={NavigationLayout}>
         <Route path="declarations" component={DeclarationsPage} />
         <Route path="doctors" component={DoctorsPage} />
       </Route>
     </Route>
-    <Route component={LandingLayout}>
-      <Route path="main" component={StartPage} />
-      <Route component={LandingLayoutMenu}>
-        <Route path="modules" component={ModulesPage} />
-      </Route>
 
-
-    </Route>
   </Route>
 );

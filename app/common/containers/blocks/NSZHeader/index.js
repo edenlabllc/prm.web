@@ -1,13 +1,14 @@
 import React from 'react';
 import withStyles from 'withStyles';
 
-import NavMain from 'containers/blocks/NavMain';
+import NSZNav from 'containers/blocks/NSZNav';
+import Icon from 'components/Icon';
 
 import styles from './styles.scss';
 
 
 @withStyles(styles)
-export default class HeaderMain extends React.Component {
+export default class NSZHeader extends React.Component {
 
   render() {
     return (
@@ -17,10 +18,13 @@ export default class HeaderMain extends React.Component {
             <p>Національна служба здоров'я</p>
           </div>
           <div className={styles.header__nav}>
-            <NavMain />
+            <NSZNav />
           </div>
           <div className={styles.header__btn}>
             Службовий вхід
+            <div className={styles.header__icon}>
+              <Icon name="arrow-in" />
+            </div>
           </div>
         </div>
 

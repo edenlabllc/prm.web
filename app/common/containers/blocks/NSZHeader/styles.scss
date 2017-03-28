@@ -2,8 +2,9 @@
   padding-top: 45px;
   max-width: 950px;
   margin: 0 auto;
-  font-family: "GothamProBold";
+  font-family: "Gotham Pro";
   vertical-align: middle;
+  font-weight: 700;
 
   &__in {
     display: flex;
@@ -15,27 +16,40 @@
     max-width: 120px;
     position: relative;
     text-transform: uppercase;
+    font-size: 15px;
 
     &::before {
       content: '';
       position: absolute;
-      left: -20px;
+      left: -14px;
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAABYCAYAAAAuqH04AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBMDI0OTU0NzBCNTQxMUU3QUJGN0MyRTZGNkQxQ0M4MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBMDI0OTU0ODBCNTQxMUU3QUJGN0MyRTZGNkQxQ0M4MSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkEwMjQ5NTQ1MEI1NDExRTdBQkY3QzJFNkY2RDFDQzgxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkEwMjQ5NTQ2MEI1NDExRTdBQkY3QzJFNkY2RDFDQzgxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Gv0Z3AAAAIRJREFUeNpi9Ou638FAGnjAAiTKSdR0hImBDDCqaVTTqKZRTaOaBpUmlrd3nz0mRcN/Rob3LP///5clyZr/DA9Hg3xU06imUU0jroSt9NxIkoZP37hkGP/eNfpPiqZ7L5U/DbfQE+Z9953kgAAF4GjaG9U0qmlUEx7whRxN94Zj6AEEGABhwiDIwtbLZgAAAABJRU5ErkJggg==');
       background-size: 13px 45px;
       background-repeat: no-repeat;
-      height: 45px;
-      width: 13px;
+      height: 44px;
+      width: 6px;
     }
   }
 
   &__nav {
     text-transform: uppercase;
     line-height: 45px;
+    font-size: 13px;
   }
 
   &__btn {
     border: 2px solid #f4dc47;
-    padding: 14px 18px;
+    padding: 13px 18px;
     text-transform: uppercase;
+    color: #292b37;
+    font-size: 10px;
+    height: 38px;
+    line-height: 1;
+  }
+
+  &__icon {
+    color: #edb859;
+    font-size: 11px;
+    display: inline-block;
+    margin-left: 12px;
   }
 }
