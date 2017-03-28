@@ -8,6 +8,7 @@ export const icons = [
   'search',
   'close',
   'exit',
+  'calendar',
 ];
 
 const Icon = ({ name }) => React.createElement('i', {

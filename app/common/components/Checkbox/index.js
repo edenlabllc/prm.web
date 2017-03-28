@@ -23,6 +23,7 @@ export default class Checkbox extends React.Component {
       input,
       meta,
       checked,
+      label,
       ...rest,
     } = this.props;
 
@@ -37,6 +38,7 @@ export default class Checkbox extends React.Component {
         )}
       >
         <label className={styles.label}>
+          {label && <span className={styles.label}>{label}</span>}
           <div className={styles.input}>
             {
               React.createElement(component, {

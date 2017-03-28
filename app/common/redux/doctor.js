@@ -45,7 +45,7 @@ const doctors = handleAction(
     ...state,
     ...action.payload.entities.doctors,
   }),
-  []
+  {}
 );
 
 export default doctors;

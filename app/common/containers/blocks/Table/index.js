@@ -28,12 +28,11 @@ export default class Table extends React.Component {
         <table className={styles.table}>
           <thead className={styles.table__header}>
             <tr>
-              <th>ID декларації</th>
+              <th style={{ width: 120 }}>ID декларації</th>
               <th>ПІБ лікаря</th>
               <th>ПІБ пацієнта</th>
-              <th>MPI пацієнта</th>
-              <th>Діє з</th>
-              <th>Діє по</th>
+              <th style={{ width: 110 }}>MPI пацієнта</th>
+              <th style={{ width: 100 }}>Діє з - по</th>
               <th>статус декларації</th>
             </tr>
           </thead>
@@ -43,7 +42,7 @@ export default class Table extends React.Component {
               item.doctor && item.patient && (
                 <tr key={item.id}>
                   <td>
-                    {item.id}
+                    #{item.id.slice(-8)}
                   </td>
                   <td>
                     {item.doctor.name}
@@ -52,13 +51,10 @@ export default class Table extends React.Component {
                     {item.patient.first_name} {item.patient.last_name}
                   </td>
                   <td>
-                    {item.patient_id}
+                    #{item.patient_id.slice(-8)}
                   </td>
                   <td>
-                    {format(item.start_date)}
-                  </td>
-                  <td>
-                    {format(item.end_date)}
+                    {format(item.start_date)} <br /> {format(item.end_date)}
                   </td>
                   <td
                     className={

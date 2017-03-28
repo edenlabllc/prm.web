@@ -20,23 +20,19 @@ export const fetchDeclarations = () => dispatch => dispatch(invoke({
   ],
 }));
 
-
-export const createDeclaration = body => (dispatch) => {
-  console.log(body);
-  return dispatch(invoke({
-    endpoint: `${PRM_URL}/declarations`,
-    method: 'post',
-    types: [
-      'declarations/CREATE_DECLARATIONS_REQUEST', {
-        type: 'declarations/CREATE_DECLARATIONS_SUCCESS',
-        payload: (action, state, res) => res.json().then(json =>
-          normalize(json.data, arrayOf(declarationsSchema))),
-      },
-      'declarations/CREATE_DECLARATIONS_FAILER',
-    ],
-    body,
-  }));
-};
+export const createDeclaration = body => dispatch => dispatch(invoke({
+  endpoint: `${PRM_URL}/declarations`,
+  method: 'post',
+  types: [
+    'declarations/CREATE_DECLARATIONS_REQUEST', {
+      type: 'declarations/CREATE_DECLARATIONS_SUCCESS',
+      payload: (action, state, res) => res.json().then(json =>
+        normalize(json.data, arrayOf(declarationsSchema))),
+    },
+    'declarations/CREATE_DECLARATIONS_FAILER',
+  ],
+  body,
+}));
 
 export const searchDeclation = options => dispatch => dispatch(invoke({
   endpoint: createUrl(`${PRM_URL}/declarations`, options),
@@ -61,7 +57,7 @@ const declarations = handleAction(
     ...state,
     ...action.payload.entities.declarations,
   }),
-  []
+  {}
 );
 
 export default declarations;

@@ -1,7 +1,6 @@
 
 .wrap {
   position: relative;
-  display: flex;
 }
 
 .input {
@@ -14,6 +13,10 @@
     color: inherit;
     font-size: inherit;
     background-color: #fff;
+  }
+
+  &__error {
+    position: relative;
   }
 }
 
@@ -50,7 +53,6 @@
   }
 
   .error {
-    top: 57px;
     color: #d22b2f;
     font-size: 12px;
     font-weight: 400;
@@ -95,10 +97,54 @@
 .theme-space-between {
   @extend .theme-default;
 
-  .label,
+  display: flex;
+  align-items: center;
+
+  .label {
+    flex: 0 0 auto;
+  }
+
   .input {
-    flex: 1 1 50%;
-    margin-right: 0;
+    flex: 1 1 auto;
+  }
+}
+
+.theme-date {
+  @extend .theme-space-between;
+
+  .input {
+    position: relative;
+
+    .input__el {
+      padding-right: 65px;
+      padding-left: 15px;
+      overflow: hidden;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      text-align: center;
+      background-color: #eff2f7;
+      border-left: 1px solid rgba(181, 190, 202, 0.5);
+      pointer-events: none;
+      cursor: pointer;
+      line-height: 53px;
+    }
+  }
+
+  &.errored {
+    .input__icon {
+      border-color: #d22b2f;
+      color: #d22b2f;
+    }
+
+    .label {
+      color: #d22b2f;
+    }
   }
 }
 
