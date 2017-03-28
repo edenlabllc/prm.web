@@ -9,8 +9,6 @@ import Button, { ButtonsGroup } from 'components/Button';
 
 import Form, { FormBlock, FormRow, FormColumn, FormButtons } from 'components/Form';
 
-// import add from 'public/images/add.svg';
-
 const country = ['ua', 'ru', 'en'];
 
 @reduxForm({
@@ -18,6 +16,9 @@ const country = ['ua', 'ru', 'en'];
 })
 @connect(state => ({
   values: getFormValues('clinicRegistrationStep2')(state),
+  initialValues: {
+    gender: 'FEMALE',
+  },
 }))
 export default class CreateClinicStep2 extends React.Component {
   render() {
@@ -42,12 +43,6 @@ export default class CreateClinicStep2 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {/* <div className={styles.form__plus}>
-          <a>
-            <img src={add} alt="" />
-            <span>Додати засновника</span>
-          </a>
-        </div>*/}
         <FormBlock title="Керівник підписант">
           <FormRow>
             <FormColumn>
@@ -131,13 +126,10 @@ export default class CreateClinicStep2 extends React.Component {
             <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
           </FormColumn>
         </FormRow>
-        {
-          // <div className={styles.form__plus} />
-        }
         <FormButtons>
           <ButtonsGroup>
-            <Button type="/clinic">Назад</Button>
-            <Button type="submit">Зберегти зміни</Button>
+            <Button to="/clinic">Назад</Button>
+            <Button >Зберегти зміни</Button>
             <Button to="/clinicStep3" theme="blue">Далі</Button>
           </ButtonsGroup>
         </FormButtons>

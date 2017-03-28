@@ -11,7 +11,7 @@ export default class CreateLayout extends React.Component {
     return (
       <section className={styles.create}>
         <header className={styles.create__header}>
-          <Link to="/">Повернутися на Головну</Link>
+          <Link to="/declarations">Повернутися на Головну</Link>
         </header>
         <main className={styles.create__content}>
           { children }

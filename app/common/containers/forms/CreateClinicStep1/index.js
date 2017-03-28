@@ -9,8 +9,6 @@ import Addresses from 'containers/forms/Addresses';
 
 import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn, FormButtons } from 'components/Form';
 
-// import add from 'public/images/add.svg';
-
 const forms = [
   'бюджетні установи',
   'державні  підприємства',
@@ -86,14 +84,6 @@ export default class CreateClinicStep1 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {
-          // <div className={styles.form__plus}>
-          //   <a>
-          //     <img src={add} alt="" />
-          //     <span>Додати вид діяності</span>
-          //   </a>
-          // </div>
-        }
         <FormBlock title="Місцезнаходження">
           <FormSection name="addresses.REGISTRATION">
             <Addresses />

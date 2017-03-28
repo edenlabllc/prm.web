@@ -1,6 +1,5 @@
 import React from 'react';
-import { reduxForm, Field, FormSection, getFormValues } from 'redux-form';
-import { connect } from 'react-redux';
+import { reduxForm, Field, FormSection } from 'redux-form';
 
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
@@ -8,8 +7,6 @@ import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
 import Form, { FormBlock, FormRow, FormColumn, FormButtons } from 'components/Form';
-
-// import add from 'public/images/add.svg';
 
 const category = [
   'вища категорія',
@@ -20,13 +17,8 @@ const category = [
 @reduxForm({
   form: 'clinicRegistrationStep3',
 })
-@connect(state => ({
-  values: getFormValues('clinicRegistrationStep3')(state),
-}))
 export default class CreateClinicStep3 extends React.Component {
   render() {
-    // const { values } = this.props;
-
     return (
       <Form>
         <FormBlock title="Дані про відокремлені підрозділи">
@@ -44,12 +36,6 @@ export default class CreateClinicStep3 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {/* <div className={styles.form__plus}>
-          <a>
-            <img src={add} alt="" />
-            <span>Додати підрозділ</span>
-          </a>
-        </div> */}
         <FormBlock title="Державна акредитація">
           <FormRow>
             <FormColumn>
@@ -100,7 +86,7 @@ export default class CreateClinicStep3 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormBlock title="ЛіКонтакти закладуцензія">
+        <FormBlock title="Контакти закладу">
           <FormRow>
             <FormColumn>
               <Field
@@ -114,12 +100,6 @@ export default class CreateClinicStep3 extends React.Component {
               />
             </FormColumn>
           </FormRow>
-          {/* <div className={styles.form__plus}>
-           <a>
-           <img src={add} alt="" />
-           <span>Додати контакти</span>
-           </a>
-           </div> */}
           <FormRow>
             <FormColumn>
               <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
@@ -131,13 +111,10 @@ export default class CreateClinicStep3 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {
-          // <div className={styles.form__plus} />
-        }
         <FormButtons>
           <ButtonsGroup>
-            <Button type="/clinicStep2">Назад</Button>
-            <Button type="submit">Зберегти зміни</Button>
+            <Button to="/clinicStep2">Назад</Button>
+            <Button>Зберегти зміни</Button>
             <Button to="/" theme="blue">Далі</Button>
           </ButtonsGroup>
         </FormButtons>

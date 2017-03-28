@@ -10,8 +10,6 @@ import Checkbox from 'components/Checkbox';
 import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
-// import add from 'public/images/add.svg';
-
 @reduxForm({
   form: 'doctorRegistrationStep1',
   initialValues: {
@@ -96,12 +94,6 @@ export default class CreateDoctorStep1 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {/* <div className={styles.form__plus}>
-         <a>
-         <img src={add} alt="" />
-         <span>Додати документ</span>
-         </a>
-         </div> */}
         <FormBlock title="Адреса реєстрації Лікаря">
           <FormSection name="addresses.REGISTRATION">
             <Addresses />

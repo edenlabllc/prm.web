@@ -6,8 +6,6 @@ import Datepicker from 'components/Datepicker';
 import Input, { SelectInput } from 'components/Input';
 import Button, { ButtonsGroup } from 'components/Button';
 
-// import add from 'public/images/add.svg';
-
 const category = ['PD', 'вища', 'середня'];
 const level = ['PD', 'вища', 'середня'];
 
@@ -45,12 +43,6 @@ export default class CreateDoctorStep2 extends React.Component {
             <Field placeholder="Номер сертифікату" type="text" name="birth_place" component={Input} />
           </FormColumn>
         </FormRow>
-        {/* <div className={styles.form__plus}>
-          <a>
-          <img src={add} alt="" />
-          <span>Додати атестацію</span>
-          </a>
-        *</div> */}
         <FormRow>
           <FormColumn>
             <Field theme="medium" placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
@@ -92,12 +84,6 @@ export default class CreateDoctorStep2 extends React.Component {
             <Field theme="medium" placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
         </FormRow>
-        {/* <div className={styles.form__plus}>
-          <a>
-          <img src={add} alt="" />
-          <span>Додати освіту</span>
-          </a>
-        </div> */}
         <FormRow>
           <FormColumn>
             <Field placeholder="ЄДРПОУ" type="text" name="documents.issued_by" component={Input} />
@@ -127,12 +113,6 @@ export default class CreateDoctorStep2 extends React.Component {
             />
           </FormColumn>
         </FormRow>
-        {/* <div className={styles.form__plus}>
-          <a>
-          <img src={add} alt="" />
-          <span>Додати місце роботи</span>
-          </a>
-        </div> */}
         <FormButtons>
           <ButtonsGroup>
             <Button to="/doctor">Назад</Button>
