@@ -39,13 +39,13 @@ export default class CreateClinicStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="ЄДРПОУ" type="text" name="birth_place" component={Input} />
+            <Field placeholder="ЄДРПОУ" type="text" name="edpoy" component={Input} />
           </div>
           <div className={styles.form__row__item}>
             <Field
               theme="medium"
               component={SelectInput}
-              name="doctor"
+              name="org_form"
               placeholder="Організаційно-правова форма"
               options={forms.map(item => ({
                 title: item || '', name: item,
@@ -71,18 +71,18 @@ export default class CreateClinicStep1 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="КВЕД" type="text" name="public_name" component={Input} />
+            <Field placeholder="КВЕД" type="text" name="KVED" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="КВЕД" type="text" name="public_name" component={Input} />
+            <Field placeholder="КВЕД" type="text" name="KVED2" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field placeholder="КВЕД" type="text" name="public_name" component={Input} />
+            <Field placeholder="КВЕД" type="text" name="KVED3" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field placeholder="КВЕД" type="text" name="public_name" component={Input} />
+            <Field placeholder="КВЕД" type="text" name="KVED4" component={Input} />
           </div>
         </div>
         <div className={styles.form__plus}>

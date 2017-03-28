@@ -27,7 +27,7 @@ export default class DeclarationExistPopup extends React.Component {
         onClose={handleClose}
         buttons={[
           { children: 'Закрити', theme: 'light', onClick: () => handleClose() },
-          { children: 'Нова Декларація', theme: 'blue', to: '/declarationStep2' },
+          { children: 'Нова Декларація', theme: 'blue', to: '/updateDeclarationStep2' },
         ]}
       >
         <div className={styles.container}>

@@ -39,7 +39,7 @@ export default class CreateClinicStep3 extends React.Component {
             <Field theme="medium" placeholder="Назва" type="text" name="name" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер ВП" type="text" name="name" component={Input} />
+            <Field theme="medium" placeholder="Номер ВП" type="text" name="number" component={Input} />
           </div>
         </div>
         <div className={styles.form__plus}>
@@ -57,7 +57,7 @@ export default class CreateClinicStep3 extends React.Component {
               <Field
                 theme="medium"
                 component={SelectInput}
-                name="country"
+                name="category"
                 placeholder="Категорія"
                 options={category.map(item => ({
                   title: item, name: item,
@@ -68,7 +68,7 @@ export default class CreateClinicStep3 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
+            <Field theme="space-between" label="Дата" placeholder="ДД/ММ/РР" name="documents.date" component={DateInput} />
           </div>
           <div className={styles.form__row__item}>
             <Field theme="space-between" label="Термін дії до" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
@@ -76,10 +76,10 @@ export default class CreateClinicStep3 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер наказу МОЗ" type="text" name="name" component={Input} />
+            <Field theme="medium" placeholder="Номер наказу МОЗ" type="text" name="number" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата наказу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
+            <Field theme="space-between" label="Дата наказу" placeholder="ДД/ММ/РР" name="documents.issue_by" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__title}>
@@ -87,18 +87,18 @@ export default class CreateClinicStep3 extends React.Component {
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Серія" type="text" name="name" component={Input} />
+            <Field theme="medium" placeholder="Серія" type="text" name="serial" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер ліцензії" type="text" name="name" component={Input} />
+            <Field theme="medium" placeholder="Номер ліцензії" type="text" name="serialNumber" component={Input} />
           </div>
         </div>
         <div className={styles.form__row}>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
+            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_in" component={DateInput} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Орган" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
+            <Field theme="space-between" label="Орган" placeholder="ДД/ММ/РР" name="organ" component={DateInput} />
           </div>
         </div>
         <div className={styles.form__title}>

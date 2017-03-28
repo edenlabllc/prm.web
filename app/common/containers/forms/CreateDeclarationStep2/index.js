@@ -82,12 +82,28 @@ const doctors = {
   values: getFormValues('personRegistrationStep2')(state),
 }))
 @withStyles(styles)
-export default class CreateDeclarationStep2 extends React.Component {
+export default class UpdateDeclarationStep2 extends React.Component {
   render() {
-    const { handleSubmit, showPopup, values } = this.props;
+    const { handleSubmit, showPopup, values, checked = false } = this.props;
 
     return (
       <form className={styles.form} onSubmit={handleSubmit}>
+        {
+          checked && (
+            <div className={styles.form__row}>
+              <div className={styles.form__row__item}>
+                <span className={styles.form__row__text}>
+                  Пацієнт дав згоду на розірвання попередньої декларації
+                </span>
+                <Field
+                  label="Пацієнт дав згоду на розірвання попередньої декларації"
+                  name="agree"
+                  component={Checkbox}
+                />
+              </div>
+            </div>
+          )
+        }
         <div className={styles.form__title}>
           <H3>Лікар</H3>
         </div>
@@ -202,7 +218,7 @@ export default class CreateDeclarationStep2 extends React.Component {
         </div>
         <div className={styles.form__btns}>
           <Button type="submit">Зберегти зміни</Button>
-          <Button onClick={() => showPopup()} theme="blue">Далі</Button>
+          <Button disabled={!values.agree} onClick={() => showPopup()} theme="blue">Далі</Button>
         </div>
       </form>
     );
