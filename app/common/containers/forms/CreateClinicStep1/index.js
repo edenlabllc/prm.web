@@ -36,35 +36,38 @@ export default class CreateClinicStep1 extends React.Component {
 
     return (
       <Form>
-        <FormRow>
-          <FormColumn>
-            <Field placeholder="ЄДРПОУ" type="text" name="edpoy" component={Input} />
-          </FormColumn>
-          <FormColumn>
-            <Field
-              theme="medium"
-              component={SelectInput}
-              name="org_form"
-              placeholder="Організаційно-правова форма"
-              options={forms.map(item => ({
-                title: item || '', name: item,
-              }))}
-            />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field placeholder="Повна назва" type="text" name="full_name" component={Input} />
-          </FormColumn>
-          <FormColumn>
-            <Field placeholder="Cкорочена назва (за наявності)" type="text" name="short_name" component={Input} />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field theme="medium" placeholder="Публічна назва (якщо відрізняється)" type="text" name="public_name" component={Input} />
-          </FormColumn>
-        </FormRow>
+        <FormBlock>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="ЄДРПОУ" type="text" name="edpoy" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                theme="medium"
+                component={SelectInput}
+                name="org_form"
+                placeholder="Організаційно-правова форма"
+                options={forms.map(item => ({
+                  title: item || '', name: item,
+                }))}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Повна назва" type="text" name="full_name" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Cкорочена назва (за наявності)" type="text" name="short_name" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="medium" placeholder="Публічна назва (якщо відрізняється)" type="text" name="public_name" component={Input} />
+            </FormColumn>
+            <FormColumn />
+          </FormRow>
+        </FormBlock>
         <FormBlock title="Види діяності">
           <FormRow>
             <FormColumn>
