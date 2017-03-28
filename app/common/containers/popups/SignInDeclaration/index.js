@@ -24,13 +24,7 @@ export default class SignInDeclaration extends React.Component {
 
   state = {
     signIn: false,
-    lookup: false,
   };
-  onSign() {
-    this.setState({
-      lookup: true,
-    });
-  }
 
   render() {
     const { lookup = false, popup, handleClose } = this.props;
@@ -49,14 +43,14 @@ export default class SignInDeclaration extends React.Component {
         </Popup>
       );
     }
-    if (lookup || this.state.lookup) {
+    if (lookup) {
       return (
         <Popup
           {...popup}
           onClose={handleClose}
           buttons={[
-            { children: 'Назад', theme: 'light', onClick: () => this.setState({ lookup: false }) },
-            { children: 'Підтвердити', theme: 'blue', onClick: () => { this.setState({ lookup: false, signIn: true }); } },
+            { children: 'Назад', theme: 'light', onClick: () => handleClose() },
+            { children: 'Підтвердити', theme: 'blue', onClick: () => { this.setState({ signIn: true }); } },
           ]}
         >
           <div className={classnames(styles.title, styles.title_wide)}>
