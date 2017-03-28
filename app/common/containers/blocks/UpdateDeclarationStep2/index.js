@@ -4,7 +4,7 @@ import { show } from 'components/Popup';
 import withStyles from 'withStyles';
 
 import { H1 } from 'components/Title';
-import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep2';
+import CreateDeclarationStep2 from 'containers/forms/CreateDeclarationStep2';
 import SignInDeclarationPopup from 'containers/popups/SignInDeclaration';
 
 import { onCreate } from './redux';
@@ -30,7 +30,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
           <H1>Створити нову декларацію. Крок 2</H1>
         </div>
         <div className={styles.declaration__form}>
-          <CreateDeclarationForm
+          <CreateDeclarationStep2
             showPopup={() => show('signInDeclaration')}
             onSubmit={onCreate}
             checked={true}

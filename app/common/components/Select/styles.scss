@@ -32,6 +32,7 @@ $disabled-bg: #f5f5f5;
     color: $placeholder-color;
     font-size: 16px;
     font-weight: 400;
+    line-height: 51px;
   }
 
   &.disabled .control {
@@ -60,6 +61,7 @@ $disabled-bg: #f5f5f5;
     margin-bottom: 15px;
     font-size: 14px;
     font-weight: bold;
+    line-height: 51px;
   }
 
   .list {
@@ -190,29 +192,29 @@ $disabled-bg: #f5f5f5;
 }
 
 .arrow {
-  width: 57px;
-  height: 51px;
-  border: 1px solid rgba(181, 190, 202, 0.5);
+  width: 54px;
+  border-left: 1px solid rgba(181, 190, 202, 0.5);
   background-color: #eff2f7;
   display: inline-block;
   position: absolute;
+  text-align: center;
+  line-height: 54px;
   right: 0;
+  bottom: 0;
+  top: 0;
 }
 
 .title {
   color: $placeholder-color;
   font-size: 16px;
   font-weight: 400;
+  line-height: 51px;
 }
 
 .arrow__in {
-  display: block;
+  display: inline-block;
   width: 0;
   height: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 22px;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #282828;

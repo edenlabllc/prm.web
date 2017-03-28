@@ -95,6 +95,7 @@
     "postcss-nested": "^1.0.0",
     "precss": "^1.4.0",
     "proxy-middleware": "^0.15.0",
+    "qs": "^6.4.0",
     "react": "15.2.1",
     "react-datepicker": "^0.44.0",
     "react-dom": "15.2.1",

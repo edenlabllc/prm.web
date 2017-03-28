@@ -15,6 +15,8 @@ export default class Datepicker extends React.Component {
       dropdownMode="select"
       {...this.props}
       theme="date"
+      placeholderText="ДД/ММ/РР"
+      dateFormat="DD/MM/YY"
       iconRight={<Icon name="calendar" />}
       component={DatePickerComponent}
       input={{
@@ -23,7 +25,6 @@ export default class Datepicker extends React.Component {
         onBlur: () => this.props.input.onBlur(this.props.input.value),
       }}
       selected={this.props.input.value ? moment(this.props.input.value) : null}
-      placeholderText={this.props.placeholder}
     />);
   }
 }

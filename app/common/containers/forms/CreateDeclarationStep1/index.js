@@ -49,8 +49,6 @@ export default class CreateDeclarationStep1 extends React.Component {
             <Field
               theme="space-between"
               label="Дата народження"
-              placeholder="ДД/ММ/РР"
-              dateFormat="DD/MM/YY"
               name="birth_date"
               showMonthDropdown
               showYearDropdown
@@ -63,7 +61,7 @@ export default class CreateDeclarationStep1 extends React.Component {
             <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input} />
           </div>
           <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.number" component={MaskedInput} />
+            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} />
           </div>
         </div>
         <div className={styles.form__btns}>

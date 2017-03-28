@@ -1,0 +1,80 @@
+
+.form {
+  max-width: 730px;
+}
+
+.block {
+  margin-bottom: 38px;
+
+  &_border {
+    margin-bottom: 38px;
+    padding-bottom: 38px;
+    border-bottom: 1px solid #d3dce6;
+  }
+}
+
+.blockTitle {
+  display: flex;
+  margin-bottom: 26px;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text {
+    color: #3c4858;
+    font-size: 18px;
+    font-weight: 700;
+    flex: 1 1 auto;
+  }
+
+  &__right {
+    flex: 0 0 auto;
+  }
+}
+
+.row {
+  & + & {
+    margin-top: 19px;
+  }
+
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.column {
+  display: table-cell;
+  vertical-align: top;
+  width: 2%;
+
+  & + & {
+    padding-left: 24px;
+  }
+
+  &_1-2 {
+    width: 50%;
+  }
+
+  &_1-3 {
+    width: 33%;
+  }
+
+  &_2-3 {
+    width: 66%;
+  }
+
+  &_1-4 {
+    width: 25%;
+  }
+
+  &_2-4 {
+    width: 50%;
+  }
+
+  &_3-4 {
+    width: 75%;
+  }
+}
+
+.buttons {
+  margin-top: 30px;
+}

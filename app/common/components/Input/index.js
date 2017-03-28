@@ -57,9 +57,11 @@ export default class Input extends React.Component {
             })
           }
           { iconRight && <div className={styles.input__icon}>{iconRight}</div> }
-        </div>
-        <div className={styles.error}>
-          { this.errored && <ErrorMessages error={meta.error}>{ children }</ErrorMessages> }
+          <div className={styles.input__error}>
+            <div className={styles.error}>
+              { this.errored && <ErrorMessages error={meta.error}>{ children }</ErrorMessages> }
+            </div>
+          </div>
         </div>
       </div>
     );
