@@ -1,0 +1,14 @@
+.main {
+  min-width: 950px;
+  max-width: 950px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  &__in {
+    min-width: 930px;
+    max-width: 930px;
+    display: block;
+    background-color: #fff;
+  }
+}

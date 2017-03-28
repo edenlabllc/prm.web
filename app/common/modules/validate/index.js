@@ -127,7 +127,11 @@ export const validators = validate.validators = {
     Decimal(0)
   ).toNumber() >= params.min,
 
-  required: value => !!value,
+  required: (value, params, values) => {
+    const mustBeRequired = typeof params === 'string' ? !!getFn(values, params) : !!params;
+    if (!mustBeRequired) return true;
+    return !!value;
+  },
   ipv4: function ipv4Validation(value) {
     return this.format(value, PATTERNS_IPV4);
   },

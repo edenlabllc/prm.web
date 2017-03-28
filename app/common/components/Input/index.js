@@ -1,12 +1,14 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import classnames from 'classnames';
-import MaskedInputComponent from 'modules/react-nebo15-mask';
 
+import MaskedInputComponent from 'modules/react-nebo15-mask';
+import RadioInputComponent from 'components/RadioInput';
+import Select from 'components/Select';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
-const THEMES = ['default', 'white', 'popup', 'profile'];
+const THEMES = ['default', 'space-between', 'radiobtn', 'medium', 'checkbox', 'small'];
 
 @withStyles(styles)
 export default class Input extends React.Component {
@@ -22,7 +24,7 @@ export default class Input extends React.Component {
     const {
       component = 'input',
       theme = THEMES[0],
-      disabled,
+      disabled = false,
       label,
       children,
       input,
@@ -41,7 +43,9 @@ export default class Input extends React.Component {
           this.floated && styles.floated,
         )}
       >
-        <label className={styles.label}>{label}</label>
+        {
+          label && <label className={styles.label}>{label}</label>
+        }
         <div className={styles.input}>
           {
             React.createElement(component, {
@@ -65,3 +69,34 @@ export const Textarea = props =>
 
 export const MaskedInput = props =>
   <Input component={MaskedInputComponent} {...props} />;
+
+export const RadioButtonInput = props =>
+  <Input component={RadioInputComponent} {...props} />;
+
+export const DateInput = props =>
+  <Input type="date" {...props} />;
+
+export const RadioInput = props => (
+  <Input
+    component={RadioInputComponent}
+    {...props}
+  />
+);
+
+export const GroupRadioInput = ({ options, componentGroup = 'span', component = RadioInput, ...rest }) =>
+  React.createElement(componentGroup, {}, options.map(({ value, ...inputRest }) => (
+    <Input
+      {...rest}
+      {...inputRest}
+      key={value}
+      value={value}
+      component={component}
+    />
+  )
+));
+
+export const SelectInput = props =>
+  <Input component={Select} {...props} active={props.input.value} />;
+
+// export const SelectFileInput = props =>
+//   <Input component={SelectFileBtn} {...props} />;

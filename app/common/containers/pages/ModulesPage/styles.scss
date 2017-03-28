@@ -1,0 +1,24 @@
+.section {
+  margin: 120px 0;
+  border-top: 5px solid #f4dc47;
+  padding: 0 150px;
+  padding-bottom: 100px;
+
+  &__title {
+    padding: 50px;
+    text-align: center;
+  }
+
+  &__modules {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+    & > div {
+      margin: 10px;
+      height: 50px;
+      width: 160px;
+      background-color: #ccc;
+    }
+  }
+}

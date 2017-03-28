@@ -13,7 +13,7 @@
     }
 
     input:focus + .view {
-      border-color: #f38b00;
+      border: 1px solid rgba(181, 190, 202, 0.5);
     }
 
     input:checked + .view span {
@@ -23,8 +23,8 @@
 
   input {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     left: 0;
     top: 0;
     opacity: 0;
@@ -32,23 +32,23 @@
 
   .view {
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: #e3dfd7 1px solid;
-    border-radius: 3px;
-    vertical-align: top;
-    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(181, 190, 202, 0.5);
     cursor: pointer;
+    line-height: 54px;
+    vertical-align: middle;
 
     span {
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 26px;
+      height: 26px;
       vertical-align: top;
-      border-radius: 3px;
-      background-color: #f38b00;
-      margin: 4px;
       opacity: 0;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAA9ElEQVQ4T6WTyw3CMBBEZ4ngSiQaiaEASAeUEA7hiiiBLhA5ABVQAlRAKIEGiHJHZJGNjIwThxB88vdpZnZNAOCnke9x9/AgLHORXORe20Hy4eAcnwAaMzgvCOE/UAX00zjoFHQiQv9XqHTXQW+Ric1KshSwLVTBuHskUMDMu2yUzN5AZT2dT8E4yPk3pSZMKSKe3USy+wC+oHEEpm0d1AX7sGxWtQz1RC7WV90R2qapTL8vKdQHFvRS0D2UZyaMgX023ESmGCewwr7qT1mAVxxlmNOyy77ed8EaActKq5V9zdD+ejJTZprYmdn3ajO0LzdZPwHa2ZAOsx8d0wAAAABJRU5ErkJggg==');
+      background-size: 18px 12px;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
   }
 }

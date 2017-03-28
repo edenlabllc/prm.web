@@ -1,0 +1,33 @@
+.title {
+  color: #292b37;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.form {
+  padding: 20px 0;
+  text-align: left;
+  display: block;
+
+  &__item {
+    display: block;
+    padding: 10px 0;
+
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        display: block;
+        padding: 5px 0;
+      }
+    }
+  }
+}
+
+.bold {
+  font-weight: 700;
+}

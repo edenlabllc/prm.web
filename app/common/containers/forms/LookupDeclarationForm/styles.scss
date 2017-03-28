@@ -1,0 +1,29 @@
+.form {
+  display: block;
+  max-width: 351px;
+  margin: 0 auto;
+
+  &::after {
+    margin-top: 15px;
+    content: '';
+    height: 1px;
+    display: block;
+    background-color: #d3dce6;
+  }
+
+  &__row {
+    padding-bottom: 19px;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 21px;
+    line-height: 24px;
+    align-items: center;
+
+    & > * {
+      margin-right: 24px;
+    }
+  }
+}

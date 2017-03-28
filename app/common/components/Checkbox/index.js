@@ -19,10 +19,10 @@ export default class Checkbox extends React.Component {
       component = 'input',
       theme = THEMES[0],
       disabled,
-      label,
       children,
       input,
       meta,
+      checked,
       ...rest,
     } = this.props;
 
@@ -43,14 +43,13 @@ export default class Checkbox extends React.Component {
                 ...input,
                 ...rest,
                 type: 'checkbox',
-                checked: input.checked,
+                checked,
               })
             }
-
             <div className={styles.view}>
               <span />
             </div>
-            {label}
+
           </div>
         </label>
         <div className={styles.error}>

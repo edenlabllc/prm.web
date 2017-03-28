@@ -1,0 +1,21 @@
+.title {
+  color: #292b37;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.declaration {
+  margin: 0 auto;
+  max-width: 370px;
+
+  & > * {
+    padding: 5px 0;
+  }
+}
+
+.bold {
+  font-weight: 700;
+}

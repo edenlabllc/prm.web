@@ -9,10 +9,10 @@ const NAV_LIST = [{
   link: '/declarations',
   title: 'Декларації',
 }, {
-  link: '/clinic-profile',
+  link: '/clinic',
   title: 'Профіль кліники',
 }, {
-  link: '/declaraions',
+  link: '/doctor',
   title: 'Реєстр Лікарів',
 }, {
   link: '/patients',

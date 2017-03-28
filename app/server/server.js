@@ -10,7 +10,6 @@ import page from './page'; // eslint-disable-line import/no-unresolved
 import seo from './seo';
 import sitemap from './sitemap';
 
-
 import i18next from '../common/services/i18next';
 import * as config from '../common/config';
 
@@ -41,7 +40,8 @@ server.locals.CONFIG = escape(JSON.stringify(config));
 server.use(cookieParser());
 server.use(i18nextMiddleware.handle(i18next));
 
-server.use(config.API_PROXY_PATH, proxy(config.API_HOST));
+server.use(config.PRM_PROXY_PATH, proxy(config.PRM_HOST));
+server.use(config.MPI_PROXY_PATH, proxy(config.MPI_HOST));
 
 server.use(Express.static(path.join(__dirname, '../../public')));
 server.use('/static', Express.static(path.join(__dirname, '../../static')));
