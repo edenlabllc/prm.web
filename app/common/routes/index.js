@@ -27,7 +27,6 @@ import CreateClinicStep1 from 'containers/blocks/CreateClinicStep1';
 import CreateClinicStep2 from 'containers/blocks/CreateClinicStep2';
 import CreateClinicStep3 from 'containers/blocks/CreateClinicStep3';
 
-
 export const configureRoutes = () => (
   <Route component={App}>
     <Route component={MainLayout}>
