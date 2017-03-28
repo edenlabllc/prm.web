@@ -33,7 +33,7 @@ export default class SignInDeclaration extends React.Component {
   }
 
   render() {
-    const { popup, handleClose } = this.props;
+    const { lookup = false, popup, handleClose } = this.props;
     if (this.state.signIn) {
       return (
         <Popup
@@ -49,7 +49,7 @@ export default class SignInDeclaration extends React.Component {
         </Popup>
       );
     }
-    if (this.state.lookup) {
+    if (lookup || this.state.lookup) {
       return (
         <Popup
           {...popup}

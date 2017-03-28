@@ -36,7 +36,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
             allowed={true}
           />
         </div>
-        <SignInDeclarationPopup />
+        <SignInDeclarationPopup lookup={true} />
       </section>
     );
   }
