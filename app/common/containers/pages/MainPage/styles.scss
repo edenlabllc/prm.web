@@ -1,0 +1,86 @@
+.section {
+  font-family: "Gotham Pro";
+  display: block;
+  margin: 0 auto;
+  color: #292b37;
+  max-width: 1100px;
+  position: relative;
+
+  &__logo {
+    padding-top: 69px;
+    text-align: center;
+  }
+
+  &__account {
+    position: absolute;
+    right: 35px;
+    top: 60px;
+
+    &__logo {
+      display: inline-block;
+      height: 34px;
+      width: 34px;
+      border-radius: 50%;
+      background-color: #cdd1d4;
+      margin-right: 11px;
+    }
+
+    &__name {
+      display: inline-block;
+      font-weight: 700;
+      vertical-align: top;
+      line-height: 34px;
+    }
+
+    &__select {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 9px solid black;
+      margin-left: 9px;
+    }
+  }
+
+  &__content {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0 44px;
+    vertical-align: top;
+
+    & > p {
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 32px;
+      margin-top: 45px;
+      max-width: 150px;
+    }
+  }
+}
+
+.icon {
+  width: 152px;
+  height: 152px;
+  background-size: contain;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+
+  &__clinic {
+    background-image: url("./img/Create_clinic_icon.png");
+  }
+
+  &__doc {
+    background-image: url("./img/Create_doc_icon.png");
+  }
+
+  &__pat {
+    background-image: url("./img/Create_pat_icon.png");
+  }
+}

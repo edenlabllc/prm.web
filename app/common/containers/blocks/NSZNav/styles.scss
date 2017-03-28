@@ -5,6 +5,7 @@
     display: inline-block;
     font-size: 12px;
     margin-right: 23px;
+    font-weight: 700;
 
     &:last-child {
       margin-right: 0;
@@ -16,11 +17,11 @@
       cursor: pointer;
 
       &:hover {
-        font-weight: 400;
+        color: #4880ed;
       }
 
       &.is-active {
-        font-weight: 400;
+        color: #4880ed;
       }
     }
   }

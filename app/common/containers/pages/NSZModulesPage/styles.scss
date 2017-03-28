@@ -1,0 +1,43 @@
+.section {
+  margin: 120px 0;
+  border-top: 5px solid #f4dc47;
+  padding: 0 150px;
+  color: #292b37;
+  padding-bottom: 100px;
+  box-shadow: 0 0 24px rgba(236, 236, 236, 0.75);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -20px;
+    content: '';
+    box-shadow: 0 0 24px rgba(236, 236, 236, 0.75);
+    background-color: #fff;
+    width: 828px;
+    height: 320px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 52px 0 65px;
+  }
+
+  &__modules {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+    & > a {
+      margin: 10px;
+      height: 50px;
+      width: 160px;
+      background-color: #ccc;
+    }
+  }
+}
