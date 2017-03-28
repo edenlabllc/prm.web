@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 
 import NavMain from 'containers/blocks/NavMain';
+import Icon from 'components/Icon';
 
 import styles from './styles.scss';
 
@@ -21,6 +22,9 @@ export default class HeaderMain extends React.Component {
           </div>
           <div className={styles.header__btn}>
             Службовий вхід
+            <div className={styles.header__icon}>
+              <Icon name="arrow-in" />
+            </div>
           </div>
         </div>
 

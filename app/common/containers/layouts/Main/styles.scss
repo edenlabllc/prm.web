@@ -1,10 +1,15 @@
 
 .main {
-  min-width: 960px;
-  max-width: 960px;
+  background-color: #eff2f7;
   width: 100%;
-  margin: 0 auto;
-  position: relative;
+
+  &__wrap {
+    min-width: 960px;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
 
   &__in {
     display: block;

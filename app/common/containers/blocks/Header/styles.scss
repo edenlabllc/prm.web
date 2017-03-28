@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  margin: 33px auto 29px;
+  padding: 33px 0 29px;
 
   &__title {
     margin-top: 4px;
@@ -18,7 +18,7 @@
   &__account {
     position: absolute;
     right: 35px;
-    top: -4px;
+    top: 33px;
 
     &__logo {
       display: inline-block;

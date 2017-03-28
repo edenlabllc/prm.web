@@ -6,10 +6,10 @@ import { Link } from 'react-router';
 import styles from './styles.scss';
 
 const NAV_LIST = [{
-  link: '/main',
+  link: '/modules',
   title: 'Головна',
 }, {
-  link: '/aboutus',
+  link: '/project',
   title: 'Про проект',
 }, {
   link: '/aims',
