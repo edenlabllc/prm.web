@@ -1,21 +1,28 @@
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration, closeDeclaration } from 'redux/declarations';
+import { push } from 'react-router-redux';
+import { objectToArrayWithType } from 'helpers/transforms';
+
+export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) => {
+  const state = getState();
+  const firstStepData = state.flows.createDeclaration.person;
+  if (firstStepData) return true;
+  return dispatch(push('/declaration'));
+};
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();
   const doctor_id = values.doctor;
-  const current_declarationID = state.blocks.SelectedPerson.declaration;
-  console.log(state.blocks.SelectedPerson);
+  const current_declarationID = state.flows.createDeclaration.declaration.id;
 
-  const addresses = Object.entries(values.addresses).map(([type, value]) => ({
+  const addresses = objectToArrayWithType(values.addresses).map(value => ({
     country: 'UA',
     ...value,
-    type,
   }));
 
   const obj = {
-    ...state.blocks.CreateDeclarationStep1.currentPerson,
+    ...state.flows.createDeclaration.person,
     gender: values.gender,
     documents: [{
       type: 'PASSPORT',
@@ -50,14 +57,10 @@ export const onCreate = values => (dispatch, getState) => {
         },
       };
 
-      // TODO: get declaration number from last step
-
       return Promise.All([
         dispatch(createDeclaration(obj)),
         dispatch(closeDeclaration(current_declarationID)),
-      ]).then((resp, resp2) => {
-        console.log(resp, resp2);
-      });
+      ]);
     });
   });
 };

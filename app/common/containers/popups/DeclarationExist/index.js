@@ -1,25 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import withStyles from 'withStyles';
-
 
 import { format } from 'helpers/date';
 import { H3 } from 'components/Title';
 import Popup, { popup } from 'components/Popup';
 
-import { getDeclaration } from 'reducers';
 import styles from './styles.scss';
 
-@connect(state => ({
-  existingDeclaration: getDeclaration(state, state.blocks.SelectedPerson.declaration),
-}))
 @withStyles(styles)
 @popup({
   name: 'declarationExistPopup',
 })
 export default class DeclarationExistPopup extends React.Component {
   render() {
-    const { popup, handleClose, existingDeclaration } = this.props;
+    const { popup, handleClose, declaration, onCreateDeclaration } = this.props;
 
     return (
       <Popup
@@ -27,7 +21,7 @@ export default class DeclarationExistPopup extends React.Component {
         onClose={handleClose}
         buttons={[
           { children: 'Закрити', theme: 'light', onClick: () => handleClose() },
-          { children: 'Нова Декларація', theme: 'blue', to: '/updateDeclarationStep2' },
+          { children: 'Нова Декларація', theme: 'blue', onClick: () => onCreateDeclaration() },
         ]}
       >
         <div className={styles.container}>
@@ -36,19 +30,19 @@ export default class DeclarationExistPopup extends React.Component {
           </div>
           <div className={styles.declaration}>
             <div className={styles.bold}>
-              {`Декларація #${existingDeclaration.id}`}
+              {`Декларація #${declaration.id}`}
             </div>
             <div>
-              {`Пацієнт: ${existingDeclaration.patient.first_name} ${existingDeclaration.patient.last_name}`}
+              {`Пацієнт: ${declaration.patient.first_name} ${declaration.patient.last_name}`}
             </div>
             <div>
-              {`з ${format(existingDeclaration.start_date)} по ${format(existingDeclaration.end_date)}`}
+              {`з ${format(declaration.start_date)} по ${format(declaration.end_date)}`}
             </div>
             <div>
-              {`Лікар: ${(existingDeclaration.doctor.name)}`}
+              {`Лікар: ${(declaration.doctor.name)}`}
             </div>
             <div>
-              {`Заклад: ${(existingDeclaration.msp.name)}`}
+              {`Заклад: ${(declaration.msp.name)}`}
             </div>
           </div>
         </div>

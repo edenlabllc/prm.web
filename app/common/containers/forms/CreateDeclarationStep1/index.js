@@ -23,11 +23,7 @@ import Button, { ButtonsGroup } from 'components/Button';
 })
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
-    const {
-      handleSubmit,
-      title,
-    } = this.props;
-
+    const { handleSubmit, title } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <FormBlock title={title}>

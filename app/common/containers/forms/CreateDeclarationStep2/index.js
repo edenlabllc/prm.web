@@ -165,11 +165,40 @@ export default class UpdateDeclarationStep2 extends React.Component {
         </FormBlock>
         <FormBlock border>
           <FormBlockTitle right={<Field name="checked" label="Співпадає з місцем реєстрації" component={Checkbox} />}>
-            Адреса проживання Пацієнта
+            Адреса надання медичних послуг
           </FormBlockTitle>
           <FormSection name="addresses.RESIDENCE">
             <Addresses disabled={values.checked} />
           </FormSection>
+        </FormBlock>
+        <FormBlock>
+          <FormRow>
+            <FormColumn>
+              <Field
+                name="refuse"
+                label="Відмовляюсь від надання допомоги за місцем проживання (перебування)"
+                component={Checkbox}
+              />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+        <FormBlock title="Контакти особи на випадок екстреної ситуації">
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} />
+            </FormColumn>
+          </FormRow>
         </FormBlock>
         <FormBlock>
           <FormRow>
@@ -180,6 +209,11 @@ export default class UpdateDeclarationStep2 extends React.Component {
           <FormRow>
             <FormColumn>
               <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="medium" placeholder="Слово-пароль" name="secret_word" component={Input} />
             </FormColumn>
           </FormRow>
         </FormBlock>
