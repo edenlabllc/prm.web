@@ -47,6 +47,23 @@ export const searchDeclation = options => dispatch => dispatch(invoke({
   ],
 }));
 
+export const signInDeclaration = id => dispatch => dispatch(invoke({
+  endpoint: `${PRM_URL}/declarations/${id}`,
+  method: 'PUT',
+  types: [
+    'declarations/SIGN_IN_DECRATION_REQUEST', {
+      type: 'declarations/SIGN_IN_DECLARATION_SUCCESS',
+      payload: (action, state, res) => res.json().then(json =>
+        normalize(json.data, arrayOf(declarationsSchema))),
+    },
+    'declarations/SIGN_IN_DECLARATION_FAILER',
+  ],
+  body: {
+    signature: 'string',
+    signed_at: (new Date()).toJSON(),
+  },
+}));
+
 export const closeDeclaration = id => dispatch => dispatch(invoke({
   endpoint: `${PRM_URL}/declarations/${id}`,
   method: 'PUT',
