@@ -7,7 +7,7 @@ import { NEXMO_API_SECRET, NEXMO_API_KEY, SMS_BRAND } from '../config';
 const router = new Express.Router();
 router.use(bodyParser.json());
 
-const IS_NEXMO_ENABLED = false && NEXMO_API_KEY && NEXMO_API_SECRET;
+const IS_NEXMO_ENABLED = NEXMO_API_KEY && NEXMO_API_SECRET;
 
 router.post('/sms/verify', (req, res) => {
   if (!IS_NEXMO_ENABLED) {
