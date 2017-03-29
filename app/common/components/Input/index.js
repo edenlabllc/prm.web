@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 import classnames from 'classnames';
 
-import MaskedInputComponent from 'modules/react-nebo15-mask';
+import MaskedInputComponent from 'react-nebo15-mask';
 import RadioInputComponent from 'components/RadioInput';
 import Select from 'components/Select';
 import ErrorMessages from 'components/ErrorMessages';

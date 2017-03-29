@@ -102,7 +102,7 @@
     "react-helmet": "^4.0.0",
     "react-hot-loader": "3.0.0-beta.6",
     "react-i18next": "^2.2.0",
-    "react-nebo15-mask": "~1.0.4",
+    "react-nebo15-mask": "~1.0.8",
     "react-nl2br": "^0.2.0",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
