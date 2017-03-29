@@ -78,7 +78,7 @@ const doctors = {
 }))
 export default class UpdateDeclarationStep2 extends React.Component {
   render() {
-    const { handleSubmit, showPopup, values, allowed = false } = this.props;
+    const { handleSubmit, values, allowed = false } = this.props;
 
     return (
       <Form onSubmit={handleSubmit}>
@@ -219,8 +219,8 @@ export default class UpdateDeclarationStep2 extends React.Component {
         </FormBlock>
         <FormButtons>
           <ButtonsGroup>
-            <Button type="submit">Зберегти зміни</Button>
-            <Button onClick={() => showPopup()} theme="blue">Далі</Button>
+            <Button to="/declaration">Назад</Button>
+            <Button type="submit">Підтвердити</Button>
           </ButtonsGroup>
         </FormButtons>
       </Form>

@@ -21,6 +21,7 @@ import CreateLayout from 'containers/layouts/CreateLayout';
 import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1';
 import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2';
 import UpdateDeclarationStep2 from 'containers/blocks/UpdateDeclarationStep2';
+import DeclarationDetails from 'containers/pages/DeclarationDetails';
 
 import CreateDoctorStep1 from 'containers/blocks/CreateDoctorStep1';
 import CreateDoctorStep2 from 'containers/blocks/CreateDoctorStep2';
@@ -47,12 +48,11 @@ export const configureRoutes = () => (
         <Route path="declaration" component={CreateDeclarationStep1} />
         <Route path="declarationStep2" component={CreateDeclarationStep2} />
         <Route path="updateDeclarationStep2" component={UpdateDeclarationStep2} />
-      </Route>
-      <Route component={CreateLayout}>
+
+        <Route path="declarations/:declarationId" component={DeclarationDetails} />
+
         <Route path="doctor" component={CreateDoctorStep1} />
         <Route path="doctorsStep2" component={CreateDoctorStep2} />
-      </Route>
-      <Route component={CreateLayout}>
         <Route path="clinic" component={CreateClinicStep1} />
         <Route path="clinicStep2" component={CreateClinicStep2} />
         <Route path="clinicStep3" component={CreateClinicStep3} />

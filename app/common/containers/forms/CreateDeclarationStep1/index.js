@@ -23,21 +23,21 @@ import Button, { ButtonsGroup } from 'components/Button';
 })
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
-    const { handleSubmit, title } = this.props;
+    const { handleSubmit, title, readonly } = this.props;
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} disabled={readonly}>
         <FormBlock title={title}>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} />
+              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} disabled={readonly} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} />
+              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} disabled={readonly} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
+              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={readonly} />
             </FormColumn>
             <FormColumn>
               <Field
@@ -47,26 +47,31 @@ export default class CreateDeclarationStep1 extends React.Component {
                 showMonthDropdown
                 showYearDropdown
                 component={Datepicker}
+                disabled={readonly}
               />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="ІПН" type="number" name="national_id" component={Input} />
+              <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={readonly} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={readonly} />
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormButtons>
-          <ButtonsGroup>
-            <Button disabled={true}>Зберегти зміни</Button>
-            <Button theme="blue" type="submit">
-              Далі
-            </Button>
-          </ButtonsGroup>
-        </FormButtons>
+        {
+          !readonly && (
+            <FormButtons>
+              <ButtonsGroup>
+                <Button to="/declarations">Назад</Button>
+                <Button theme="blue" type="submit">
+                  Знайти
+                </Button>
+              </ButtonsGroup>
+            </FormButtons>
+          )
+        }
       </Form>
     );
   }

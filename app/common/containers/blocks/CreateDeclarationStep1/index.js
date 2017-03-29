@@ -43,7 +43,7 @@ export default class CreateDeclarationStep1 extends React.Component {
         <div className={styles.declaration__form}>
           <CreateDeclarationForm
             onSubmit={onSubmit}
-            title="1. Реєстрація декларації"
+            title="1. Пошук декларації пацієнта"
           />
         </div>
         <div>

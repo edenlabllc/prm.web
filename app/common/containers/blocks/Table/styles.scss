@@ -73,6 +73,11 @@
   &__status_color {
     font-weight: 700;
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     &_default {
       color: #a4a19b;
     }

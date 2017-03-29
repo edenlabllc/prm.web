@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { show } from 'components/Popup';
 import withStyles from 'withStyles';
 import { provideHooks } from 'redial';
 
@@ -16,23 +15,19 @@ import styles from './styles.scss';
   fetch: ({ dispatch }) => dispatch(redirectToFirstStepIfDataIsNotExist()),
 })
 @connect(null, {
-  show,
   onCreate,
 })
 @withStyles(styles)
 export default class CreateDeclarationStep2 extends React.Component {
   render() {
-    const { show, onCreate } = this.props;
+    const { onCreate } = this.props;
     return (
       <section className={styles.declaration}>
         <div className={styles.declaration__title}>
           <H1>Створити нову декларацію. Крок 2</H1>
         </div>
         <div className={styles.declaration__form}>
-          <CreateDeclarationForm
-            showPopup={() => show('signInDeclaration')}
-            onSubmit={onCreate}
-          />
+          <CreateDeclarationForm onSubmit={onCreate} />
         </div>
         <SignInDeclarationPopup lookup={true} />
       </section>

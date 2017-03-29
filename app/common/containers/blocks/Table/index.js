@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { format } from 'helpers/date';
 
+import { Link } from 'react-router';
+
 import withStyles from 'withStyles';
 import classnames from 'classnames';
 
@@ -66,9 +68,11 @@ export default class Table extends React.Component {
                       )
                     }
                   >
-                    {item.status === 'pending_signature' && 'Не підписано' }
-                    {item.status === 'signed' && 'Підписано' }
-                    {item.status === 'closed' && 'Розірвано' }
+                    <Link to={`/declarations/${item.id}`}>
+                      {item.status === 'pending_signature' && 'Не підписано' }
+                      {item.status === 'signed' && 'Підписано' }
+                      {item.status === 'closed' && 'Розірвано' }
+                    </Link>
                   </td>
                 </tr>
               )

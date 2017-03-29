@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 import styles from './styles.scss';
 
-const TITLE_TYPES = ['h1', 'h2', 'h3', 'h4', 'h5', 'h5', 'h6', 'section'];
+const TITLE_TYPES = ['h1', 'h2', 'h3', 'h4', 'h5', 'h5', 'h6', 'section', 'page-title'];
 
 const TitleComponent = ({ type = 'h1', tag = 'h3', children, color }) => {
   if (TITLE_TYPES.indexOf(type) === -1) {
@@ -31,4 +31,7 @@ export const H6 = ({ children, tag = 'h6', color }) => React.createElement(Title
 
 export const SectionTitle = ({ children }) => (
   <Title type="section" tag="h3">{children}</Title>
+);
+export const PageTitle = ({ children }) => (
+  <Title type="page-title" tag="h1">{children}</Title>
 );
