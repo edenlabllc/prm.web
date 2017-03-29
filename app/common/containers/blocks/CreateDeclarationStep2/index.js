@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 import { provideHooks } from 'redial';
 
+import { submit } from 'redux-form';
+
 import { H1 } from 'components/Title';
+
 import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep2';
 import LookupConfirmPopup from 'containers/popups/LookupConfirm';
+import { FormButtons } from 'components/Form';
+import Button, { ButtonsGroup } from 'components/Button';
 
 import { onDataFormSubmit, onLookupSubmit, redirectToFirstStepIfDataIsNotExist } from './redux';
 
@@ -17,6 +22,7 @@ import styles from './styles.scss';
 @connect(state => state.blocks.CreateDeclarationStep2, {
   onDataFormSubmit,
   onLookupSubmit,
+  submit,
 })
 @withStyles(styles)
 export default class CreateDeclarationStep2 extends React.Component {
@@ -24,6 +30,7 @@ export default class CreateDeclarationStep2 extends React.Component {
     const {
       onDataFormSubmit,
       onLookupSubmit,
+      submit,
     } = this.props;
     return (
       <section className={styles.declaration}>
@@ -32,6 +39,12 @@ export default class CreateDeclarationStep2 extends React.Component {
         </div>
         <div className={styles.declaration__form}>
           <CreateDeclarationForm onSubmit={onDataFormSubmit} />
+          <FormButtons>
+            <ButtonsGroup>
+              <Button to="/declaration">Назад</Button>
+              <Button theme="blue" onClick={() => submit('createDeclarationStep2')}>Підтвердити</Button>
+            </ButtonsGroup>
+          </FormButtons>
         </div>
         <LookupConfirmPopup onSubmit={onLookupSubmit} />
       </section>

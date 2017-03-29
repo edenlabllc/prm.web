@@ -9,6 +9,14 @@ import { fetchDeclaration } from 'redux/integration_layer';
 
 import { getDeclaration } from 'reducers';
 
+import { arrayWithTypeToObject } from 'helpers/transforms';
+
+const transformPatientToForm = patient => ({
+  ...patient,
+  documents: arrayWithTypeToObject(patient.documents),
+  addresses: arrayWithTypeToObject(patient.addresses),
+  phones: arrayWithTypeToObject(patient.phones),
+});
 @provideHooks({
   fetch: ({ dispatch, params }) => dispatch(fetchDeclaration(params.declarationId)),
 })
@@ -18,17 +26,15 @@ import { getDeclaration } from 'reducers';
 export default class DeclarationDetails extends React.Component {
   render() {
     const { declaration } = this.props;
-
+    const formValues = {
+      ...transformPatientToForm(declaration.patient),
+      doctor: declaration.doctor.id,
+    };
     return (
       <section>
         <PageTitle>Данні по декларації</PageTitle>
-        <CreateDeclarationStep1Form readonly initialValues={declaration.patient} />
-        <CreateDeclarationStep2Form
-          disabled
-          initialValues={{
-            ...declaration.patient,
-          }}
-        />
+        <CreateDeclarationStep1Form disabled initialValues={formValues} />
+        <CreateDeclarationStep2Form disabled initialValues={formValues} />
       </section>
     );
   }

@@ -8,7 +8,7 @@ import Datepicker from 'components/Datepicker';
 import Button, { ButtonsGroup } from 'components/Button';
 
 @reduxForm({
-  form: 'personRegistrationStep1',
+  form: 'createDeclarationStep1',
   validate: validate({
     first_name: {
       required: true,
@@ -21,23 +21,23 @@ import Button, { ButtonsGroup } from 'components/Button';
     },
   }),
 })
-export default class CreateDeclarationStep1 extends React.Component {
+export default class CreateDeclarationStep1Form extends React.Component {
   render() {
-    const { handleSubmit, title, readonly } = this.props;
+    const { handleSubmit, title, disabled } = this.props;
     return (
-      <Form onSubmit={handleSubmit} disabled={readonly}>
+      <Form onSubmit={handleSubmit} disabled={disabled}>
         <FormBlock title={title}>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} disabled={readonly} />
+              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} disabled={readonly} />
+              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} disabled={disabled} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={readonly} />
+              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
               <Field
@@ -47,21 +47,21 @@ export default class CreateDeclarationStep1 extends React.Component {
                 showMonthDropdown
                 showYearDropdown
                 component={Datepicker}
-                disabled={readonly}
+                disabled={disabled}
               />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={readonly} />
+              <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={readonly} />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
             </FormColumn>
           </FormRow>
         </FormBlock>
         {
-          !readonly && (
+          !disabled && (
             <FormButtons>
               <ButtonsGroup>
                 <Button to="/declarations">Назад</Button>

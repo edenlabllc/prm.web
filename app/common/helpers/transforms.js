@@ -4,3 +4,9 @@ export const objectToArrayWithType = (obj = {}, { typeKey = 'type' } = {}) =>
     [typeKey]: key,
     ...value,
   }));
+
+export const arrayWithTypeToObject = (array = [], { typeKey = 'type' } = {}) =>
+  array.reduce((prev, cur) => ({
+    ...prev,
+    [cur[typeKey]]: cur,
+  }), {});
