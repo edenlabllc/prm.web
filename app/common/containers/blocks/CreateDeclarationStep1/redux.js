@@ -1,12 +1,20 @@
 import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { searchPersons } from 'redux/person';
+import { push } from 'react-router-redux';
 
-import { show } from 'components/Popup';
+import { searchDeclation } from 'redux/declarations';
+import { searchPersons, fetchPerson } from 'redux/person';
+import { fetchDoctor } from 'redux/doctor';
+import { fetchMSPS } from 'redux/msps';
+
+import { saveData } from 'redux/flows/createDeclaration';
+
+import { show, hide } from 'components/Popup';
 import { objectToArrayWithType } from 'helpers/transforms';
 
-const setCurrentPerson = createAction('person/SET_CURRENT_PERSON');
-const setCurrentPersonsList = createAction('person/SET_CURRENT_PERSONS_LIST');
+const setDeclaration = createAction('CreateDeclarationStep1/SET_DECLARATION');
+const setCurrentPerson = createAction('CreateDeclarationStep1/SET_CURRENT_PERSON');
+const setCurrentPersonsList = createAction('CreateDeclarationStep1/SET_CURRENT_PERSONS_LIST');
 
 export const onSubmit = values => (dispatch) => {
   const options = {
@@ -30,9 +38,54 @@ export const onSubmit = values => (dispatch) => {
   });
 };
 
+export const onSelectDeclaration = person => (dispatch) => {
+  const selectedPatient = {
+    patient_id: person.id || null,
+  };
+
+  return dispatch(searchDeclation(selectedPatient)).then((resp) => {
+    const declarations = resp.payload.entities.declarations;
+
+    // TODO: remove, when API will fix fallback return
+    const validDeclarations = Object.values(declarations).filter(
+      declaration => declaration.patient_id === selectedPatient.patient_id
+    );
+    if (validDeclarations.length === 0) return dispatch(show('emptySearchPopup'));
+
+    const declaration = validDeclarations[0];
+
+    return Promise.all([
+      dispatch(fetchDoctor(declaration.doctor_id)),
+      dispatch(fetchPerson(declaration.patient_id)),
+      dispatch(fetchMSPS()),
+    ]).then(() => dispatch([
+      setDeclaration(declaration.id),
+      hide('searchDeclarationPopup'),
+      hide('specifySearchPopup'),
+      show('declarationExistPopup'),
+    ]));
+  });
+};
+
+export const createNewDeclaration = declaration => dispatch =>
+  dispatch([
+    saveData(declaration),
+    push('/declarationStep2'),
+  ]);
+
+export const updateExistingDeclaration = declaration => dispatch =>
+  dispatch([
+    saveData(declaration),
+    push('/updateDeclarationStep2'),
+  ]);
+
+const declaration = handleActions({
+  [setDeclaration]: (state, action) => action.payload,
+}, []);
+
 const currentPerson = handleActions({
   [setCurrentPerson]: (state, action) => action.payload,
-}, []);
+}, null);
 
 const currentPersonsList = handleActions({
   [setCurrentPersonsList]: (state, action) => action.payload,
@@ -41,4 +94,5 @@ const currentPersonsList = handleActions({
 export default combineReducers({
   currentPerson,
   currentPersonsList,
+  declaration,
 });

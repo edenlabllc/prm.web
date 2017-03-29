@@ -10,12 +10,16 @@ import msps from 'redux/msps';
 
 import Table from 'containers/blocks/Table/redux';
 import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
-import SelectedPerson from 'containers/popups/SearchDeclaration/redux';
+
+import createDeclaration from 'redux/flows/createDeclaration';
+
+const flows = combineReducers({
+  createDeclaration,
+});
 
 const blocks = combineReducers({
   Table,
   CreateDeclarationStep1,
-  SelectedPerson,
 });
 
 export default combineReducers({
@@ -27,8 +31,8 @@ export default combineReducers({
   persons,
   msps,
 
-  // containers blocks
   blocks,
+  flows,
 });
 
 

@@ -1,6 +1,14 @@
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration } from 'redux/declarations';
+import { push } from 'react-router-redux';
+
+export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) => {
+  const state = getState();
+  const firstStepData = state.blocks.CreateDeclarationStep1.currentPerson;
+  if (firstStepData) return true;
+  return dispatch(push('/declaration'));
+};
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();

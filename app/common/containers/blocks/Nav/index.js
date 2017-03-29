@@ -30,9 +30,9 @@ export default class Nav extends React.Component {
       <div className={styles.nav}>
         <ul className={styles.nav__in}>
           {
-            NAV_LIST.map(item => (
+            NAV_LIST.map((item, idx) => (
               <li
-                key={item.link}
+                key={item.link || idx}
                 className={styles.nav__item}
               >
                 <Link to={item.link} activeClassName={styles['is-active']}>
