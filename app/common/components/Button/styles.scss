@@ -53,7 +53,6 @@
 }
 
 .theme-default {
-  width: 317px;
   height: 60px;
   border: 2px solid #67a2f4;
   background-color: rgba(87, 145, 239, 0);
@@ -79,4 +78,13 @@
   font-weight: 700;
   text-transform: uppercase;
   margin: 24px 0 10px;
+}
+
+.width-medium {
+  min-width: 317px;
+}
+
+.width-small {
+  width: auto;
+  min-width: auto;
 }

@@ -2,6 +2,8 @@
 .main {
   background-color: #eff2f7;
   width: 100%;
+  min-height: 100vh;
+  padding-bottom: 40px;
 
   &__wrap {
     min-width: 960px;
