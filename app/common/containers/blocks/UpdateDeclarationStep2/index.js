@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { PageTitle } from 'components/Title';
 import CreateDeclarationStep2 from 'containers/forms/CreateDeclarationStep2';
-import SignInDeclarationPopup from 'containers/popups/SignInDeclaration';
+// import SignInDeclarationPopup from 'containers/popups/SignInDeclaration';
 
 import { onCreate, redirectToFirstStepIfDataIsNotExist } from './redux';
 
@@ -29,7 +29,6 @@ export default class UpdateDeclarationStep2 extends React.Component {
           onSubmit={onCreate}
           allowed={true}
         />
-        <SignInDeclarationPopup lookup={true} />
       </section>
     );
   }

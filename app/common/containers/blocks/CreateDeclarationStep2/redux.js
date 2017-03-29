@@ -1,8 +1,15 @@
+import { handleActions, createAction } from 'redux-actions';
+import { combineReducers } from 'redux';
+
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration } from 'redux/declarations';
 import { push } from 'react-router-redux';
+import { show } from 'components/Popup';
 import { objectToArrayWithType } from 'helpers/transforms';
+
+const saveRequestId = createAction('CreateDeclarationStep2/SAVE_REQUEST_ID');
+const saveFormData = createAction('CreateDeclarationStep2/SAVE_FORM_DATA');
 
 export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) => {
   const state = getState();
@@ -11,7 +18,34 @@ export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) =>
   return dispatch(push('/declaration'));
 };
 
-export const onCreate = values => (dispatch, getState) => {
+const sendLookup = () => Promise.resolve({
+  request_id: 123123132,
+});
+
+const sendLookupConfirm = requestId => Promise.resolve({
+  requestId,
+  status: '0',
+});
+
+export const onDataFormSubmit = formData => (dispatch) => {
+  dispatch(saveFormData(formData));
+  return dispatch(sendLookup(formData.phone))
+  .then(response => dispatch([
+    saveRequestId(response.request_id),
+    show('lookupConfirm'),
+  ]));
+};
+
+export const onLookupSubmit = (requestId, code) => (dispatch, getState) => {
+  const state = getState();
+  const formData = state.blocks.CreateDeclarationStep2.formData;
+  return dispatch(sendLookupConfirm(requestId, code))
+    .then(() => dispatch(onCreateDeclaration(formData)))
+    .then(() => dispatch(show('createDeclarationSuccess')))
+    .catch(() => dispatch(show('createDeclarationFailure')));
+};
+
+export const onCreateDeclaration = values => (dispatch, getState) => {
   const state = getState();
   const doctor_id = values.doctor;
 
@@ -59,3 +93,16 @@ export const onCreate = values => (dispatch, getState) => {
     });
   });
 };
+
+const requestId = handleActions({
+  [saveRequestId]: (state, action) => action.payload,
+}, null);
+
+const formData = handleActions({
+  [saveFormData]: (state, action) => action.payload,
+}, null);
+
+export default combineReducers({
+  requestId,
+  formData,
+});
