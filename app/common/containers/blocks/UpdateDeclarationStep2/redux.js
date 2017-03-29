@@ -2,10 +2,11 @@ import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration } from 'redux/declarations';
 import { push } from 'react-router-redux';
+import { objectToArrayWithType } from 'helpers/transforms';
 
 export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) => {
   const state = getState();
-  const firstStepData = state.blocks.CreateDeclarationStep1.currentPerson;
+  const firstStepData = state.flows.createDeclaration.person;
   if (firstStepData) return true;
   return dispatch(push('/declaration'));
 };
@@ -14,14 +15,13 @@ export const onCreate = values => (dispatch, getState) => {
   const state = getState();
   const doctor_id = values.doctor;
 
-  const addresses = Object.entries(values.addresses).map(([type, value]) => ({
+  const addresses = objectToArrayWithType(values.addresses).map(value => ({
     country: 'UA',
     ...value,
-    type,
   }));
 
   const obj = {
-    ...state.blocks.CreateDeclarationStep1.currentPerson,
+    ...state.flows.createDeclaration.person,
     gender: values.gender,
     documents: [{
       type: 'PASSPORT',
@@ -34,7 +34,6 @@ export const onCreate = values => (dispatch, getState) => {
 
 
   return dispatch(createPerson(obj)).then((newPatient) => {
-    console.log(newPatient);
     const patientsObj = newPatient.payload.entities.persons;
     const person_id = patientsObj[Object.keys(patientsObj)[0]].id;
 
@@ -57,9 +56,7 @@ export const onCreate = values => (dispatch, getState) => {
         },
       };
 
-      return dispatch(createDeclaration(obj)).then((resp) => {
-        console.log(resp);
-      });
+      return dispatch(createDeclaration(obj));
     });
   });
 };

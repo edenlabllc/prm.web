@@ -7,7 +7,7 @@ import { searchPersons, fetchPerson } from 'redux/person';
 import { fetchDoctor } from 'redux/doctor';
 import { fetchMSPS } from 'redux/msps';
 
-import { saveData } from 'redux/flows/createDeclaration';
+import { savePerson, saveDeclaration } from 'redux/flows/createDeclaration';
 
 import { show, hide } from 'components/Popup';
 import { objectToArrayWithType } from 'helpers/transforms';
@@ -67,15 +67,16 @@ export const onSelectDeclaration = person => (dispatch) => {
   });
 };
 
-export const createNewDeclaration = declaration => dispatch =>
+export const createNewDeclaration = person => dispatch =>
   dispatch([
-    saveData(declaration),
+    savePerson(person),
     push('/declarationStep2'),
   ]);
 
-export const updateExistingDeclaration = declaration => dispatch =>
+export const updateExistingDeclaration = ({ person, declaration }) => dispatch =>
   dispatch([
-    saveData(declaration),
+    savePerson(person),
+    saveDeclaration(declaration),
     push('/updateDeclarationStep2'),
   ]);
 

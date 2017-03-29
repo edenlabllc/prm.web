@@ -48,11 +48,20 @@ export default class CreateDeclarationStep1 extends React.Component {
         </div>
         <div>
           <SearchDeclarationPopup persons={currentPersonsList} onSelect={onSelectDeclaration} />
-          <EmptySearchPopup person={currentPerson} onCreateDeclaration={createNewDeclaration} />
-          <SpecifySearchPopup person={currentPerson} onCreateDeclaration={createNewDeclaration} />
+          <EmptySearchPopup
+            person={currentPerson}
+            onCreateDeclaration={() => createNewDeclaration(currentPerson)}
+          />
+          <SpecifySearchPopup
+            person={currentPerson}
+            onCreateDeclaration={() => createNewDeclaration(currentPerson)}
+          />
           <DeclarationExistPopup
             declaration={declaration}
-            onCreateDeclaration={updateExistingDeclaration}
+            onCreateDeclaration={() => updateExistingDeclaration({
+              person: currentPerson,
+              declaration,
+            })}
           />
         </div>
       </section>
