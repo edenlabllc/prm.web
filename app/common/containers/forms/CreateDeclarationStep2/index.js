@@ -171,6 +171,17 @@ export default class UpdateDeclarationStep2 extends React.Component {
             <Addresses disabled={values.checked} />
           </FormSection>
         </FormBlock>
+        <FormBlock>
+          <FormRow>
+            <FormColumn>
+              <Field
+                name="refuse"
+                label="Відмовляюсь від надання допомоги за місцем проживання (перебування)"
+                component={Checkbox}
+              />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
         <FormBlock title="Контакти особи на випадок екстреної ситуації">
           <FormRow>
             <FormColumn>
