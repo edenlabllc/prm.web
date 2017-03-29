@@ -1,17 +1,22 @@
 import React from 'react';
+import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 import { show } from 'components/Popup';
+
 import withStyles from 'withStyles';
 
 import { H1 } from 'components/Title';
 import CreateDeclarationStep2 from 'containers/forms/CreateDeclarationStep2';
 import SignInDeclarationPopup from 'containers/popups/SignInDeclaration';
 
-import { onCreate } from './redux';
+import { onCreate, redirectToFirstStepIfDataIsNotExist } from './redux';
 
 import styles from './styles.scss';
 
-@connect(state => state, {
+@provideHooks({
+  fetch: ({ dispatch }) => dispatch(redirectToFirstStepIfDataIsNotExist()),
+})
+@connect(null, {
   show,
   onCreate,
 })

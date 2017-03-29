@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isInvalid, isSubmitting } from 'redux-form';
 import withStyles from 'withStyles';
 import { show } from 'components/Popup';
 
@@ -12,21 +11,28 @@ import EmptySearchPopup from 'containers/popups/EmptySearchPopup';
 import SpecifySearchPopup from 'containers/popups/SpecifySearchPopup';
 import DeclarationExistPopup from 'containers/popups/DeclarationExist';
 
-import { onSubmit } from './redux';
+import { getDeclaration } from 'reducers';
 
+import * as actions from './redux';
 import styles from './styles.scss';
 
-@connect(state => ({
-  invalid: isInvalid('createDeclarationForm')(state),
-  submitting: isSubmitting('createDeclarationForm')(state),
-}), { onSubmit, show })
+@connect((state) => {
+  const block = state.blocks.CreateDeclarationStep1;
+  return {
+    ...block,
+    declaration: block.declaration && getDeclaration(state, block.declaration),
+  };
+}, {
+  show,
+  ...actions,
+})
 @withStyles(styles)
 export default class CreateDeclarationStep1 extends React.Component {
   render() {
     const {
-      onSubmit,
-      invalid,
-      submitting,
+      onSubmit, onSelectDeclaration,
+      createNewDeclaration, updateExistingDeclaration,
+      currentPersonsList, currentPerson, declaration,
     } = this.props;
 
     return (
@@ -37,16 +43,26 @@ export default class CreateDeclarationStep1 extends React.Component {
         <div className={styles.declaration__form}>
           <CreateDeclarationForm
             onSubmit={onSubmit}
-            valid={invalid}
-            submitting={submitting}
             title="1. Реєстрація декларації"
           />
         </div>
         <div>
-          <SearchDeclarationPopup />
-          <EmptySearchPopup />
-          <SpecifySearchPopup />
-          <DeclarationExistPopup />
+          <SearchDeclarationPopup persons={currentPersonsList} onSelect={onSelectDeclaration} />
+          <EmptySearchPopup
+            person={currentPerson}
+            onCreateDeclaration={() => createNewDeclaration(currentPerson)}
+          />
+          <SpecifySearchPopup
+            person={currentPerson}
+            onCreateDeclaration={() => createNewDeclaration(currentPerson)}
+          />
+          <DeclarationExistPopup
+            declaration={declaration}
+            onCreateDeclaration={() => updateExistingDeclaration({
+              person: currentPerson,
+              declaration,
+            })}
+          />
         </div>
       </section>
     );
