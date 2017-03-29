@@ -10,6 +10,7 @@ const declarationsSchema = new Schema('declarations');
 export const fetchDeclaration = id => dispatch => dispatch(invoke({
   endpoint: `${PRM_URL}/declarations/${id}`,
   method: 'get',
+  bailout: state => state.declarations[id],
   types: [
     'declarations/FETCH_DECLARATION_REQUEST', {
       type: 'declarations/FETCH_DECLARATION_SUCCESS',

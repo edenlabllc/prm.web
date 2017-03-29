@@ -24,6 +24,7 @@ export const fetchDoctors = () => dispatch => dispatch(invoke({
 export const fetchDoctor = id => dispatch => dispatch(invoke({
   endpoint: `${PRM_URL}/doctors/${id}`,
   method: 'get',
+  bailout: state => state.doctors[id],
   types: [
     'doctor/FETCH_DOCTOR_REQUEST', {
       type: 'doctor/FETCH_DOCTOR_SUCCESS',

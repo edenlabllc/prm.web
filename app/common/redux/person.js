@@ -11,6 +11,7 @@ const personsSchema = new Schema('persons');
 export const fetchPerson = id => dispatch => dispatch(invoke({
   endpoint: `${MPI_URL}/persons/${id}`,
   method: 'get',
+  bailout: state => state.persons[id],
   types: [
     'person/FETCH_PERSON_REQUEST', {
       type: 'person/FETCH_PERSON_SUCCESS',
@@ -22,16 +23,16 @@ export const fetchPerson = id => dispatch => dispatch(invoke({
 }));
 
 
-export const searchPersons = options => dispatch => dispatch(invoke({
+export const fetchPersons = options => dispatch => dispatch(invoke({
   endpoint: createUrl(`${MPI_URL}/persons`, options),
   method: 'get',
   types: [
-    'person/SEARCH_PERSON_REQUEST', {
-      type: 'person/SEARCH_PERSON_SUCCESS',
+    'person/FETCH_PERSONS_REQUEST', {
+      type: 'person/FETCH_PERSONS_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
         normalize(json.data, arrayOf(personsSchema))),
     },
-    'person/SEARCH_PERSON_FAILER',
+    'person/FETCH_PERSOSN_FAILER',
   ],
 }));
 
@@ -53,7 +54,7 @@ export const createPerson = body => dispatch => dispatch(invoke({
 const persons = handleAction(
   combineActions(
     'person/FETCH_PERSON_SUCCESS',
-    'person/SEARCH_PERSON_SUCCESS',
+    'person/FETCH_PERSONS_SUCCESS',
   ),
   (state, action) => ({
     ...state,

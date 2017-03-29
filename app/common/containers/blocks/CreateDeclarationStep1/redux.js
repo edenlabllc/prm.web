@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { push } from 'react-router-redux';
 
 import { fetchDeclarations } from 'redux/declarations';
-import { searchPersons, fetchPerson } from 'redux/person';
+import { fetchPersons, fetchPerson } from 'redux/person';
 import { fetchDoctor } from 'redux/doctor';
 import { fetchMSPS } from 'redux/msps';
 
@@ -27,7 +27,7 @@ export const onSubmit = values => (dispatch) => {
   };
 
   dispatch(setCurrentPerson(options));
-  return dispatch(searchPersons(options)).then((resp) => {
+  return dispatch(fetchPersons(options)).then((resp) => {
     if (resp.payload.status === 403) {
       return dispatch(show('specifySearchPopup'));
     } else if (resp.payload.result && resp.payload.result.length !== 0) {

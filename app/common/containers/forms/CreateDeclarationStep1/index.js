@@ -21,7 +21,7 @@ import Button, { ButtonsGroup } from 'components/Button';
     },
   }),
 })
-export default class CreateDeclarationStep1Form extends React.Component {
+export default class CreateDeclarationStep1Form extends React.PureComponent {
   render() {
     const { handleSubmit, title, disabled } = this.props;
     return (
