@@ -57,7 +57,7 @@ export const onCreate = values => (dispatch, getState) => {
         },
       };
 
-      return Promise.All([
+      return Promise.all([
         dispatch(createDeclaration(obj)),
         dispatch(closeDeclaration(current_declarationID)),
       ]);

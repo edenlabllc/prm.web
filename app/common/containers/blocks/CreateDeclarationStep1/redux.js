@@ -2,7 +2,7 @@ import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { push } from 'react-router-redux';
 
-import { searchDeclation } from 'redux/declarations';
+import { fetchDeclarations } from 'redux/declarations';
 import { searchPersons, fetchPerson } from 'redux/person';
 import { fetchDoctor } from 'redux/doctor';
 import { fetchMSPS } from 'redux/msps';
@@ -43,7 +43,7 @@ export const onSelectDeclaration = person => (dispatch) => {
     patient_id: person.id || null,
   };
 
-  return dispatch(searchDeclation(selectedPatient)).then((resp) => {
+  return dispatch(fetchDeclarations(selectedPatient)).then((resp) => {
     const declarations = resp.payload.entities.declarations;
 
     // TODO: remove, when API will fix fallback return

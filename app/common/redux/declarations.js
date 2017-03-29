@@ -7,8 +7,21 @@ import { invoke } from './api';
 
 const declarationsSchema = new Schema('declarations');
 
-export const fetchDeclarations = () => dispatch => dispatch(invoke({
-  endpoint: `${PRM_URL}/declarations`,
+export const fetchDeclaration = id => dispatch => dispatch(invoke({
+  endpoint: `${PRM_URL}/declarations/${id}`,
+  method: 'get',
+  types: [
+    'declarations/FETCH_DECLARATION_REQUEST', {
+      type: 'declarations/FETCH_DECLARATION_SUCCESS',
+      payload: (action, state, res) => res.json().then(json =>
+        normalize(json.data, declarationsSchema)),
+    },
+    'declarations/FETCH_DECLARATION_FAILER',
+  ],
+}));
+
+export const fetchDeclarations = options => dispatch => dispatch(invoke({
+  endpoint: createUrl(`${PRM_URL}/declarations`, options),
   method: 'get',
   types: [
     'declarations/FETCH_DECLARATIONS_REQUEST', {
@@ -27,24 +40,11 @@ export const createDeclaration = body => dispatch => dispatch(invoke({
     'declarations/CREATE_DECLARATIONS_REQUEST', {
       type: 'declarations/CREATE_DECLARATIONS_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
-        normalize(json.data, arrayOf(declarationsSchema))),
+        normalize(json.data, declarationsSchema)),
     },
     'declarations/CREATE_DECLARATIONS_FAILER',
   ],
   body,
-}));
-
-export const searchDeclation = options => dispatch => dispatch(invoke({
-  endpoint: createUrl(`${PRM_URL}/declarations`, options),
-  method: 'get',
-  types: [
-    'declarations/SEARCH_DECRATION_REQUEST', {
-      type: 'declarations/SEARCH_DECLARATION_SUCCESS',
-      payload: (action, state, res) => res.json().then(json =>
-        normalize(json.data, arrayOf(declarationsSchema))),
-    },
-    'declarations/SEARCH_DECLARATION_FAILER',
-  ],
 }));
 
 export const signInDeclaration = id => dispatch => dispatch(invoke({
@@ -54,7 +54,7 @@ export const signInDeclaration = id => dispatch => dispatch(invoke({
     'declarations/SIGN_IN_DECRATION_REQUEST', {
       type: 'declarations/SIGN_IN_DECLARATION_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
-        normalize(json.data, arrayOf(declarationsSchema))),
+        normalize(json.data, declarationsSchema)),
     },
     'declarations/SIGN_IN_DECLARATION_FAILER',
   ],
@@ -71,7 +71,7 @@ export const closeDeclaration = id => dispatch => dispatch(invoke({
     'declarations/CLOSE_DECRATION_REQUEST', {
       type: 'declarations/CLOSE_DECLARATION_SUCCESS',
       payload: (action, state, res) => res.json().then(json =>
-        normalize(json.data, arrayOf(declarationsSchema))),
+        normalize(json.data, declarationsSchema)),
     },
     'declarations/CLOSE_DECLARATION_FAILER',
   ],
@@ -84,9 +84,9 @@ export const closeDeclaration = id => dispatch => dispatch(invoke({
 
 const declarations = handleAction(
   combineActions(
+    'declarations/FETCH_DECLARATION_SUCCESS',
     'declarations/FETCH_DECLARATIONS_SUCCESS',
     'declarations/CREATE_DECLARATIONS_SUCCESS',
-    'declarations/SEARCH_DECLARATION_SUCCESS',
   ),
   (state, action) => ({
     ...state,
