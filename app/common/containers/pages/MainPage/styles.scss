@@ -55,11 +55,17 @@
     margin: 0 44px;
     vertical-align: top;
 
-    & > p {
+    & > a {
+      text-decoration: none;
+      color: #292b37;
+    }
+
+    .title {
       font-size: 25px;
+      margin-top: 45px;
+      display: block;
       font-weight: 400;
       line-height: 32px;
-      margin-top: 45px;
       max-width: 150px;
     }
   }

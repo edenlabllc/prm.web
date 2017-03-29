@@ -13,6 +13,7 @@ const URL_TEST_REG_EXP = /^((?:[a-z]+:)?\/\/)|mailto:/i;
 const Button = (props) => {
   const {
     theme = THEMES[0],
+    width,
     active = false,
     disabled = false,
     block = false,
@@ -30,6 +31,7 @@ const Button = (props) => {
     active && styles.active,
     disabled && styles.disabled,
     block && styles.block,
+    width && [`width-${width}`]
   );
 
   const content = (

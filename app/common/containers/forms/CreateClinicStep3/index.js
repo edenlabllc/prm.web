@@ -1,15 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import withStyles from 'withStyles';
+import { reduxForm, Field, FormSection } from 'redux-form';
 
-import { Field, reduxForm, getFormValues } from 'redux-form';
-import Input, { DateInput, MaskedInput, SelectInput } from 'components/Input';
-import Button from 'components/Button';
-import { H3 } from 'components/Title';
+import Input, { MaskedInput, SelectInput } from 'components/Input';
+import Datepicker from 'components/Datepicker';
+import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
-import add from 'public/images/add.svg';
-import styles from './styles.scss';
+import Form, { FormBlock, FormRow, FormColumn, FormButtons } from 'components/Form';
 
 const category = [
   'вища категорія',
@@ -20,40 +17,28 @@ const category = [
 @reduxForm({
   form: 'clinicRegistrationStep3',
 })
-@connect(state => ({
-  values: getFormValues('clinicRegistrationStep3')(state),
-}))
-@withStyles(styles)
 export default class CreateClinicStep3 extends React.Component {
   render() {
-    // const { values } = this.props;
-
     return (
-      <form className={styles.form}>
-        <div className={styles.form__title}>
-          <H3>Дані про відокремлені підрозділи</H3>
-        </div>
-        <Addresses />
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Назва" type="text" name="name" component={Input} />
-          </div>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер ВП" type="text" name="number" component={Input} />
-          </div>
-        </div>
-        <div className={styles.form__plus}>
-          <a>
-            <img src={add} alt="" />
-            <span>Додати підрозділ</span>
-          </a>
-        </div>
-        <div className={styles.form__title}>
-          <H3>Державна акредитація</H3>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <div className={styles.form__row__item}>
+      <Form>
+        <FormBlock title="Дані про відокремлені підрозділи">
+          <FormSection name="addresses.RESIDENCE">
+            <Addresses />
+          </FormSection>
+        </FormBlock>
+        <FormBlock>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Назва" type="text" name="name" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Номер ВП" type="text" name="number" component={Input} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+        <FormBlock title="Державна акредитація">
+          <FormRow>
+            <FormColumn>
               <Field
                 theme="medium"
                 component={SelectInput}
@@ -63,50 +48,47 @@ export default class CreateClinicStep3 extends React.Component {
                   title: item, name: item,
                 }))}
               />
-            </div>
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата" placeholder="ДД/ММ/РР" name="documents.date" component={DateInput} />
-          </div>
-          <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Термін дії до" placeholder="ДД/ММ/РР" name="documents.issue_date" component={DateInput} />
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер наказу МОЗ" type="text" name="number" component={Input} />
-          </div>
-          <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата наказу" placeholder="ДД/ММ/РР" name="documents.issue_by" component={DateInput} />
-          </div>
-        </div>
-        <div className={styles.form__title}>
-          <H3>Ліцензія</H3>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Серія" type="text" name="serial" component={Input} />
-          </div>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер ліцензії" type="text" name="serialNumber" component={Input} />
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_in" component={DateInput} />
-          </div>
-          <div className={styles.form__row__item}>
-            <Field theme="space-between" label="Орган" placeholder="ДД/ММ/РР" name="organ" component={DateInput} />
-          </div>
-        </div>
-        <div className={styles.form__title}>
-          <H3>Контакти закладу</H3>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <div className={styles.form__row__item}>
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="space-between" label="Дата" placeholder="ДД/ММ/РР" name="documents.date" component={Datepicker} />
+            </FormColumn>
+            <FormColumn>
+              <Field theme="space-between" label="Термін дії до" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Номер наказу МОЗ" type="text" name="number" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field theme="space-between" label="Дата наказу" placeholder="ДД/ММ/РР" name="documents.issue_by" component={Datepicker} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+
+        <FormBlock title="Ліцензія">
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Серія" type="text" name="serial" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Номер ліцензії" type="text" name="serialNumber" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_in" component={Datepicker} />
+            </FormColumn>
+            <FormColumn>
+              <Field theme="space-between" label="Орган" placeholder="ДД/ММ/РР" name="organ" component={Datepicker} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+        <FormBlock title="Контакти закладу">
+          <FormRow>
+            <FormColumn>
               <Field
                 theme="medium"
                 component={SelectInput}
@@ -116,32 +98,27 @@ export default class CreateClinicStep3 extends React.Component {
                   title: item, name: item,
                 }))}
               />
-            </div>
-          </div>
-        </div>
-        <div className={styles.form__plus}>
-          <a>
-            <img src={add} alt="" />
-            <span>Додати контакти</span>
-          </a>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
-          </div>
-        </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__row__item}>
-            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
-          </div>
-        </div>
-        <div className={styles.form__plus} />
-        <div className={styles.form__btns}>
-          <Button type="/clinicStep2">Назад</Button>
-          <Button type="submit">Зберегти зміни</Button>
-          <Button to="/" theme="blue">Далі</Button>
-        </div>
-      </form>
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+        <FormButtons>
+          <ButtonsGroup>
+            <Button to="/clinicStep2">Назад</Button>
+            <Button>Зберегти зміни</Button>
+            <Button to="/" theme="blue">Далі</Button>
+          </ButtonsGroup>
+        </FormButtons>
+      </Form>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import classnames from 'classnames';
+import { Link } from 'react-router';
 
 import logo from './img/logo.svg';
 
@@ -25,16 +26,22 @@ export default class MainPage extends React.Component {
         </div>
         <div className={styles.section__content}>
           <div className={styles.section__item}>
-            <div className={classnames(styles.icon, styles.icon__clinic)} alt="" />
-            <p>Медичні заклади</p>
+            <Link to="/clinic">
+              <div className={classnames(styles.icon, styles.icon__clinic)} alt="" />
+              <p className={styles.title}>Медичні заклади</p>
+            </Link>
           </div>
           <div className={styles.section__item}>
-            <div className={classnames(styles.icon, styles.icon__doc)} alt="" />
-            <p>Лікарі</p>
+            <Link to="/doctors">
+              <div className={classnames(styles.icon, styles.icon__doc)} alt="" />
+              <p className={styles.title}>Лікарі</p>
+            </Link>
           </div>
           <div className={styles.section__item}>
-            <div className={classnames(styles.icon, styles.icon__pat)} alt="" />
-            <p>Пацієнти</p>
+            <Link to="/declarations">
+              <div className={classnames(styles.icon, styles.icon__pat)} alt="" />
+              <p className={styles.title}>Пацієнти</p>
+            </Link>
           </div>
         </div>
       </section>
