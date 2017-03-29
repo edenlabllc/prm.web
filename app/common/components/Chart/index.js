@@ -2,18 +2,18 @@ import React from 'react';
 import { ComposedChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const data = [
-  { name: '01.03.2017', всього: 0, закрито: -100, відкрито: 500, amt: 1400 },
-  { name: '02.03.2017', всього: 400, закрито: -267, відкрито: 407, amt: 1506 },
-  { name: '03.03.2017', всього: 200, закрито: -598, відкрито: 209, amt: 989 },
-  { name: '04.03.2017', всього: 600, закрито: -500, відкрито: 320, amt: 1228 },
-  { name: '05.03.2017', всього: 200, закрито: -308, відкрито: 110, amt: 1100 },
-  { name: '06.03.2017', всього: 100, закрито: -680, відкрито: 280, amt: 1700 },
-  { name: '07.03.2017', всього: 290, закрито: -200, відкрито: 200, amt: 1400 },
-  { name: '08.03.2017', всього: 368, закрито: -137, відкрито: 67, amt: 1506 },
-  { name: '09.03.2017', всього: 297, закрито: -498, відкрито: 109, amt: 989 },
-  { name: '10.03.2017', всього: 180, закрито: -300, відкрито: 120, amt: 1228 },
-  { name: '11.03.2017', всього: 420, закрито: -108, відкрито: 110, amt: 1100 },
-  { name: '12.03.2017', всього: 500, закрито: -380, відкрито: 280, amt: 1700 }];
+  { name: '01.03.2017', all: 0, closed: -100, open: 500 },
+  { name: '02.03.2017', all: 400, closed: -267, open: 407 },
+  { name: '03.03.2017', all: 200, closed: -598, open: 209 },
+  { name: '04.03.2017', all: 600, closed: -500, open: 320 },
+  { name: '05.03.2017', all: 200, closed: -308, open: 110 },
+  { name: '06.03.2017', all: 100, closed: -680, open: 280 },
+  { name: '07.03.2017', all: 290, closed: -200, open: 200 },
+  { name: '08.03.2017', all: 368, closed: -137, open: 67 },
+  { name: '09.03.2017', all: 297, closed: -498, open: 109 },
+  { name: '10.03.2017', all: 180, closed: -300, open: 120 },
+  { name: '11.03.2017', all: 420, closed: -108, open: 110 },
+  { name: '12.03.2017', all: 500, closed: -380, open: 280 }];
 
 const CustomizedAxisTick = ({ x, y, payload }) => (
   <g transform={`translate(${x},${y})`}>
@@ -39,9 +39,9 @@ export default class Chart extends React.Component {
         <YAxis />
         <Tooltip />
         <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
-        <Bar dataKey="закрито" stackId="a" barSize={20} fill="#fc0f1b" />
-        <Bar dataKey="відкрито" stackId="a" barSize={20} fill="#17af55" />
-        <Line type="monotone" dataKey="всього" stroke="#72ab4e" strokeWidth={3} />
+        <Bar name="Закрито" dataKey="closed" stackId="a" barSize={20} fill="#fc0f1b" />
+        <Bar name="Відкрито" dataKey="open" stackId="a" barSize={20} fill="#17af55" />
+        <Line name="Всього" type="monotone" dataKey="all" stroke="#72ab4e" strokeWidth={3} />
         <Legend />
       </ComposedChart>
     );
