@@ -34,7 +34,7 @@ export default class CreateDeclarationStep2 extends React.Component {
             onSubmit={onCreate}
           />
         </div>
-        <SignInDeclarationPopup />
+        <SignInDeclarationPopup lookup={true} />
       </section>
     );
   }
