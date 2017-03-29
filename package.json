@@ -165,6 +165,7 @@
     "react-addons": "^0.9.1-deprecated",
     "react-addons-test-utils": "15.2.1",
     "react-dropzone": "^3.12.2",
+    "recharts": "^0.21.2",
     "selenium-download": "^2.0.6",
     "selenium-server-standalone-jar": "^2.53.1",
     "sinon": "^1.17.6",

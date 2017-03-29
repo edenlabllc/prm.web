@@ -13,6 +13,7 @@ import MISLayout from 'containers/layouts/MISLayout';
 
 import DeclarationsPage from 'containers/pages/Declarations';
 import DoctorsPage from 'containers/pages/Doctors';
+import ReportsPage from 'containers/pages/ReportsPage';
 
 import MainPage from 'containers/pages/MainPage';
 
@@ -61,6 +62,7 @@ export const configureRoutes = () => (
       <Route component={NavigationLayout}>
         <Route path="declarations" component={DeclarationsPage} />
         <Route path="doctors" component={DoctorsPage} />
+        <Route path="reports" component={ReportsPage} />
       </Route>
     </Route>
   </Route>

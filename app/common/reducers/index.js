@@ -7,6 +7,7 @@ import declarations from 'redux/declarations';
 import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
+import reports from 'redux/reports';
 
 import Table from 'containers/blocks/Table/redux';
 import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
@@ -26,6 +27,7 @@ export default combineReducers({
   doctors,
   persons,
   msps,
+  reports,
 
   // containers blocks
   blocks,
@@ -53,6 +55,7 @@ export const getDeclaration = (state, id) => {
 export const getDeclarations = (state, ids) =>
   ids.map(id => getDeclaration(state, id)).filter(i => i);
 
-
 export const getMSP = (state, id) => state.msps[id];
 export const getAllMSPS = state => Object.values(state.msps);
+
+export const getReports = state => state.reports;
