@@ -29,7 +29,6 @@ import CreateClinicStep1 from 'containers/blocks/CreateClinicStep1';
 import CreateClinicStep2 from 'containers/blocks/CreateClinicStep2';
 import CreateClinicStep3 from 'containers/blocks/CreateClinicStep3';
 
-
 export const configureRoutes = () => (
   <Route component={App}>
 
@@ -64,6 +63,5 @@ export const configureRoutes = () => (
         <Route path="doctors" component={DoctorsPage} />
       </Route>
     </Route>
-
   </Route>
 );
