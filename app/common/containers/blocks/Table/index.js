@@ -62,11 +62,13 @@ export default class Table extends React.Component {
                         styles.table__status_color,
                         item.status === 'signed' && styles.table__status_color_green,
                         item.status === 'pending_signature' && styles.table__status_color_blue,
+                        item.status === 'closed' && styles.table__status_color_closed,
                       )
                     }
                   >
                     {item.status === 'pending_signature' && 'Не підписано' }
                     {item.status === 'signed' && 'Підписано' }
+                    {item.status === 'closed' && 'Розірвано' }
                   </td>
                 </tr>
               )

@@ -1,10 +1,12 @@
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
-import { createDeclaration } from 'redux/declarations';
+import { createDeclaration, closeDeclaration } from 'redux/declarations';
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();
   const doctor_id = values.doctor;
+  const current_declarationID = state.blocks.SelectedPerson.declaration;
+  console.log(state.blocks.SelectedPerson);
 
   const addresses = Object.entries(values.addresses).map(([type, value]) => ({
     country: 'UA',
@@ -26,7 +28,6 @@ export const onCreate = values => (dispatch, getState) => {
 
 
   return dispatch(createPerson(obj)).then((newPatient) => {
-    console.log(newPatient);
     const patientsObj = newPatient.payload.entities.persons;
     const person_id = patientsObj[Object.keys(patientsObj)[0]].id;
 
@@ -49,8 +50,13 @@ export const onCreate = values => (dispatch, getState) => {
         },
       };
 
-      return dispatch(createDeclaration(obj)).then((resp) => {
-        console.log(resp);
+      // TODO: get declaration number from last step
+
+      return Promise.All([
+        dispatch(createDeclaration(obj)),
+        dispatch(closeDeclaration(current_declarationID)),
+      ]).then((resp, resp2) => {
+        console.log(resp, resp2);
       });
     });
   });

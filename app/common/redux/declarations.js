@@ -47,6 +47,24 @@ export const searchDeclation = options => dispatch => dispatch(invoke({
   ],
 }));
 
+export const closeDeclaration = id => dispatch => dispatch(invoke({
+  endpoint: `${PRM_URL}/declarations/${id}`,
+  method: 'PUT',
+  types: [
+    'declarations/CLOSE_DECRATION_REQUEST', {
+      type: 'declarations/CLOSE_DECLARATION_SUCCESS',
+      payload: (action, state, res) => res.json().then(json =>
+        normalize(json.data, arrayOf(declarationsSchema))),
+    },
+    'declarations/CLOSE_DECLARATION_FAILER',
+  ],
+  body: {
+    declaration: {
+      status: 'closed',
+    },
+  },
+}));
+
 const declarations = handleAction(
   combineActions(
     'declarations/FETCH_DECLARATIONS_SUCCESS',
