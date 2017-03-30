@@ -49,7 +49,7 @@ export const createDeclaration = body => dispatch => dispatch(invoke({
 }));
 
 export const signInDeclaration = id => dispatch => dispatch(invoke({
-  endpoint: `${PRM_URL}/declarations/${id}`,
+  endpoint: createUrl(`${PRM_URL}/declarations/${id}`),
   method: 'PUT',
   types: [
     'declarations/SIGN_IN_DECRATION_REQUEST', {
@@ -60,13 +60,14 @@ export const signInDeclaration = id => dispatch => dispatch(invoke({
     'declarations/SIGN_IN_DECLARATION_FAILER',
   ],
   body: {
-    signature: 'string',
-    signed_at: (new Date()).toJSON(),
+    declaration: {
+      status: 'signed',
+    },
   },
 }));
 
 export const closeDeclaration = id => dispatch => dispatch(invoke({
-  endpoint: `${PRM_URL}/declarations/${id}`,
+  endpoint: createUrl(`${PRM_URL}/declarations/${id}`),
   method: 'PUT',
   types: [
     'declarations/CLOSE_DECRATION_REQUEST', {
