@@ -14,15 +14,17 @@ REPO_URL="https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git";
 git remote add upstream $REPO_URL
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+
+  echo "Version. Commiting version increment.";
+  git add package.json;
+  git commit -m "Increment version [ci skip]";
+
   if [ "$TRAVIS_BRANCH" == "$RELEASE_BRANCH" ]; then
-    echo "Release docker container"
-    ./bin/release.sh -a $DOCKER_HUB_ACCOUNT -t $TRAVIS_BRANCH -l;
+    ./bin/release.sh -t $TRAVIS_BRANCH -l;
   fi;
 
   if [[ "$MAIN_BRANCHES" =~ "$TRAVIS_BRANCH" ]]; then
     echo "Done. Commiting changes back to repo.";
-    git add package.json;
-    git commit -m "Increment version [ci skip]";
     git push upstream HEAD:$TRAVIS_BRANCH > /dev/null 2>&1;
     git push upstream HEAD:$TRAVIS_BRANCH --tags > /dev/null 2>&1;
   fi;
