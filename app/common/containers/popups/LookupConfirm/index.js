@@ -13,26 +13,26 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'verifyLookupFailure',
+  name: 'lookupConfirm',
 })
 @connect(null, {
   submit,
 })
-export default class VerifyLookupFailure extends React.Component {
+export default class LookupConfirm extends React.Component {
   render() {
-    const { popup, handleClose, onSubmit } = this.props;
+    const { popup, submit, handleClose, onSubmit } = this.props;
     return (
       <Popup
         {...popup}
         onClose={handleClose}
         buttons={[
           { children: 'Назад', theme: 'light', onClick: () => handleClose() },
-          { children: 'Підтвердити', theme: 'blue', onClick: () => onSubmit(submit('lookupConfirm')) },
+          { children: 'Підтвердити', theme: 'blue', onClick: () => submit('lookupConfirm') },
         ]}
       >
         <div className={classnames(styles.title, styles.title_wide)}>
           <H3>Введіть код з смс</H3>
-          <LookupConfirmForm />
+          <LookupConfirmForm onSubmit={onSubmit} />
         </div>
       </Popup>
     );

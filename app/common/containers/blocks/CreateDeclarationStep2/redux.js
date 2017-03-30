@@ -22,19 +22,25 @@ export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) =>
 export const onDataFormSubmit = formData => (dispatch) => {
   dispatch(saveFormData(formData));
   return dispatch(sendLookup(formData.phone))
-  .then(response => dispatch([
-    saveRequestId(response.request_id),
-    show('lookupConfirm'),
-  ]));
+  .then((response) => {
+    console.log(response);
+    return dispatch([
+      saveRequestId(response.payload.request_id),
+      show('lookupConfirm'),
+    ]);
+  });
 };
 
 export const onLookupSubmit = (requestId, code) => (dispatch, getState) => {
   const state = getState();
+  console.log(requestId, code);
   const formData = state.blocks.CreateDeclarationStep2.formData;
   return dispatch(sendLookupConfirm(requestId, code))
     .then(() => dispatch(onCreateDeclaration(formData)))
-    .then(() => dispatch(show('verifyLookupSuccess')))
-    .catch(() => dispatch(show('verifyLookupFailure')));
+    .then((action) => {
+      if (action.error) return dispatch(show('verifyLookupFailure'));
+      return dispatch(show('verifyLookupSuccess'));
+    });
 };
 
 export const onCreateDeclaration = values => (dispatch, getState) => {

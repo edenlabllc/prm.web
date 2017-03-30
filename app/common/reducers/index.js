@@ -7,6 +7,7 @@ import declarations from 'redux/declarations';
 import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
+import lookup from 'redux/sms';
 
 import { arrayWithTypeToObject } from 'helpers/transforms';
 
@@ -40,6 +41,7 @@ export default combineReducers({
   doctors,
   persons,
   msps,
+  lookup,
 
   pages,
   blocks,
