@@ -14,31 +14,31 @@ export default class NSZModulesPage extends React.Component {
             Оберіть “Адміністративний модуль” однієї із систем
           </div>
           <div className={styles.section__modules}>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
-            <Link to="/main">
+            <Link to="/clinics/create">
               <div />
             </Link>
           </div>
