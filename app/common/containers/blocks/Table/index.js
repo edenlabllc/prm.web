@@ -26,7 +26,7 @@ export default class Table extends React.Component {
     const { declarations = [] } = this.props;
 
     return (
-      <section>
+      <section className={styles.wrap}>
         <table className={styles.table}>
           <thead className={styles.table__header}>
             <tr>

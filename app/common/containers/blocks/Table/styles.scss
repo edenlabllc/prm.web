@@ -1,8 +1,12 @@
 
 
+.wrap {
+  width: 100%;
+}
+
 .table {
   width: 100%;
-  table-layout: fixed;
+  // table-layout: fixed;
   margin-top: 29px;
   border: 1px solid rgba(181, 190, 202, 0.5);
 

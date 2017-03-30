@@ -15,6 +15,8 @@ export default class Datepicker extends React.Component {
       dropdownMode="select"
       {...this.props}
       theme="date"
+      showMonthDropdown
+      showYearDropdown
       placeholderText="ДД/ММ/РР"
       dateFormat="DD/MM/YY"
       iconRight={<Icon name="calendar" />}
