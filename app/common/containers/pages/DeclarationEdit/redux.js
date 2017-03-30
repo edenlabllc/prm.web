@@ -1,15 +1,7 @@
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration, closeDeclaration } from 'redux/declarations';
-import { push } from 'react-router-redux';
 import { objectToArrayWithType } from 'helpers/transforms';
-
-export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) => {
-  const state = getState();
-  const firstStepData = state.flows.createDeclaration.person;
-  if (firstStepData) return true;
-  return dispatch(push('/declaration'));
-};
 
 export const onCreate = values => (dispatch, getState) => {
   const state = getState();
