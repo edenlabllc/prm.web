@@ -8,9 +8,9 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'verifyLookupFailure',
+  name: 'declarationCreateFailure',
 })
-export default class VerifyLookupFailure extends React.Component {
+export default class DeclarationCreateFailurePopup extends React.Component {
   render() {
     const { popup, handleClose } = this.props;
     return (
@@ -22,7 +22,8 @@ export default class VerifyLookupFailure extends React.Component {
         ]}
       >
         <div className={classnames(styles.title, styles.title_wide)}>
-          <H3>Ви невірно ввели код з смс</H3>
+          <H3>ПОМИЛКА ПРИ СТВОРЕННІ ДЕКЛАРАЦІЇ</H3>
+          <p>Спробуйте ще раз або зателефонуйте до служби підтримки за номером 0800 322 22 22</p>
         </div>
       </Popup>
     );

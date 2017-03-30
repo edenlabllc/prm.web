@@ -8,17 +8,17 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'verifyLookupSuccess',
+  name: 'declarationCreateSuccess',
 })
-export default class VerifyLookupSuccess extends React.Component {
+export default class DeclarationCreateSuccessPopup extends React.Component {
   render() {
-    const { popup, handleClose } = this.props;
+    const { popup, handleClose, onClose } = this.props;
     return (
       <Popup
         {...popup}
         onClose={handleClose}
         buttons={[
-          { children: 'ЗАКРИТИ', theme: 'blue', onClick: () => handleClose(), to: '/declarations' },
+          { children: 'ЗАКРИТИ', theme: 'blue', onClick: () => handleClose() && onClose() },
         ]}
       >
         <div className={classnames(styles.title, styles.title_wide)}>

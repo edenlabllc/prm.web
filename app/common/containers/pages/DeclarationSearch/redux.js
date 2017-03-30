@@ -1,6 +1,7 @@
 import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { push } from 'react-router-redux';
+import { createUrl } from 'helpers/url';
 
 import { fetchDeclarations } from 'redux/declarations';
 import { fetchPersons, fetchPerson } from 'redux/person';
@@ -70,7 +71,7 @@ export const onSelectDeclaration = person => (dispatch) => {
 export const createNewDeclaration = person => dispatch =>
   dispatch([
     savePerson(person),
-    push('/declarationStep2'),
+    push(createUrl('/declarations/create', person)),
   ]);
 
 export const updateExistingDeclaration = ({ person, declaration }) => dispatch =>
