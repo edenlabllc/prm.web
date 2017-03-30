@@ -12,7 +12,9 @@ import { sendLookup, sendLookupConfirm } from 'redux/sms';
 const saveRequestId = createAction('DeclarationCreate/SAVE_REQUEST_ID');
 
 export const onDataFormSubmit = formData => dispatch =>
-  dispatch(sendLookup(formData.phone))
+  dispatch(sendLookup({
+    phone_number: `+38${formData.phones.MOBILE.number}`,
+  }))
     .then(response => dispatch([
       saveRequestId(response.payload.request_id),
       show('lookupConfirm'),
