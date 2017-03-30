@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/Nebo15/prm.web.svg?branch=master)](https://travis-ci.org/Nebo15/prm.web)
 
-eHealth UI
+Medical Information System reference front-end for demonstration-only purposes.
 
-Docker: https://hub.docker.com/r/nebo15/prm.web/
+Docker: https://hub.docker.com/r/nebo15/prm.web/   
 Demo: https://prm-web.herokuapp.com/
 
 ## Technologies
