@@ -129,7 +129,7 @@ export default class CreateClinicStep2 extends React.Component {
         <FormButtons>
           <ButtonsGroup>
             <Button to="/clinic">Назад</Button>
-            <Button >Зберегти зміни</Button>
+            <Button type="button">Зберегти зміни</Button>
             <Button to="/clinicStep3" theme="blue">Далі</Button>
           </ButtonsGroup>
         </FormButtons>
@@ -137,4 +137,3 @@ export default class CreateClinicStep2 extends React.Component {
     );
   }
 }
-
