@@ -77,7 +77,7 @@ export const updateExistingDeclaration = ({ person, declaration }) => dispatch =
   dispatch([
     savePerson(person),
     saveDeclaration(declaration),
-    push('/updateDeclarationStep2'),
+    push(`/declarations/${declaration.id}/edit`),
   ]);
 
 const declaration = handleActions({

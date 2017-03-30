@@ -9,6 +9,7 @@ import persons from 'redux/person';
 import msps from 'redux/msps';
 
 import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
+import DeclarationEdit from 'containers/pages/DeclarationEdit/redux';
 
 import Table from 'containers/blocks/Table/redux';
 import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2/redux';
@@ -21,6 +22,7 @@ const flows = combineReducers({
 
 const pages = combineReducers({
   DeclarationSearch,
+  DeclarationEdit,
 });
 
 const blocks = combineReducers({
