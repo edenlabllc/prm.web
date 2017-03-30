@@ -1,14 +1,13 @@
 
 .main {
   background-color: #eff2f7;
-  width: 100%;
   min-height: 100vh;
   padding-bottom: 40px;
+  display: table;
+  width: 100%;
 
   &__wrap {
-    min-width: 960px;
-    max-width: 960px;
-    width: 100%;
+    width: 960px;
     margin: 0 auto;
     position: relative;
   }

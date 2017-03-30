@@ -141,8 +141,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
                 theme="space-between"
                 label="Дата народження"
                 name="birth_date"
-                showMonthDropdown
-                showYearDropdown
                 component={Datepicker}
                 disabled={disabled}
               />

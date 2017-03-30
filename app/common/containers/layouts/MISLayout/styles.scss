@@ -1,6 +1,7 @@
 .wrapper {
-  background-image: url('../../../../../public/images/mis_bgr_image.jpg');
+  background-image: url('/images/mis_bgr_image.jpg');
   width: 100%;
+  min-width: 960px;
   height: 768px;
   background-position: center top;
   background-size: cover;
@@ -18,4 +19,3 @@
   font-weight: 500;
   line-height: 25px;
 }
-

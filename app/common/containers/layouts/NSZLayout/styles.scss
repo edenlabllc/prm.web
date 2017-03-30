@@ -1,7 +1,19 @@
 .wrapper {
-  background-image: url('../../../../../public/images/landing-bg.png');
+  position: relative;
+  display: table;
   width: 100%;
-  height: 540px;
-  background-position: right bottom;
-  background-size: initial;
+  padding: 0 20px;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 540px;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    background-image: url('/images/landing-bg.png');
+    background-position: right bottom;
+    background-size: initial;
+  }
 }
