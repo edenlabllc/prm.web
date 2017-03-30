@@ -8,7 +8,7 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'signInDeclaration',
+  name: 'verifyLookupSuccess',
 })
 export default class VerifyLookupSuccess extends React.Component {
   render() {

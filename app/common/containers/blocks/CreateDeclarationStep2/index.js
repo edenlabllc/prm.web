@@ -8,7 +8,11 @@ import { submit } from 'redux-form';
 import { H1 } from 'components/Title';
 
 import DeclarationCreateForm from 'containers/forms/DeclarationCreate';
+
 import LookupConfirmPopup from 'containers/popups/LookupConfirm';
+import VerifyLookupSuccess from 'containers/popups/VerifyLookupSuccess';
+import VerifyLookupFailure from 'containers/popups/VerifyLookupFailure';
+
 import { FormButtons } from 'components/Form';
 import Button, { ButtonsGroup } from 'components/Button';
 
@@ -47,6 +51,8 @@ export default class CreateDeclarationStep2 extends React.Component {
           </FormButtons>
         </div>
         <LookupConfirmPopup onSubmit={onLookupSubmit} />
+        <VerifyLookupSuccess />
+        <VerifyLookupFailure />
       </section>
     );
   }
