@@ -35,6 +35,7 @@ export default class CreateDeclarationStep2 extends React.Component {
       onDataFormSubmit,
       onLookupSubmit,
       submit,
+      requestId,
     } = this.props;
     return (
       <section className={styles.declaration}>
@@ -50,7 +51,7 @@ export default class CreateDeclarationStep2 extends React.Component {
             </ButtonsGroup>
           </FormButtons>
         </div>
-        <LookupConfirmPopup onSubmit={onLookupSubmit} />
+        <LookupConfirmPopup onSubmit={({ code }) => onLookupSubmit(requestId, code)} />
         <VerifyLookupSuccess />
         <VerifyLookupFailure />
       </section>
