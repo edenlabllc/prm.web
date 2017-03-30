@@ -1,12 +1,13 @@
 import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
+import { push } from 'react-router-redux';
+import { objectToArrayWithType } from 'helpers/transforms';
 
+import { show } from 'components/Popup';
 import { fetchMSPS } from 'redux/msps';
 import { createPerson } from 'redux/person';
 import { createDeclaration } from 'redux/declarations';
-import { push } from 'react-router-redux';
-import { show } from 'components/Popup';
-import { objectToArrayWithType } from 'helpers/transforms';
+import { sendLookup, sendLookupConfirm } from 'redux/sms';
 
 const saveRequestId = createAction('CreateDeclarationStep2/SAVE_REQUEST_ID');
 const saveFormData = createAction('CreateDeclarationStep2/SAVE_FORM_DATA');
@@ -17,15 +18,6 @@ export const redirectToFirstStepIfDataIsNotExist = () => (dispatch, getState) =>
   if (firstStepData) return true;
   return dispatch(push('/declaration'));
 };
-
-const sendLookup = () => Promise.resolve({
-  request_id: 123123132,
-});
-
-const sendLookupConfirm = requestId => Promise.resolve({
-  requestId,
-  status: '0',
-});
 
 export const onDataFormSubmit = formData => (dispatch) => {
   dispatch(saveFormData(formData));
@@ -41,8 +33,8 @@ export const onLookupSubmit = (requestId, code) => (dispatch, getState) => {
   const formData = state.blocks.CreateDeclarationStep2.formData;
   return dispatch(sendLookupConfirm(requestId, code))
     .then(() => dispatch(onCreateDeclaration(formData)))
-    .then(() => dispatch(show('createDeclarationSuccess')))
-    .catch(() => dispatch(show('createDeclarationFailure')));
+    .then(() => dispatch(show('verifyLookupSuccess')))
+    .catch(() => dispatch(show('verifyLookupFailure')));
 };
 
 export const onCreateDeclaration = values => (dispatch, getState) => {

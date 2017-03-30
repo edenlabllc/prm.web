@@ -8,9 +8,9 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'createDeclarationFailure',
+  name: 'verifyLookupFailure',
 })
-export default class CreateDeclarationFailere extends React.Component {
+export default class VerifyLookupFailure extends React.Component {
   render() {
     const { popup, handleClose } = this.props;
     return (

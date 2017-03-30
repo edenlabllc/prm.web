@@ -13,12 +13,12 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @popup({
-  name: 'lookupConfirm',
+  name: 'verifyLookupFailure',
 })
 @connect(null, {
   submit,
 })
-export default class LookupConfirm extends React.Component {
+export default class VerifyLookupFailure extends React.Component {
   render() {
     const { popup, handleClose, onSubmit } = this.props;
     return (
