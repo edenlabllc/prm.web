@@ -27,10 +27,11 @@ export const onLookupSubmit = (requestId, code, formData, declarationId) => disp
     .then(() => dispatch(onCreateDeclaration(formData, declarationId)))
     .then((action) => {
       if (action.error) throw dispatch(show('declarationCreateFailure'));
-      return dispatch(show('declarationCreateSuccess'));
+      return dispatch(closeDeclaration(declarationId)).then(() =>
+        dispatch(show('declarationCreateSuccess')));
     });
 
-export const onCreateDeclaration = (values, declarationId) => dispatch =>
+export const onCreateDeclaration = values => dispatch =>
   dispatch(createPerson({
     ...pickFn(values, [
       'first_name',
@@ -62,9 +63,7 @@ export const onCreateDeclaration = (values, declarationId) => dispatch =>
           status: 'pending_signature',
           scope: 'family_doctor',
         },
-      })).then(() =>
-        dispatch(closeDeclaration(declarationId))
-      )
+      }))
     )
   );
 
