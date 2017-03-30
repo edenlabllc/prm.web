@@ -18,7 +18,7 @@ export default class Declarations extends React.Component {
         </div>
         <div className={styles.options}>
           <div className={styles.options__new}>
-            <Link to="/declaration">
+            <Link to="/declarations/search">
               <img src={add} alt="" />
               <span>Створити нову декларацію</span>
             </Link>

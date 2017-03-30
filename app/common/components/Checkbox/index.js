@@ -45,7 +45,8 @@ export default class Checkbox extends React.Component {
                 ...input,
                 ...rest,
                 type: 'checkbox',
-                checked,
+                checked: checked || input.value,
+                disabled,
               })
             }
             <div className={styles.view}>

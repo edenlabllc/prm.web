@@ -19,16 +19,17 @@ import MainPage from 'containers/pages/MainPage';
 
 import CreateLayout from 'containers/layouts/CreateLayout';
 
-import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1';
-import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2';
-import UpdateDeclarationStep2 from 'containers/blocks/UpdateDeclarationStep2';
+import DeclarationSearch from 'containers/pages/DeclarationSearch';
+import DeclarationDetails from 'containers/pages/DeclarationDetails';
+import DeclarationEdit from 'containers/pages/DeclarationEdit';
+import DeclarationCreate from 'containers/pages/DeclarationCreate';
 
-import CreateDoctorStep1 from 'containers/blocks/CreateDoctorStep1';
-import CreateDoctorStep2 from 'containers/blocks/CreateDoctorStep2';
+import DoctorCreateStep1 from 'containers/pages/DoctorCreateStep1';
+import DoctorCreateStep2 from 'containers/pages/DoctorCreateStep2';
 
-import CreateClinicStep1 from 'containers/blocks/CreateClinicStep1';
-import CreateClinicStep2 from 'containers/blocks/CreateClinicStep2';
-import CreateClinicStep3 from 'containers/blocks/CreateClinicStep3';
+import ClinicCreateStep1 from 'containers/pages/ClinicCreateStep1';
+import ClinicCreateStep2 from 'containers/pages/ClinicCreateStep2';
+import ClinicCreateStep3 from 'containers/pages/ClinicCreateStep3';
 
 export const configureRoutes = () => (
   <Route component={App}>
@@ -45,18 +46,17 @@ export const configureRoutes = () => (
 
     <Route component={MainLayout}>
       <Route component={CreateLayout}>
-        <Route path="declaration" component={CreateDeclarationStep1} />
-        <Route path="declarationStep2" component={CreateDeclarationStep2} />
-        <Route path="updateDeclarationStep2" component={UpdateDeclarationStep2} />
-      </Route>
-      <Route component={CreateLayout}>
-        <Route path="doctor" component={CreateDoctorStep1} />
-        <Route path="doctorsStep2" component={CreateDoctorStep2} />
-      </Route>
-      <Route component={CreateLayout}>
-        <Route path="clinic" component={CreateClinicStep1} />
-        <Route path="clinicStep2" component={CreateClinicStep2} />
-        <Route path="clinicStep3" component={CreateClinicStep3} />
+        <Route path="declarations/search" component={DeclarationSearch} />
+        <Route path="declarations/create" component={DeclarationCreate} />
+        <Route path="declarations/:declarationId/edit" component={DeclarationEdit} />
+        <Route path="declarations/:declarationId" component={DeclarationDetails} />
+
+        <Route path="doctors/create" component={DoctorCreateStep1} />
+        <Route path="doctors/create/2" component={DoctorCreateStep2} />
+
+        <Route path="clinics/create" component={ClinicCreateStep1} />
+        <Route path="clinics/create/2" component={ClinicCreateStep2} />
+        <Route path="clinics/create/3" component={ClinicCreateStep3} />
       </Route>
 
       <Route component={NavigationLayout}>

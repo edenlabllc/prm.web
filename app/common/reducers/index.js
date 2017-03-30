@@ -8,15 +8,30 @@ import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
 import reports from 'redux/reports';
+import lookup from 'redux/sms';
+
+import { arrayWithTypeToObject } from 'helpers/transforms';
+
+import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
+import DeclarationEdit from 'containers/pages/DeclarationEdit/redux';
+import DeclarationCreate from 'containers/pages/DeclarationCreate/redux';
 
 import Table from 'containers/blocks/Table/redux';
-import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
-import SelectedPerson from 'containers/popups/SearchDeclaration/redux';
+
+import createDeclaration from 'redux/flows/createDeclaration';
+
+const flows = combineReducers({
+  createDeclaration,
+});
+
+const pages = combineReducers({
+  DeclarationSearch,
+  DeclarationEdit,
+  DeclarationCreate,
+});
 
 const blocks = combineReducers({
   Table,
-  CreateDeclarationStep1,
-  SelectedPerson,
 });
 
 export default combineReducers({
@@ -28,9 +43,11 @@ export default combineReducers({
   persons,
   msps,
   reports,
+  lookup,
 
-  // containers blocks
+  pages,
   blocks,
+  flows,
 });
 
 
@@ -49,6 +66,25 @@ export const getDeclaration = (state, id) => {
     patient: getPerson(state, declaration.patient_id),
     doctor: getDoctor(state, declaration.doctor_id),
     msp: getAllMSPS(state)[0], // TODO: replace with valid msp
+  };
+};
+
+
+const transformPatientToForm = patient => ({
+  ...patient,
+  documents: arrayWithTypeToObject(patient.documents),
+  addresses: arrayWithTypeToObject(patient.addresses),
+  phones: arrayWithTypeToObject(patient.phones),
+});
+
+export const getDeclarationFormValues = (state, id) => {
+  const declaration = getDeclaration(state, id);
+  if (!declaration) return null;
+
+  return {
+    ...transformPatientToForm(declaration.patient),
+    isRegistrationAddressEqualsResidence: declaration.patient.addresses.length === 1,
+    doctor: declaration.doctor.id,
   };
 };
 

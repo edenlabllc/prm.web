@@ -22,20 +22,22 @@ export const RadioInput = ({
 
 export default withStyles(styles)(RadioInput);
 
-const RadioInputGroupComponent = ({ items = [], name, label }) => <div className={styles.radios}>
-  <div className={styles.radios__title}>{label}</div>
-  <div className={styles.radios__items}>
-    { items.map(item => (
-      <div key={item.value} className={styles.radios__item}>
-        <Field
-          {...item}
-          name={name}
-          type="radio"
-          component={RadioInput}
-        />
-      </div>
-    ))}
-  </div>
-</div>;
+const RadioInputGroupComponent = ({ items = [], name, label, disabled }) =>
+  <div className={styles.radios}>
+    <div className={styles.radios__title}>{label}</div>
+    <div className={styles.radios__items}>
+      { items.map(item => (
+        <div key={item.value} className={styles.radios__item}>
+          <Field
+            {...item}
+            name={name}
+            type="radio"
+            component={RadioInput}
+            disabled={disabled}
+          />
+        </div>
+      ))}
+    </div>
+  </div>;
 
 export const RadioInputGroup = withStyles(styles)(RadioInputGroupComponent);

@@ -1,0 +1,24 @@
+.form {
+  padding: 20px 0;
+  text-align: left;
+  display: block;
+
+  &__item {
+    display: block;
+    padding: 10px 0;
+
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        display: block;
+        padding: 5px 0;
+      }
+    }
+  }
+}
+
+.bold {
+  font-weight: 700;
+}
