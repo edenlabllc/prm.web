@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, FormSection, getFormValues } from 'redux-form';
+import { reduxForm, Field, FormSection, formValueSelector } from 'redux-form';
 import validate from 'modules/validate';
 
 import Datepicker from 'components/Datepicker';
@@ -29,8 +29,11 @@ const doctors = {
 };
 
 
+const FORM_NAME = 'declarationCreate';
+const selector = formValueSelector(FORM_NAME);
+
 @reduxForm({
-  form: 'createDeclarationStep2',
+  form: FORM_NAME,
   validate: validate({
     birth_place: {
       required: true,
@@ -51,13 +54,13 @@ const doctors = {
       required: true,
     },
     'addresses.RESIDENCE.city': {
-      required: (props, value, values) => !values.checked,
+      required: (props, value, values) => !values.isRegistrationAddressEqualsResidence,
     },
     'addresses.RESIDENCE.street': {
-      required: (props, value, values) => !values.checked,
+      required: (props, value, values) => !values.isRegistrationAddressEqualsResidence,
     },
     'addresses.RESIDENCE.building': {
-      required: (props, value, values) => !values.checked,
+      required: (props, value, values) => !values.isRegistrationAddressEqualsResidence,
     },
     email: {
       required: true,
@@ -73,12 +76,16 @@ const doctors = {
   },
 })
 @connect(state => ({
-  values: getFormValues('createDeclarationStep2')(state),
+  isRegistrationAddressEqualsResidence: selector(state, 'isRegistrationAddressEqualsResidence'),
 }))
 export default class CreateDeclarationStep2Form extends React.Component {
   render() {
-    const { handleSubmit, disabled = false, values, allowed = false } = this.props;
-
+    const {
+      handleSubmit,
+      disabled,
+      isRegistrationAddressEqualsResidence,
+      allowed,
+    } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         {
@@ -113,7 +120,31 @@ export default class CreateDeclarationStep2Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormBlock title="Пацієнт" border>
+        <FormBlock title="Пацієнт">
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Прізвище" type="text" name="last_name" component={Input} disabled={disabled} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Ім’я" type="text" name="first_name" component={Input} disabled={disabled} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={disabled} />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                theme="space-between"
+                label="Дата народження"
+                name="birth_date"
+                showMonthDropdown
+                showYearDropdown
+                component={Datepicker}
+                disabled={disabled}
+              />
+            </FormColumn>
+          </FormRow>
           <FormRow>
             <FormColumn>
               <Field placeholder="Місто народження" type="text" name="birth_place" component={Input} disabled={disabled} />
@@ -136,6 +167,8 @@ export default class CreateDeclarationStep2Form extends React.Component {
               />
             </FormColumn>
           </FormRow>
+        </FormBlock>
+        <FormBlock>
           <FormRow>
             <FormColumn>
               <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input} />
@@ -153,6 +186,24 @@ export default class CreateDeclarationStep2Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormBlock>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={disabled} />
+            </FormColumn>
+            <FormColumn />
+          </FormRow>
+        </FormBlock>
+        <FormBlock border>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Адреса електронної пошти" name="email" component={Input} disabled={disabled} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
 
         {/* <div className={styles.form__plus}>
           <a>
@@ -166,11 +217,11 @@ export default class CreateDeclarationStep2Form extends React.Component {
           </FormSection>
         </FormBlock>
         <FormBlock border>
-          <FormBlockTitle right={<Field name="checked" label="Співпадає з місцем реєстрації" component={Checkbox} disabled={disabled} />}>
+          <FormBlockTitle right={<Field name="isRegistrationAddressEqualsResidence" label="Співпадає з місцем реєстрації" component={Checkbox} disabled={disabled} />}>
             Адреса надання медичних послуг
           </FormBlockTitle>
           <FormSection name="addresses.RESIDENCE">
-            <Addresses disabled={disabled || values.checked} />
+            <Addresses disabled={disabled || isRegistrationAddressEqualsResidence} />
           </FormSection>
         </FormBlock>
         <FormBlock>
@@ -204,18 +255,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
           </FormRow>
         </FormBlock>
         <FormBlock>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Адреса електронної пошти" name="email" component={Input} disabled={disabled} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
           <FormRow>
             <FormColumn>
               <Field placeholder="Слово-пароль" name="secret_word" component={Input} disabled={disabled} />

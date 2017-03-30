@@ -8,6 +8,8 @@ import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
 
+import { arrayWithTypeToObject } from 'helpers/transforms';
+
 import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
 import DeclarationEdit from 'containers/pages/DeclarationEdit/redux';
 
@@ -63,9 +65,27 @@ export const getDeclaration = (state, id) => {
   };
 };
 
+
+const transformPatientToForm = patient => ({
+  ...patient,
+  documents: arrayWithTypeToObject(patient.documents),
+  addresses: arrayWithTypeToObject(patient.addresses),
+  phones: arrayWithTypeToObject(patient.phones),
+});
+
+export const getDeclarationFormValues = (state, id) => {
+  const declaration = getDeclaration(state, id);
+  if (!declaration) return null;
+
+  return {
+    ...transformPatientToForm(declaration.patient),
+    isRegistrationAddressEqualsResidence: declaration.patient.addresses.length === 1,
+    doctor: declaration.doctor.id,
+  };
+};
+
 export const getDeclarations = (state, ids) =>
   ids.map(id => getDeclaration(state, id)).filter(i => i);
-
 
 export const getMSP = (state, id) => state.msps[id];
 export const getAllMSPS = state => Object.values(state.msps);
