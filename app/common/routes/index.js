@@ -27,10 +27,9 @@ import DoctorCreateStep2 from 'containers/pages/DoctorCreateStep2';
 
 import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2';
 
-
-import CreateClinicStep1 from 'containers/blocks/CreateClinicStep1';
-import CreateClinicStep2 from 'containers/blocks/CreateClinicStep2';
-import CreateClinicStep3 from 'containers/blocks/CreateClinicStep3';
+import ClinicCreateStep1 from 'containers/pages/ClinicCreateStep1';
+import ClinicCreateStep2 from 'containers/pages/ClinicCreateStep2';
+import ClinicCreateStep3 from 'containers/pages/ClinicCreateStep3';
 
 export const configureRoutes = () => (
   <Route component={App}>
@@ -55,9 +54,10 @@ export const configureRoutes = () => (
 
         <Route path="doctors/create" component={DoctorCreateStep1} />
         <Route path="doctors/create/2" component={DoctorCreateStep2} />
-        <Route path="clinic" component={CreateClinicStep1} />
-        <Route path="clinicStep2" component={CreateClinicStep2} />
-        <Route path="clinicStep3" component={CreateClinicStep3} />
+
+        <Route path="clinics/create" component={ClinicCreateStep1} />
+        <Route path="clinics/create/2" component={ClinicCreateStep2} />
+        <Route path="clinics/create/3" component={ClinicCreateStep3} />
       </Route>
 
       <Route component={NavigationLayout}>

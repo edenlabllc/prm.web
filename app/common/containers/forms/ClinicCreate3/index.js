@@ -3,10 +3,9 @@ import { reduxForm, Field, FormSection } from 'redux-form';
 
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
-import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
-import Form, { FormBlock, FormRow, FormColumn, FormButtons } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
 
 const category = [
   'вища категорія',
@@ -17,7 +16,7 @@ const category = [
 @reduxForm({
   form: 'clinicRegistrationStep3',
 })
-export default class CreateClinicStep3 extends React.Component {
+export default class ClinicCreate3Form extends React.Component {
   render() {
     return (
       <Form>
@@ -111,13 +110,6 @@ export default class CreateClinicStep3 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormButtons>
-          <ButtonsGroup>
-            <Button to="/clinicStep2">Назад</Button>
-            <Button type="button">Зберегти зміни</Button>
-            <Button to="/declarations" theme="blue">Створити профіль</Button>
-          </ButtonsGroup>
-        </FormButtons>
       </Form>
     );
   }

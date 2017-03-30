@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import Input, { SelectInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
-import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
-import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn, FormButtons } from 'components/Form';
+import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn } from 'components/Form';
 
 const forms = [
   'бюджетні установи',
@@ -28,7 +27,7 @@ const forms = [
 @connect(state => ({
   values: getFormValues('clinicRegistrationStep1')(state),
 }))
-export default class CreateClinicStep1 extends React.Component {
+export default class ClinicCreate1Form extends React.Component {
   render() {
     const { values } = this.props;
 
@@ -97,12 +96,6 @@ export default class CreateClinicStep1 extends React.Component {
             <Addresses disabled={values.checked} />
           </FormSection>
         </FormBlock>
-        <FormButtons>
-          <ButtonsGroup>
-            <Button type="button">Зберегти зміни</Button>
-            <Button to="/clinicStep2" theme="blue">Далі</Button>
-          </ButtonsGroup>
-        </FormButtons>
       </Form>
     );
   }

@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
-import Button, { ButtonsGroup } from 'components/Button';
 
-import Form, { FormBlock, FormRow, FormColumn, FormButtons } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
 
 const country = ['ua', 'ru', 'en'];
 
@@ -20,7 +19,7 @@ const country = ['ua', 'ru', 'en'];
     gender: 'FEMALE',
   },
 }))
-export default class CreateClinicStep2 extends React.Component {
+export default class ClinicCreate2Form extends React.Component {
   render() {
     const { handleSubmit } = this.props;
 
@@ -126,13 +125,6 @@ export default class CreateClinicStep2 extends React.Component {
             <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
           </FormColumn>
         </FormRow>
-        <FormButtons>
-          <ButtonsGroup>
-            <Button to="/clinic">Назад</Button>
-            <Button type="button">Зберегти зміни</Button>
-            <Button to="/clinicStep3" theme="blue">Далі</Button>
-          </ButtonsGroup>
-        </FormButtons>
       </Form>
     );
   }
