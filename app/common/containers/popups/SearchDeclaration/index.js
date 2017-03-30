@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { submit, isInvalid, isSubmitting } from 'redux-form';
 import withStyles from 'withStyles';
 
-import SelectPersonForm from 'containers/forms/SelectPersonForm';
+import SelectPersonForm from 'containers/forms/SelectPerson';
 import Popup, { popup } from 'components/Popup';
 import { H3 } from 'components/Title';
 

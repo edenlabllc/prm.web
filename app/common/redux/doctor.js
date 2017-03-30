@@ -17,13 +17,14 @@ export const fetchDoctors = () => dispatch => dispatch(invoke({
         normalize(json.data, arrayOf(doctorsSchema)),
       ),
     },
-    'doctor/FETCH_DOCTORS_FAILER',
+    'doctor/FETCH_DOCTORS_FAILURE',
   ],
 }));
 
 export const fetchDoctor = id => dispatch => dispatch(invoke({
   endpoint: `${PRM_URL}/doctors/${id}`,
   method: 'get',
+  bailout: state => state.doctors[id],
   types: [
     'doctor/FETCH_DOCTOR_REQUEST', {
       type: 'doctor/FETCH_DOCTOR_SUCCESS',
@@ -31,7 +32,7 @@ export const fetchDoctor = id => dispatch => dispatch(invoke({
         normalize(json.data, doctorsSchema),
       ),
     },
-    'doctor/FETCH_DOCTOR_FAILER',
+    'doctor/FETCH_DOCTOR_FAILURE',
   ],
 }));
 

@@ -9,7 +9,7 @@ const NAV_LIST = [{
   link: '/declarations',
   title: 'Декларації',
 }, {
-  link: '/clinic',
+  link: '/clinics/create',
   title: 'Профіль кліники',
 }, {
   link: '/doctors',

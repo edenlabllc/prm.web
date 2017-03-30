@@ -18,7 +18,7 @@ export default class Doctors extends React.Component {
         </div>
         <div className={styles.options}>
           <div className={styles.options__new}>
-            <Link to="/doctor">
+            <Link to="/doctors/create">
               <img src={add} alt="" />
               <span>Створити профіль лікаря</span>
             </Link>

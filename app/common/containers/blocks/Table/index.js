@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { format } from 'helpers/date';
 
+import { Link } from 'react-router';
+
 import withStyles from 'withStyles';
 import classnames from 'classnames';
 
@@ -62,11 +64,15 @@ export default class Table extends React.Component {
                         styles.table__status_color,
                         item.status === 'signed' && styles.table__status_color_green,
                         item.status === 'pending_signature' && styles.table__status_color_blue,
+                        item.status === 'closed' && styles.table__status_color_closed,
                       )
                     }
                   >
-                    {item.status === 'pending_signature' && 'Не підписано' }
-                    {item.status === 'signed' && 'Підписано' }
+                    <Link to={`/declarations/${item.id}`}>
+                      {item.status === 'pending_signature' && 'Не підписано' }
+                      {item.status === 'signed' && 'Підписано' }
+                      {item.status === 'closed' && 'Розірвано' }
+                    </Link>
                   </td>
                 </tr>
               )
