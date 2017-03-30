@@ -55,7 +55,7 @@ export default class DeclarationSearchForm extends React.PureComponent {
               <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phone_number" component={MaskedInput} disabled={disabled} />
             </FormColumn>
           </FormRow>
         </FormBlock>

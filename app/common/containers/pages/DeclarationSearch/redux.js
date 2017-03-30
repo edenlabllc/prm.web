@@ -2,7 +2,6 @@ import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { push } from 'react-router-redux';
 import { createUrl } from 'helpers/url';
-
 import { fetchDeclarations } from 'redux/declarations';
 import { fetchPersons, fetchPerson } from 'redux/person';
 import { fetchDoctor } from 'redux/doctor';
@@ -11,7 +10,6 @@ import { fetchMSPS } from 'redux/msps';
 import { savePerson, saveDeclaration } from 'redux/flows/createDeclaration';
 
 import { show, hide } from 'components/Popup';
-import { objectToArrayWithType } from 'helpers/transforms';
 
 const setDeclaration = createAction('CreateDeclarationStep1/SET_DECLARATION');
 const setCurrentPerson = createAction('CreateDeclarationStep1/SET_CURRENT_PERSON');
@@ -21,10 +19,7 @@ export const onSubmit = values => (dispatch) => {
   const options = {
     ...values,
     birth_date: (new Date(values.birth_date)).toJSON(),
-    phones: objectToArrayWithType(values.phones).map(i => ({
-      ...i,
-      number: i.number && `+38${i.number}`,
-    })),
+    phone_number: values.phone_number && `+38${values.phone_number}`,
   };
 
   dispatch(setCurrentPerson(options));
@@ -45,16 +40,8 @@ export const onSelectDeclaration = person => (dispatch) => {
   };
 
   return dispatch(fetchDeclarations(selectedPatient)).then((resp) => {
-    const declarations = resp.payload.entities.declarations;
-
-    // TODO: remove, when API will fix fallback return
-    const validDeclarations = Object.values(declarations).filter(
-      declaration => declaration.patient_id === selectedPatient.patient_id
-    );
-    if (validDeclarations.length === 0) return dispatch(show('emptySearchPopup'));
-
-    const declaration = validDeclarations[0];
-
+    if (!resp.payload.result.length) return dispatch(show('emptySearchPopup'));
+    const declaration = Object.values(resp.payload.entities.declarations)[0];
     return Promise.all([
       dispatch(fetchDoctor(declaration.doctor_id)),
       dispatch(fetchPerson(declaration.patient_id)),

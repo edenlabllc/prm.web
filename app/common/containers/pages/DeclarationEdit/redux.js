@@ -9,7 +9,7 @@ import { createPerson } from 'redux/person';
 import { createDeclaration, closeDeclaration } from 'redux/declarations';
 import { sendLookup, sendLookupConfirm } from 'redux/sms';
 
-const saveRequestId = createAction('DeclarationCreate/SAVE_REQUEST_ID');
+const saveRequestId = createAction('DeclarationEdit/SAVE_REQUEST_ID');
 
 export const onDataFormSubmit = formData => dispatch =>
   dispatch(sendLookup(formData.phone))
