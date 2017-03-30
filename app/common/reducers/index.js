@@ -7,6 +7,7 @@ import declarations from 'redux/declarations';
 import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
+import reports from 'redux/reports';
 import lookup from 'redux/sms';
 
 import { arrayWithTypeToObject } from 'helpers/transforms';
@@ -41,6 +42,7 @@ export default combineReducers({
   doctors,
   persons,
   msps,
+  reports,
   lookup,
 
   pages,
@@ -91,3 +93,5 @@ export const getDeclarations = (state, ids) =>
 
 export const getMSP = (state, id) => state.msps[id];
 export const getAllMSPS = state => Object.values(state.msps);
+
+export const getReports = state => state.reports;

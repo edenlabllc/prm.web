@@ -15,10 +15,10 @@ const NAV_LIST = [{
   link: '/doctors',
   title: 'Реєстр Лікарів',
 }, {
-  // link: '/patients',
+  link: '/patients',
   title: 'Пацієнти',
 }, {
-  // link: '/payments',
+  link: '/reports',
   title: 'Розрахунки',
 }];
 
