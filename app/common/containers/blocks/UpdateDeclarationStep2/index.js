@@ -3,7 +3,7 @@ import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 
 import { PageTitle } from 'components/Title';
-import CreateDeclarationStep2 from 'containers/forms/CreateDeclarationStep2';
+import DeclarationCreateForm from 'containers/forms/DeclarationCreate';
 
 import { onCreate, redirectToFirstStepIfDataIsNotExist } from './redux';
 
@@ -24,7 +24,7 @@ export default class UpdateDeclarationStep2 extends React.Component {
     return (
       <section>
         <PageTitle>Створити нову декларацію. Крок 2</PageTitle>
-        <CreateDeclarationStep2
+        <DeclarationCreateForm
           onSubmit={onCreate}
           allowed={true}
         />

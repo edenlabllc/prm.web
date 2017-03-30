@@ -2,13 +2,12 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import validate from 'modules/validate';
 
-import Form, { FormButtons, FormRow, FormColumn, FormBlock } from 'components/Form';
+import Form, { FormRow, FormColumn, FormBlock } from 'components/Form';
 import Input, { MaskedInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
-import Button, { ButtonsGroup } from 'components/Button';
 
 @reduxForm({
-  form: 'createDeclarationStep1',
+  form: 'declarationSearch',
   validate: validate({
     first_name: {
       required: true,
@@ -21,7 +20,7 @@ import Button, { ButtonsGroup } from 'components/Button';
     },
   }),
 })
-export default class CreateDeclarationStep1Form extends React.PureComponent {
+export default class DeclarationSearchForm extends React.PureComponent {
   render() {
     const { handleSubmit, title, disabled } = this.props;
     return (
@@ -60,18 +59,6 @@ export default class CreateDeclarationStep1Form extends React.PureComponent {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        {
-          !disabled && (
-            <FormButtons>
-              <ButtonsGroup>
-                <Button to="/declarations">Назад</Button>
-                <Button theme="blue" type="submit">
-                  Знайти
-                </Button>
-              </ButtonsGroup>
-            </FormButtons>
-          )
-        }
       </Form>
     );
   }

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { PageTitle } from 'components/Title';
 
-import CreateDeclarationStep2Form from 'containers/forms/CreateDeclarationStep2';
-import CreateDeclarationStep1Form from 'containers/forms/CreateDeclarationStep1';
+import DeclarationCreateForm from 'containers/forms/DeclarationCreate';
+import DeclarationSearchForm from 'containers/forms/DeclarationSearch';
 import { fetchDeclaration } from 'redux/integration_layer';
 
 import { getDeclaration } from 'reducers';
@@ -33,8 +33,8 @@ export default class DeclarationDetails extends React.Component {
     return (
       <section>
         <PageTitle>Данні по декларації</PageTitle>
-        <CreateDeclarationStep1Form disabled initialValues={formValues} />
-        <CreateDeclarationStep2Form disabled initialValues={formValues} />
+        <DeclarationSearchForm disabled initialValues={formValues} />
+        <DeclarationCreateForm disabled initialValues={formValues} />
       </section>
     );
   }

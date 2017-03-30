@@ -9,9 +9,9 @@ const category = ['PD', 'вища', 'середня'];
 const level = ['PD', 'вища', 'середня'];
 
 @reduxForm({
-  form: 'doctorRegistrationStep2',
+  form: 'doctorCreate2',
 })
-export default class CreateDoctorStep2 extends React.Component {
+export default class DoctorCreate2Form extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (

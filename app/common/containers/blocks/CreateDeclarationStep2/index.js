@@ -7,7 +7,7 @@ import { submit } from 'redux-form';
 
 import { H1 } from 'components/Title';
 
-import CreateDeclarationForm from 'containers/forms/CreateDeclarationStep2';
+import DeclarationCreateForm from 'containers/forms/DeclarationCreate';
 import LookupConfirmPopup from 'containers/popups/LookupConfirm';
 import { FormButtons } from 'components/Form';
 import Button, { ButtonsGroup } from 'components/Button';
@@ -38,7 +38,7 @@ export default class CreateDeclarationStep2 extends React.Component {
           <H1>Створити нову декларацію. Крок 2</H1>
         </div>
         <div className={styles.declaration__form}>
-          <CreateDeclarationForm onSubmit={onDataFormSubmit} />
+          <DeclarationCreateForm onSubmit={onDataFormSubmit} />
           <FormButtons>
             <ButtonsGroup>
               <Button to="/declaration">Назад</Button>

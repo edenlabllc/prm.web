@@ -2,24 +2,23 @@ import React from 'react';
 import { reduxForm, Field, FormSection, getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 
-import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn, FormButtons } from 'components/Form';
+import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn } from 'components/Form';
 import Datepicker from 'components/Datepicker';
 import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
-import Button, { ButtonsGroup } from 'components/Button';
 import Addresses from 'containers/forms/Addresses';
 
 @reduxForm({
-  form: 'doctorRegistrationStep1',
+  form: 'doctorCreate1',
   initialValues: {
     gender: 'FEMALE',
   },
 })
 @connect(state => ({
-  values: getFormValues('doctorRegistrationStep1')(state),
+  values: getFormValues('doctorCreate1')(state),
 }))
-export default class CreateDoctorStep1 extends React.Component {
+export default class DoctorCreate1Form extends React.Component {
   render() {
     const { handleSubmit, values } = this.props;
 
@@ -119,14 +118,7 @@ export default class CreateDoctorStep1 extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormButtons>
-          <ButtonsGroup>
-            <Button type="submit">Зберегти зміни</Button>
-            <Button to="/doctorsStep2" theme="blue">Далі</Button>
-          </ButtonsGroup>
-        </FormButtons>
       </Form>
     );
   }
 }
-

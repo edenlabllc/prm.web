@@ -8,8 +8,9 @@ import doctors from 'redux/doctor';
 import persons from 'redux/person';
 import msps from 'redux/msps';
 
+import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
+
 import Table from 'containers/blocks/Table/redux';
-import CreateDeclarationStep1 from 'containers/blocks/CreateDeclarationStep1/redux';
 import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2/redux';
 
 import createDeclaration from 'redux/flows/createDeclaration';
@@ -18,9 +19,12 @@ const flows = combineReducers({
   createDeclaration,
 });
 
+const pages = combineReducers({
+  DeclarationSearch,
+});
+
 const blocks = combineReducers({
   Table,
-  CreateDeclarationStep1,
   CreateDeclarationStep2,
 });
 
@@ -33,6 +37,7 @@ export default combineReducers({
   persons,
   msps,
 
+  pages,
   blocks,
   flows,
 });
