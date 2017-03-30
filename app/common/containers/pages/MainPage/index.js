@@ -26,7 +26,7 @@ export default class MainPage extends React.Component {
         </div>
         <div className={styles.section__content}>
           <div className={styles.section__item}>
-            <Link to="/clinic">
+            <Link to="/clinics/create">
               <div className={classnames(styles.icon, styles.icon__clinic)} alt="" />
               <p className={styles.title}>Медичні заклади</p>
             </Link>
