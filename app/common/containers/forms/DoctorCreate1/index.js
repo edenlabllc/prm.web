@@ -1,13 +1,12 @@
 import React from 'react';
-import { reduxForm, Field, FormSection, getFormValues } from 'redux-form';
-import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
 
-import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
 import Datepicker from 'components/Datepicker';
 import { RadioInputGroup } from 'components/RadioInput';
-import Input, { MaskedInput } from 'components/Input';
-import Checkbox from 'components/Checkbox';
-import Addresses from 'containers/forms/Addresses';
+import Input, { MaskedInput, SelectInput } from 'components/Input';
+
+const level = ['терапевт', 'педіатр', 'сімейний лікар'];
 
 @reduxForm({
   form: 'doctorCreate1',
@@ -15,12 +14,9 @@ import Addresses from 'containers/forms/Addresses';
     gender: 'FEMALE',
   },
 })
-@connect(state => ({
-  values: getFormValues('doctorCreate1')(state),
-}))
 export default class DoctorCreate1Form extends React.Component {
   render() {
-    const { handleSubmit, values } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <Form onSubmit={handleSubmit}>
@@ -52,12 +48,12 @@ export default class DoctorCreate1Form extends React.Component {
               <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Місто народження" type="text" name="birth_place" component={Input} />
+              <Field placeholder="УНЗР" type="text" name="unzr" component={Input} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Місто народження" type="text" name="birth_place" component={Input} />
+              <Field placeholder="Місце народження" type="text" name="birth_place" component={Input} />
             </FormColumn>
             <FormColumn>
               <RadioInputGroup
@@ -93,31 +89,40 @@ export default class DoctorCreate1Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormBlock title="Адреса реєстрації Лікаря">
-          <FormSection name="addresses.REGISTRATION">
-            <Addresses />
-          </FormSection>
-        </FormBlock>
-        <FormBlock border>
-          <FormBlockTitle right={<Field name="checked" label="Співпадає з місцем реєстрації" component={Checkbox} />}>
-            Співпадає з місцем реєстрації
-          </FormBlockTitle>
-          <FormSection name="addresses.RESIDENCE">
-            <Addresses disabled={values.checked} />
-          </FormSection>
-        </FormBlock>
         <FormBlock>
           <FormRow>
             <FormColumn>
               <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
             </FormColumn>
-          </FormRow>
-          <FormRow>
             <FormColumn>
               <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormRow>
+          <FormColumn>
+            <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
+          </FormColumn>
+          <FormColumn>
+            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
+          </FormColumn>
+        </FormRow>
+        <FormRow>
+          <FormColumn>
+            <Field
+              theme="medium"
+              component={SelectInput}
+              name="doctor"
+              placeholder="Спеціальність"
+              options={level.map(item => ({
+                title: item || '', name: item,
+              }))}
+            />
+          </FormColumn>
+          <FormColumn>
+            <Field placeholder="Дні та години роботи" type="text" name="days" component={Input} />
+          </FormColumn>
+        </FormRow>
       </Form>
     );
   }

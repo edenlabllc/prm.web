@@ -19,7 +19,7 @@ const NAV_LIST = [{
   title: 'Пацієнти',
 }, {
   link: '/reports',
-  title: 'Розрахунки',
+  title: 'Статистика',
 }];
 
 

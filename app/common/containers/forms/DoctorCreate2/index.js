@@ -91,27 +91,6 @@ export default class DoctorCreate2Form extends React.Component {
             <Field placeholder="Назва закладу" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
         </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
-          </FormColumn>
-          <FormColumn>
-            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field
-              theme="medium"
-              component={SelectInput}
-              name="doctor"
-              placeholder="Спеціальність"
-              options={level.map(item => ({
-                title: item || '', name: item,
-              }))}
-            />
-          </FormColumn>
-        </FormRow>
       </Form>
     );
   }

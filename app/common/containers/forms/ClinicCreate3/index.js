@@ -88,19 +88,6 @@ export default class ClinicCreate3Form extends React.Component {
         <FormBlock title="Контакти закладу">
           <FormRow>
             <FormColumn>
-              <Field
-                theme="medium"
-                component={SelectInput}
-                name="type"
-                placeholder="Тип"
-                options={category.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
               <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
             </FormColumn>
           </FormRow>
