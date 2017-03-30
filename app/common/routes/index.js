@@ -21,11 +21,10 @@ import CreateLayout from 'containers/layouts/CreateLayout';
 import DeclarationSearch from 'containers/pages/DeclarationSearch';
 import DeclarationDetails from 'containers/pages/DeclarationDetails';
 import DeclarationEdit from 'containers/pages/DeclarationEdit';
+import DeclarationCreate from 'containers/pages/DeclarationCreate';
 
 import DoctorCreateStep1 from 'containers/pages/DoctorCreateStep1';
 import DoctorCreateStep2 from 'containers/pages/DoctorCreateStep2';
-
-import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2';
 
 import ClinicCreateStep1 from 'containers/pages/ClinicCreateStep1';
 import ClinicCreateStep2 from 'containers/pages/ClinicCreateStep2';
@@ -47,10 +46,9 @@ export const configureRoutes = () => (
     <Route component={MainLayout}>
       <Route component={CreateLayout}>
         <Route path="declarations/search" component={DeclarationSearch} />
-        <Route path="declarations/:declarationId" component={DeclarationDetails} />
+        <Route path="declarations/create" component={DeclarationCreate} />
         <Route path="declarations/:declarationId/edit" component={DeclarationEdit} />
-
-        <Route path="declarationStep2" component={CreateDeclarationStep2} />
+        <Route path="declarations/:declarationId" component={DeclarationDetails} />
 
         <Route path="doctors/create" component={DoctorCreateStep1} />
         <Route path="doctors/create/2" component={DoctorCreateStep2} />

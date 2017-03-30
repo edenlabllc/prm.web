@@ -13,9 +13,9 @@ import { arrayWithTypeToObject } from 'helpers/transforms';
 
 import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
 import DeclarationEdit from 'containers/pages/DeclarationEdit/redux';
+import DeclarationCreate from 'containers/pages/DeclarationCreate/redux';
 
 import Table from 'containers/blocks/Table/redux';
-import CreateDeclarationStep2 from 'containers/blocks/CreateDeclarationStep2/redux';
 
 import createDeclaration from 'redux/flows/createDeclaration';
 
@@ -26,11 +26,11 @@ const flows = combineReducers({
 const pages = combineReducers({
   DeclarationSearch,
   DeclarationEdit,
+  DeclarationCreate,
 });
 
 const blocks = combineReducers({
   Table,
-  CreateDeclarationStep2,
 });
 
 export default combineReducers({

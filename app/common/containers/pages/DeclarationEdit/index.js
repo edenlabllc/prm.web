@@ -33,7 +33,7 @@ export default class DeclarationEditPage extends React.Component {
         />
         <FormButtons>
           <ButtonsGroup>
-            <Button to="/declaration/search">Назад</Button>
+            <Button to="/declarations/search">Назад</Button>
             <Button theme="blue">Підписати</Button>
           </ButtonsGroup>
         </FormButtons>

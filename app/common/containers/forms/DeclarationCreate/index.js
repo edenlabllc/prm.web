@@ -70,6 +70,9 @@ const selector = formValueSelector(FORM_NAME);
       required: true,
       phone_number: /^0\d{9}$/,
     },
+    doctor: {
+      required: true,
+    },
   }),
   initialValues: {
     gender: 'FEMALE',

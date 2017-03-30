@@ -32,8 +32,8 @@ export default class LookupConfirm extends React.Component {
       >
         <div className={classnames(styles.title, styles.title_wide)}>
           <H3>Введіть код з смс</H3>
-          <LookupConfirmForm onSubmit={onSubmit} />
         </div>
+        { popup.active && <LookupConfirmForm onSubmit={onSubmit} />}
       </Popup>
     );
   }
