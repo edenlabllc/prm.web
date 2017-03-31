@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import MaskedInputComponent from 'react-nebo15-mask';
 import RadioInputComponent from 'components/RadioInput';
 import Select from 'components/Select';
-import SelectFileBtn from 'components/SelectFileBtn';
 import ErrorMessages from 'components/ErrorMessages';
 import styles from './styles.scss';
 
@@ -99,6 +98,3 @@ export const GroupRadioInput = ({ options, componentGroup = 'span', component = 
 
 export const SelectInput = props =>
   <Input component={Select} {...props} active={props.input.value} />;
-
-export const SelectFileInput = props =>
-  <Input component={SelectFileBtn} {...props} />;

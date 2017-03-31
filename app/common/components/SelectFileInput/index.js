@@ -1,14 +1,19 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import Dropzone from 'react-dropzone';
+import Input from 'components/Input';
+import Icon from 'components/Icon';
 
 import styles from './styles.scss';
 
 @withStyles(styles)
-export default class SelectFile extends React.Component {
+export default class SelectFileInput extends React.Component {
   constructor(props) {
     super(props);
     this.onDrop = this.onDrop.bind(this);
+  }
+  state = {
+    file: null,
   }
   onDrop(upload) {
     const { input } = this.props;
@@ -16,19 +21,29 @@ export default class SelectFile extends React.Component {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      console.log(reader, file);
+      this.setState({ file });
       input.onChange(reader.result);
     };
     if (file) reader.readAsDataURL(file);
   }
   render() {
-    const { children, input, meta, ...rest } = this.props; // eslint-disable-line
+    const { placeholder = 'Select file', label, input, meta, ...rest } = this.props; // eslint-disable-line
+    const { file } = this.state;
+
     return (<Dropzone
       onDrop={this.onDrop}
       className={styles.dropzone}
       {...rest}
     >
-      {children}
+      <Input
+        theme="date"
+        meta={meta}
+        label={label}
+        input={{ value: file ? file.name : '' }}
+        placeholder={placeholder}
+        iconRight={<span className={styles.icon}><Icon name="triangle-down" /></span>}
+        readOnly
+      />
     </Dropzone>);
   }
 }
