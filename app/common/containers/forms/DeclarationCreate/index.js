@@ -240,25 +240,25 @@ export default class CreateDeclarationStep2Form extends React.Component {
         <FormBlock title="Контакти особи на випадок екстреної ситуації">
           <FormRow>
             <FormColumn>
-              <Field placeholder="Прізвище" type="text" name="urgent_contact.last_name" component={Input} disabled={disabled} />
+              <Field placeholder="Прізвище" type="text" name="urgent_contacts[0].last_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Ім’я" type="text" name="urgent_contact.first_name" component={Input} disabled={disabled} />
+              <Field placeholder="Ім’я" type="text" name="urgent_contacts[0].first_name" component={Input} disabled={disabled} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="urgent_contact.second_name" component={Input} disabled={disabled} />
+              <Field placeholder="По-батькові" type="text" name="urgent_contacts[0].second_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="urgent_contact.phone_number" component={MaskedInput} disabled={disabled} />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="urgent_contacts[0].phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
             </FormColumn>
           </FormRow>
         </FormBlock>
         <FormBlock>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Слово-пароль" name="secret_word" component={Input} disabled={disabled} />
+              <Field placeholder="Слово-пароль" name="secret" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn />
           </FormRow>

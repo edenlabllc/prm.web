@@ -75,6 +75,7 @@ const transformPatientToForm = patient => ({
   documents: arrayWithTypeToObject(patient.documents),
   addresses: arrayWithTypeToObject(patient.addresses),
   phones: arrayWithTypeToObject(patient.phones),
+  confident_persons: (patient.confident_persons || []).map(i => transformPatientToForm(i)),
 });
 
 export const getDeclarationFormValues = (state, id) => {
