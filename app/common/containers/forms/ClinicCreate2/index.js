@@ -6,7 +6,7 @@ import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 
 const country = ['ua', 'ru', 'en'];
 
@@ -25,7 +25,7 @@ export default class ClinicCreate2Form extends React.Component {
 
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Перелік засновників (учасників)" border>
+        <FormBlock title="Перелік засновників (учасників)">
           <FormRow>
             <FormColumn>
               <Field placeholder="найменування або ПІБ" type="text" name="name" component={Input} />
@@ -45,6 +45,7 @@ export default class ClinicCreate2Form extends React.Component {
             <FormColumn />
           </FormRow>
         </FormBlock>
+        <FormIcon icon="add">Додати засновника</FormIcon>
         <FormBlock title="Керівник підписант">
           <FormRow>
             <FormColumn>

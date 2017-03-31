@@ -94,3 +94,47 @@
 .buttons {
   margin-top: 30px;
 }
+
+.icon {
+  cursor: pointer;
+  text-decoration: none;
+
+  &__symbol {
+    width: 27px;
+    height: 27px;
+    margin-right: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 2;
+
+    & > i {
+      color: #fff;
+      font-size: 27px;
+    }
+  }
+
+  &_color {
+    &-green {
+      background-color: #13ce66;
+    }
+  }
+
+  &__text {
+    line-height: 27px;
+    color: #3c4858;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #d3dce6;
+    margin-top: 10px;
+    margin-bottom: 38px;
+  }
+}

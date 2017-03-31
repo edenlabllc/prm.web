@@ -5,7 +5,7 @@ import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
 import Addresses from 'containers/forms/Addresses';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 
 const category = [
   'вища категорія',
@@ -35,6 +35,7 @@ export default class ClinicCreate3Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon icon="add">Додати підрозділ</FormIcon>
         <FormBlock title="Державна акредитація">
           <FormRow>
             <FormColumn>
@@ -90,11 +91,13 @@ export default class ClinicCreate3Form extends React.Component {
             <FormColumn>
               <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
               <Field placeholder="Адреса електронної пошти" name="email" component={Input} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
       </Form>
