@@ -16,7 +16,6 @@ export default class SelectFile extends React.Component {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      console.log(reader, file);
       input.onChange(reader.result);
     };
     if (file) reader.readAsDataURL(file);
