@@ -1,19 +1,22 @@
 import React from 'react';
-import { ComposedChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import withStyles from 'withStyles';
+import { ComposedChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } from 'recharts';
+
+import styles from './styles.scss';
 
 const data = [
-  { name: '01.03.2017', all: 0, closed: -100, open: 500 },
-  { name: '02.03.2017', all: 400, closed: -267, open: 407 },
-  { name: '03.03.2017', all: 200, closed: -598, open: 209 },
-  { name: '04.03.2017', all: 600, closed: -500, open: 320 },
-  { name: '05.03.2017', all: 200, closed: -308, open: 110 },
-  { name: '06.03.2017', all: 100, closed: -680, open: 280 },
-  { name: '07.03.2017', all: 290, closed: -200, open: 200 },
-  { name: '08.03.2017', all: 368, closed: -137, open: 67 },
-  { name: '09.03.2017', all: 297, closed: -498, open: 109 },
-  { name: '10.03.2017', all: 180, closed: -300, open: 120 },
-  { name: '11.03.2017', all: 420, closed: -108, open: 110 },
-  { name: '12.03.2017', all: 500, closed: -380, open: 280 }];
+  { name: '01.03.2017', all: 0, closed: 0, open: 246 },
+  { name: '02.03.2017', all: 246, closed: -78, open: 187 },
+  { name: '03.03.2017', all: 355, closed: -6, open: 192 },
+  { name: '04.03.2017', all: 541, closed: -47, open: 245 },
+  { name: '05.03.2017', all: 739, closed: -43, open: 209 },
+  { name: '06.03.2017', all: 905, closed: -16, open: 159 },
+  { name: '07.03.2017', all: 1048, closed: -43, open: 12 },
+  { name: '08.03.2017', all: 1017, closed: -34, open: 94 },
+  { name: '09.03.2017', all: 1077, closed: -44, open: 178 },
+  { name: '10.03.2017', all: 1211, closed: -95, open: 199 },
+  { name: '11.03.2017', all: 1315, closed: -91, open: 196 },
+  { name: '12.03.2017', all: 1420, closed: -74, open: 152 }];
 
 const CustomizedAxisTick = ({ x, y, payload }) => (
   <g transform={`translate(${x},${y})`}>
@@ -21,29 +24,43 @@ const CustomizedAxisTick = ({ x, y, payload }) => (
   </g>
 );
 
+const CustomizedLabel = ({ x, y, stroke, value }) => (
+  <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">{value}</text>
+);
+
+
+@withStyles(styles)
 export default class Chart extends React.Component {
   render() {
     return (
-      <ComposedChart
-        width={800}
-        height={400}
-        data={data}
-        margin={{
-          top: 20,
-          right: 20,
-          bottom: 20,
-          left: 20,
-        }}
-      >
-        <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
-        <YAxis />
-        <Tooltip />
-        <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
-        <Bar name="Відкрито" dataKey="open" stackId="a" barSize={20} fill="#17af55" />
-        <Bar name="Закрито" dataKey="closed" stackId="a" barSize={20} fill="#fc0f1b" />
-        <Line name="Всього" type="monotone" dataKey="all" stroke="#72ab4e" strokeWidth={3} />
-        <Legend />
-      </ComposedChart>
+      <div>
+        <div className={styles.total}>
+          {`Всього декларацій: ${data[data.length - 1].all}`}
+        </div>
+        <ComposedChart
+          width={800}
+          height={400}
+          data={data}
+          margin={{
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          }}
+          stackOffset="sign"
+        >
+          <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
+          <YAxis />
+          <Tooltip />
+          <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
+          <ReferenceLine y={0} stroke="#000" />
+          <Bar name="Закрито" dataKey="closed" stackId="a" barSize={20} fill="#fc0f1b" />
+          <Bar name="Відкрито" dataKey="open" stackId="a" barSize={20} fill="#17af55" />
+          <Line name="Всього" type="monotone" dataKey="all" stroke="#72ab4e" strokeWidth={3} label={<CustomizedLabel />} />
+          <Legend />
+        </ComposedChart>
+      </div>
+
     );
   }
 }
