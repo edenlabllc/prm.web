@@ -40,7 +40,6 @@ export default class ClinicCreate1Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="org_form"
                 placeholder="Організаційно-правова форма"
@@ -60,7 +59,7 @@ export default class ClinicCreate1Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="Публічна назва (якщо відрізняється)" type="text" name="public_name" component={Input} />
+              <Field placeholder="Публічна назва (якщо відрізняється)" type="text" name="public_name" component={Input} />
             </FormColumn>
             <FormColumn />
           </FormRow>

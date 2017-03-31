@@ -23,7 +23,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="doctor"
                 placeholder="Категорія"
@@ -32,6 +31,7 @@ export default class DoctorCreate2Form extends React.Component {
                 }))}
               />
             </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormRow>
@@ -61,7 +61,6 @@ export default class DoctorCreate2Form extends React.Component {
           </FormColumn>
           <FormColumn>
             <Field
-              theme="medium"
               component={SelectInput}
               name="doctor"
               placeholder="Категорія"
@@ -70,6 +69,7 @@ export default class DoctorCreate2Form extends React.Component {
               }))}
             />
           </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>

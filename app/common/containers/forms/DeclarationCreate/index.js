@@ -111,7 +111,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
           <FormRow>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="doctor"
                 placeholder="Вибрати з довідника"
@@ -121,6 +120,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
                 disabled={disabled}
               />
             </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormBlock title="Пацієнт">

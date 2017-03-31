@@ -45,7 +45,7 @@ export default class DoctorCreate1Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="ІПН" type="number" name="national_id" component={Input} />
+              <Field placeholder="ІПН" type="number" name="national_id" component={Input} />
             </FormColumn>
             <FormColumn>
               <Field placeholder="УНЗР" type="text" name="unzr" component={Input} />
@@ -110,7 +110,6 @@ export default class DoctorCreate1Form extends React.Component {
         <FormRow>
           <FormColumn>
             <Field
-              theme="medium"
               component={SelectInput}
               name="doctor"
               placeholder="Спеціальність"

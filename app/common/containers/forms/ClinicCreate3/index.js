@@ -39,7 +39,6 @@ export default class ClinicCreate3Form extends React.Component {
           <FormRow>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="category"
                 placeholder="Категорія"
@@ -48,6 +47,7 @@ export default class ClinicCreate3Form extends React.Component {
                 }))}
               />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
