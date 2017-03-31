@@ -31,3 +31,21 @@
     }
   }
 }
+
+.status {
+  &_default {
+    color: #a4a19b;
+  }
+
+  &_blue {
+    color: #5791ef !important;
+  }
+
+  &_green {
+    color: #13ce66 !important;
+  }
+
+  &_closed {
+    color: red !important;
+  }
+}

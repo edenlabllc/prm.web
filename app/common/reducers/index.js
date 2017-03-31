@@ -12,11 +12,10 @@ import lookup from 'redux/sms';
 
 import { arrayWithTypeToObject } from 'helpers/transforms';
 
+import Declarations from 'containers/pages/Declarations/redux';
 import DeclarationSearch from 'containers/pages/DeclarationSearch/redux';
 import DeclarationEdit from 'containers/pages/DeclarationEdit/redux';
 import DeclarationCreate from 'containers/pages/DeclarationCreate/redux';
-
-import Table from 'containers/blocks/Table/redux';
 
 import createDeclaration from 'redux/flows/createDeclaration';
 
@@ -25,13 +24,10 @@ const flows = combineReducers({
 });
 
 const pages = combineReducers({
+  Declarations,
   DeclarationSearch,
   DeclarationEdit,
   DeclarationCreate,
-});
-
-const blocks = combineReducers({
-  Table,
 });
 
 export default combineReducers({
@@ -46,7 +42,6 @@ export default combineReducers({
   lookup,
 
   pages,
-  blocks,
   flows,
 });
 
@@ -89,7 +84,8 @@ export const getDeclarationFormValues = (state, id) => {
   };
 };
 
-export const getDeclarations = (state, ids) =>
+export const getAllDeclarations = state => getDeclarations(state, Object.keys(state.declarations));
+export const getDeclarations = (state, ids = []) =>
   ids.map(id => getDeclaration(state, id)).filter(i => i);
 
 export const getMSP = (state, id) => state.msps[id];
