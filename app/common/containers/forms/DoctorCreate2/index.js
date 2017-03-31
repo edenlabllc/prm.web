@@ -51,7 +51,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Рік завершення"
-                placeholder="ДД/ММ/РР"
                 name="EDUCATION.finished_date"
                 component={Datepicker}
               />
@@ -121,7 +120,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Рік завершення"
-                placeholder="ДД/ММ/РР"
                 name="ACADEMIC.issued_date"
                 component={Datepicker}
               />
@@ -174,7 +172,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Рік написання"
-                placeholder="ДД/ММ/РР"
                 name="SCIENCE.issued_date"
                 component={Datepicker}
               />
@@ -203,7 +200,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Дата початку роботи"
-                placeholder="ДД/ММ/РР"
                 name="WORK.start_date"
                 component={Datepicker}
               />
@@ -211,7 +207,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Дата звільнення"
-                placeholder="ДД/ММ/РР"
                 name="WORK.finish_date"
                 component={Datepicker}
               />
@@ -263,7 +258,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Рік закінчення"
-                placeholder="ДД/ММ/РР"
                 name="QUALIFICATION.issued_date"
                 component={Datepicker}
               />
@@ -301,7 +295,6 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn>
               <Field
                 label="Рік закінчення"
-                placeholder="ДД/ММ/РР"
                 name="PROFESSIONAL.issued_date"
                 component={Datepicker}
               />
