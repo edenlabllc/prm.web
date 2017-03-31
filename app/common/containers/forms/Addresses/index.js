@@ -50,7 +50,7 @@ export default class Addresses extends React.Component {
           <FormColumn>
             <Field
               component={SelectInput}
-              name="area"
+              name="region"
               placeholder="Область"
               disabled={disabled}
               options={REGION.map(item => ({

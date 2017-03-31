@@ -1,7 +1,6 @@
 import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { objectToArrayWithType } from 'helpers/transforms';
-import pickFn from 'lodash/pick';
+import { personFormValueToApiModel } from 'helpers/transforms';
 
 import { show } from 'components/Popup';
 import { fetchMSPS } from 'redux/msps';
@@ -12,7 +11,9 @@ import { sendLookup, sendLookupConfirm } from 'redux/sms';
 const saveRequestId = createAction('DeclarationEdit/SAVE_REQUEST_ID');
 
 export const onDataFormSubmit = formData => dispatch =>
-  dispatch(sendLookup(formData.phone))
+  dispatch(sendLookup({
+    phone_number: `+38${formData.phones.MOBILE.number}`,
+  }))
     .then(response => dispatch([
       saveRequestId(response.payload.request_id),
       show('lookupConfirm'),
@@ -32,26 +33,7 @@ export const onLookupSubmit = (requestId, code, formData, declarationId) => disp
     });
 
 export const onCreateDeclaration = values => dispatch =>
-  dispatch(createPerson({
-    ...pickFn(values, [
-      'first_name',
-      'last_name',
-      'second_name',
-      'gender',
-      'birth_date',
-      'birth_place',
-    ]),
-    documents: [{
-      type: 'PASSPORT',
-      number: values.documents.number,
-      issue_date: (new Date(values.documents.issue_date)).toJSON(),
-      issue_by: values.documents.issued_by,
-    }],
-    addresses: objectToArrayWithType(values.addresses).map(value => ({
-      country: 'UA',
-      ...value,
-    })),
-  })).then(patient =>
+  dispatch(createPerson(personFormValueToApiModel(values))).then(patient =>
     dispatch(fetchMSPS()).then(mspObj =>
       dispatch(createDeclaration({
         declaration: {
