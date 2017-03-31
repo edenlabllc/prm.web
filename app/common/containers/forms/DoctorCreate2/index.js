@@ -44,8 +44,9 @@ export default class DoctorCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
+            <Field placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>
@@ -80,8 +81,9 @@ export default class DoctorCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
+            <Field placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>

@@ -88,12 +88,12 @@ export default class ClinicCreate3Form extends React.Component {
         <FormBlock title="Контакти закладу">
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
+              <Field placeholder="Адреса електронної пошти" name="email" component={Input} />
             </FormColumn>
           </FormRow>
         </FormBlock>

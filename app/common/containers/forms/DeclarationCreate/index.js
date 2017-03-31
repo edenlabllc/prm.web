@@ -190,12 +190,11 @@ export default class CreateDeclarationStep2Form extends React.Component {
         <FormBlock>
           <FormRow>
             <FormColumn>
-              <Field placeholder="ІПН" type="number" name="IPN" component={Input} disabled={disabled} />
+              <Field placeholder="ІПН" type="number" name="tax_code" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="nationalID" type="number" name="national_id" component={Input} disabled={disabled} />
+              <Field placeholder="УНЗР" type="number" name="national_id" component={Input} disabled={disabled} />
             </FormColumn>
-            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormBlock border>
