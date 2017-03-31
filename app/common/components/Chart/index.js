@@ -6,17 +6,17 @@ import styles from './styles.scss';
 
 const data = [
   { name: '01.03.2017', all: 0, closed: 0, open: 246 },
-  { name: '01.03.2017', all: 246, closed: -78, open: 187 },
-  { name: '01.03.2017', all: 355, closed: -6, open: 192 },
-  { name: '01.03.2017', all: 541, closed: -47, open: 245 },
-  { name: '01.03.2017', all: 739, closed: -43, open: 209 },
-  { name: '01.03.2017', all: 905, closed: -16, open: 159 },
-  { name: '01.03.2017', all: 1048, closed: -43, open: 12 },
-  { name: '01.03.2017', all: 1017, closed: -34, open: 94 },
-  { name: '01.03.2017', all: 1077, closed: -44, open: 178 },
-  { name: '01.03.2017', all: 1211, closed: -95, open: 199 },
-  { name: '01.03.2017', all: 1315, closed: -91, open: 196 },
-  { name: '01.03.2017', all: 1420, closed: -74, open: 152 }];
+  { name: '02.03.2017', all: 246, closed: -78, open: 187 },
+  { name: '03.03.2017', all: 355, closed: -6, open: 192 },
+  { name: '04.03.2017', all: 541, closed: -47, open: 245 },
+  { name: '05.03.2017', all: 739, closed: -43, open: 209 },
+  { name: '06.03.2017', all: 905, closed: -16, open: 159 },
+  { name: '07.03.2017', all: 1048, closed: -43, open: 12 },
+  { name: '08.03.2017', all: 1017, closed: -34, open: 94 },
+  { name: '09.03.2017', all: 1077, closed: -44, open: 178 },
+  { name: '10.03.2017', all: 1211, closed: -95, open: 199 },
+  { name: '11.03.2017', all: 1315, closed: -91, open: 196 },
+  { name: '12.03.2017', all: 1420, closed: -74, open: 152 }];
 
 const CustomizedAxisTick = ({ x, y, payload }) => (
   <g transform={`translate(${x},${y})`}>
