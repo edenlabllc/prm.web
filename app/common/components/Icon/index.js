@@ -11,6 +11,7 @@ export const icons = [
   'arrow-in',
   'calendar',
   'plus',
+  'triangle-down',
 ];
 
 const Icon = ({ name }) => React.createElement('i', {
