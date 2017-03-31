@@ -70,7 +70,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="EDUCATION.degree"
                 placeholder="Рівень освіти"
                 options={level.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -96,7 +96,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="ACADEMIC.degree"
                 placeholder="Академічний ступінь"
                 options={AcademicDegree.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -146,7 +146,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="SCIENCE.degree"
                 placeholder="Науковий ступінь"
                 options={ScienceDegree.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -238,7 +238,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="QUALIFICATION.qualification"
                 placeholder="Кваліфікація"
                 options={type.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -279,7 +279,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="PROFESSIONAL.degree"
                 placeholder="Професійний рівень"
                 options={ProfessionalLevel.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -289,7 +289,7 @@ export default class DoctorCreate2Form extends React.Component {
                 name="PROFESSIONAL.qualification"
                 placeholder="Тип професійного рівня"
                 options={qualification_type.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
