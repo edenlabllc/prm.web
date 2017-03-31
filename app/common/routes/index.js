@@ -34,14 +34,14 @@ import ClinicCreateStep3 from 'containers/pages/ClinicCreateStep3';
 export const configureRoutes = () => (
   <Route component={App}>
 
-    <Route path="/" component={NSZLayout}>
+    <Route path="/main" component={NSZLayout}>
       <Route component={NSZLayoutMenu}>
         <IndexRoute component={NSZModulesPage} />
       </Route>
     </Route>
 
     <Route component={MISLayout}>
-      <Route path="main" component={MainPage} />
+      <Route path="/" component={MainPage} />
     </Route>
 
     <Route component={MainLayout}>

@@ -39,8 +39,8 @@ export default class Chart extends React.Component {
         <YAxis />
         <Tooltip />
         <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
-        <Bar name="Закрито" dataKey="closed" stackId="a" barSize={20} fill="#fc0f1b" />
         <Bar name="Відкрито" dataKey="open" stackId="a" barSize={20} fill="#17af55" />
+        <Bar name="Закрито" dataKey="closed" stackId="a" barSize={20} fill="#fc0f1b" />
         <Line name="Всього" type="monotone" dataKey="all" stroke="#72ab4e" strokeWidth={3} />
         <Legend />
       </ComposedChart>

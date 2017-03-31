@@ -68,11 +68,12 @@ export default class Table extends React.Component {
                       )
                     }
                   >
-                    <Link to={`/declarations/${item.id}`}>
-                      {item.status === 'pending_signature' && 'Не підписано' }
-                      {item.status === 'signed' && 'Підписано' }
-                      {item.status === 'closed' && 'Розірвано' }
-                    </Link>
+                    { item.status === 'signed' && 'Підписано' }
+                    { item.status === 'closed' && 'Розірвано' }
+                    { item.status === 'pending_signature' && (
+                      <Link to={`/declarations/${item.id}`}>Не підписано</Link>
+                      )
+                    }
                   </td>
                 </tr>
               )

@@ -6,7 +6,5 @@
 		<sliceSourceBounds  width="960" height="560" bottomLeftOrigin="true" y="-560" x="0"></sliceSourceBounds>
 	</sfw>
 </metadata>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="#13CE66" d="M13.4,0c7.4,0,13.4,6,13.4,13.5c0,7.5-6,13.5-13.4,13.5
-	S0,21,0,13.5C0,6,6,0,13.4,0z"/>
-<path fill="#FFFFFF" d="M12.2,18h2.6v-3.2H18v-2.5h-3.3V9h-2.6v3.2H8.9v2.5h3.3V18z"/>
+	<path fill="#FFFFFF" d="M12.2,18h2.6v-3.2H18v-2.5h-3.3V9h-2.6v3.2H8.9v2.5h3.3V18z"/>
 </svg>

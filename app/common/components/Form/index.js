@@ -1,6 +1,7 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import classnames from 'classnames';
+import Icon from 'components/Icon';
 
 import styles from './styles.scss';
 
@@ -53,3 +54,16 @@ const FormButtonsComponent = props =>
   <div className={classnames(styles.buttons)} {...props} />;
 
 export const FormButtons = withStyles(styles)(FormButtonsComponent);
+
+const FormIconComponent = ({ icon = 'add', color = 'green', children, ...rest }) =>
+  <a className={styles.icon} {...rest}>
+    <span
+      className={classnames(styles.icon__symbol,
+        color && styles[`icon_color-${color}`])}
+    >
+      <Icon name={icon} />
+    </span>
+    <span className={styles.icon__text}>{ children }</span>
+  </a>;
+
+export const FormIcon = withStyles(styles)(FormIconComponent);

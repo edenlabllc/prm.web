@@ -6,7 +6,7 @@ import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 
 const country = ['ua', 'ru', 'en'];
 
@@ -25,23 +25,27 @@ export default class ClinicCreate2Form extends React.Component {
 
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Перелік засновників (учасників)" border>
+        <FormBlock title="Перелік засновників (учасників)">
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="найменування або ПІБ" type="text" name="name" component={Input} />
+              <Field placeholder="найменування або ПІБ" type="text" name="name" component={Input} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="Місцезнаходження" type="text" name="place" component={Input} />
+              <Field placeholder="Місцезнаходження" type="text" name="place" component={Input} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="ідентифікаційний код або ЄДРПОУ" type="text" name="code" component={Input} />
+              <Field placeholder="ідентифікаційний код або ЄДРПОУ" type="text" name="code" component={Input} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
+        <FormIcon icon="add">Додати засновника</FormIcon>
         <FormBlock title="Керівник підписант">
           <FormRow>
             <FormColumn>
@@ -69,7 +73,6 @@ export default class ClinicCreate2Form extends React.Component {
         <FormRow>
           <FormColumn>
             <Field
-              theme="medium"
               component={Input}
               name="city"
               placeholder="Місто народження"
@@ -95,7 +98,6 @@ export default class ClinicCreate2Form extends React.Component {
         <FormRow>
           <FormColumn>
             <Field
-              theme="medium"
               component={SelectInput}
               name="passport"
               placeholder="Паспорт"
@@ -111,7 +113,7 @@ export default class ClinicCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="ІНН" type="number" name="INN" component={Input} />
+            <Field placeholder="ІНН" type="number" name="INN" component={Input} />
           </FormColumn>
           <FormColumn>
             <Field placeholder="номер ID карти" type="text" name="cardID" component={Input} />
@@ -119,10 +121,10 @@ export default class ClinicCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
+            <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
           </FormColumn>
           <FormColumn>
-            <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
+            <Field placeholder="Адреса електронної пошти" name="email" component={Input} />
           </FormColumn>
         </FormRow>
       </Form>

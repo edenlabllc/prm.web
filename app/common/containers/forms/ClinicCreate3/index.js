@@ -5,7 +5,7 @@ import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
 import Addresses from 'containers/forms/Addresses';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 
 const category = [
   'вища категорія',
@@ -35,11 +35,11 @@ export default class ClinicCreate3Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon icon="add">Додати підрозділ</FormIcon>
         <FormBlock title="Державна акредитація">
           <FormRow>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="category"
                 placeholder="Категорія"
@@ -48,6 +48,7 @@ export default class ClinicCreate3Form extends React.Component {
                 }))}
               />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
@@ -88,26 +89,15 @@ export default class ClinicCreate3Form extends React.Component {
         <FormBlock title="Контакти закладу">
           <FormRow>
             <FormColumn>
-              <Field
-                theme="medium"
-                component={SelectInput}
-                name="type"
-                placeholder="Тип"
-                options={category.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
+              <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
             </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field theme="medium" placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="phones.mobile" component={MaskedInput} />
+              <Field placeholder="Адреса електронної пошти" name="email" component={Input} />
             </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field theme="medium" placeholder="Адреса електронної пошти" name="email" component={Input} />
-            </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
       </Form>

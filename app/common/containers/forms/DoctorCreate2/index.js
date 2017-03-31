@@ -23,7 +23,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="doctor"
                 placeholder="Категорія"
@@ -44,8 +43,9 @@ export default class DoctorCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
+            <Field placeholder="Назва навчального закладу" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>
@@ -60,7 +60,6 @@ export default class DoctorCreate2Form extends React.Component {
           </FormColumn>
           <FormColumn>
             <Field
-              theme="medium"
               component={SelectInput}
               name="doctor"
               placeholder="Категорія"
@@ -80,8 +79,9 @@ export default class DoctorCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field theme="medium" placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
+            <Field placeholder="Номер диплому" type="text" name="documents.issued_by" component={Input} />
           </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>
@@ -89,27 +89,6 @@ export default class DoctorCreate2Form extends React.Component {
           </FormColumn>
           <FormColumn>
             <Field placeholder="Назва закладу" type="text" name="documents.issued_by" component={Input} />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
-          </FormColumn>
-          <FormColumn>
-            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field
-              theme="medium"
-              component={SelectInput}
-              name="doctor"
-              placeholder="Спеціальність"
-              options={level.map(item => ({
-                title: item || '', name: item,
-              }))}
-            />
           </FormColumn>
         </FormRow>
       </Form>

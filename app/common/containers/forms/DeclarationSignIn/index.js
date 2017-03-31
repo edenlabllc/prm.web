@@ -4,7 +4,7 @@ import validate from 'modules/validate';
 
 import withStyles from 'withStyles';
 
-import Input from 'components/Input';
+import Input, { SelectFileInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
 
 import styles from './styles.scss';
@@ -27,14 +27,12 @@ export default class DeclarationSignInForm extends React.Component {
     return (
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.form__row}>
-          {
-            // <Field
-            //   accept=".csv"
-            //   name="file"
-            //   placeholder="Файл з сертифікатом відкритого ключа"
-            //   component={SelectFileInput}
-            // />
-          }
+          <Field
+            accept=".csv"
+            name="file"
+            placeholder="Файл з сертифікатом відкритого ключа"
+            component={SelectFileInput}
+          />
         </div>
         <div className={styles.form__row}>
           <Field

@@ -9,7 +9,7 @@ import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Checkbox from 'components/Checkbox';
 import Addresses from 'containers/forms/Addresses';
 
-import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormBlockTitle, FormRow, FormColumn, FormIcon } from 'components/Form';
 
 const doctors = {
   'be802077-ddf0-4980-a390-6bfb513381ae': {
@@ -111,7 +111,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
           <FormRow>
             <FormColumn>
               <Field
-                theme="medium"
                 component={SelectInput}
                 name="doctor"
                 placeholder="Вибрати з довідника"
@@ -121,6 +120,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
                 disabled={disabled}
               />
             </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormBlock title="Пацієнт">
@@ -190,9 +190,11 @@ export default class CreateDeclarationStep2Form extends React.Component {
         <FormBlock>
           <FormRow>
             <FormColumn>
-              <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={disabled} />
+              <Field placeholder="ІПН" type="number" name="tax_code" component={Input} disabled={disabled} />
             </FormColumn>
-            <FormColumn />
+            <FormColumn>
+              <Field placeholder="УНЗР" type="number" name="national_id" component={Input} disabled={disabled} />
+            </FormColumn>
           </FormRow>
         </FormBlock>
         <FormBlock border>
@@ -205,13 +207,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-
-        {/* <div className={styles.form__plus}>
-          <a>
-            <img src={add} alt="" />
-            <span>Додати документ</span>
-          </a>
-        </div> */}
         <FormBlock title="Адреса реєстрації Пацієнта">
           <FormSection name="addresses.REGISTRATION">
             <Addresses disabled={disabled} />
@@ -263,6 +258,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
             <FormColumn />
           </FormRow>
         </FormBlock>
+        <FormIcon icon="add">Додати опікуна</FormIcon>
       </Form>
     );
   }
