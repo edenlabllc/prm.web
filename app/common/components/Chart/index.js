@@ -35,7 +35,7 @@ export default class Chart extends React.Component {
     return (
       <div>
         <div className={styles.total}>
-          {`Декларацій всього ${data[data.length - 1].all}`}
+          {`Всього декларацій: ${data[data.length - 1].all}`}
         </div>
         <ComposedChart
           width={800}
