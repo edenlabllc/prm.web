@@ -50,7 +50,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Рік завершення"
                 placeholder="ДД/ММ/РР"
                 name="EDUCATION.finished_date"
@@ -121,7 +120,6 @@ export default class DoctorCreate2Form extends React.Component {
           <FormRow>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Рік завершення"
                 placeholder="ДД/ММ/РР"
                 name="ACADEMIC.issued_date"
@@ -175,7 +173,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Рік написання"
                 placeholder="ДД/ММ/РР"
                 name="SCIENCE.issued_date"
@@ -205,7 +202,6 @@ export default class DoctorCreate2Form extends React.Component {
           <FormRow>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Дата початку роботи"
                 placeholder="ДД/ММ/РР"
                 name="WORK.start_date"
@@ -214,7 +210,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Дата звільнення"
                 placeholder="ДД/ММ/РР"
                 name="WORK.finish_date"
@@ -267,7 +262,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Рік закінчення"
                 placeholder="ДД/ММ/РР"
                 name="QUALIFICATION.issued_date"
@@ -306,7 +300,6 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                theme="space-between"
                 label="Рік закінчення"
                 placeholder="ДД/ММ/РР"
                 name="PROFESSIONAL.issued_date"
