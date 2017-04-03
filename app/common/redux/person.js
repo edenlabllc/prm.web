@@ -8,10 +8,10 @@ import { invoke } from './api';
 const personsSchema = new Schema('persons');
 
 
-export const fetchPerson = id => dispatch => dispatch(invoke({
+export const fetchPerson = (id, { cache = true } = {}) => dispatch => dispatch(invoke({
   endpoint: `${MPI_URL}/persons/${id}`,
   method: 'get',
-  bailout: state => state.persons[id],
+  bailout: state => cache && state.persons[id],
   types: [
     'person/FETCH_PERSON_REQUEST', {
       type: 'person/FETCH_PERSON_SUCCESS',
@@ -54,6 +54,7 @@ export const createPerson = body => dispatch => dispatch(invoke({
 const persons = handleAction(
   combineActions(
     'person/FETCH_PERSON_SUCCESS',
+    'person/FETCH_PERSONS_SUCCESS',
   ),
   (state, action) => ({
     ...state,

@@ -17,7 +17,8 @@ import { getDeclarationFormValues } from 'reducers';
 import { onSubmit } from './redux';
 
 @provideHooks({
-  fetch: ({ dispatch, params }) => dispatch(fetchDeclaration(params.declarationId)),
+  fetch: ({ dispatch, params }) =>
+    dispatch(fetchDeclaration(params.declarationId, { cache: false })),
 })
 @connect((state, { params: { declarationId } }) => ({
   declarationFormValues: getDeclarationFormValues(state, declarationId),
