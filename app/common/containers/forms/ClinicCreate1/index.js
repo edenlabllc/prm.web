@@ -18,6 +18,8 @@ const forms = [
   'виробничий коорератив',
 ];
 
+const TYPES = ['бюджетний', 'приватний'];
+
 @reduxForm({
   form: 'clinicRegistrationStep1',
   initialValues: {
@@ -61,7 +63,16 @@ export default class ClinicCreate1Form extends React.Component {
             <FormColumn>
               <Field placeholder="Публічна назва (якщо відрізняється)" type="text" name="public_name" component={Input} />
             </FormColumn>
-            <FormColumn />
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="type"
+                placeholder="Тип закладу"
+                options={TYPES.map(item => ({
+                  title: item || '', name: item,
+                }))}
+              />
+            </FormColumn>
           </FormRow>
         </FormBlock>
         <FormBlock title="Види діяності">
