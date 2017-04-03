@@ -21,7 +21,8 @@ import { fetchDeclaration } from 'redux/integration_layer';
 import { onDataFormSubmit, onLookupSubmit } from './redux';
 
 @provideHooks({
-  fetch: ({ dispatch, params }) => dispatch(fetchDeclaration(params.declarationId)),
+  fetch: ({ dispatch, params }) =>
+    dispatch(fetchDeclaration(params.declarationId, { cache: false })),
 })
 @connect((state, { params: { declarationId } }) => ({
   declarationFormValues: getDeclarationFormValues(state, declarationId),
