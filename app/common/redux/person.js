@@ -54,7 +54,6 @@ export const createPerson = body => dispatch => dispatch(invoke({
 const persons = handleAction(
   combineActions(
     'person/FETCH_PERSON_SUCCESS',
-    'person/FETCH_PERSONS_SUCCESS',
   ),
   (state, action) => ({
     ...state,
