@@ -12,7 +12,7 @@ import Checkbox from 'components/Checkbox';
 import styles from './styles.scss';
 
 @reduxForm({
-  form: 'declarationSignIn',
+  form: 'signInForm',
   validate: validate({
     password: {
       required: true,
@@ -23,9 +23,9 @@ import styles from './styles.scss';
   }),
 })
 @withStyles(styles)
-export default class DeclarationSignInForm extends React.Component {
+export default class SignInForm extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, declaration = false } = this.props;
     return (
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.form__row}>
@@ -44,15 +44,19 @@ export default class DeclarationSignInForm extends React.Component {
             component={Input}
           />
         </div>
-        <div className={styles.form__row}>
-          <div className={styles.form__flex}>
-            <Field
-              name="signed"
-              component={Checkbox}
-            />
-            <span>Пацієнт підписав декларацію</span>
-          </div>
-        </div>
+        {
+          declaration && (
+            <div className={styles.form__row}>
+              <div className={styles.form__flex}>
+                <Field
+                  name="signed"
+                  component={Checkbox}
+                />
+                <span>Пацієнт підписав декларацію</span>
+              </div>
+            </div>
+          )
+        }
       </form>
     );
   }

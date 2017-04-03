@@ -3,7 +3,7 @@ import withStyles from 'withStyles';
 
 import Popup, { popup } from 'components/Popup';
 import { H3 } from 'components/Title';
-import ClinicSignInForm from 'containers/forms/ClinicSignIn';
+import SignInForm from 'containers/forms/SignIn';
 
 import styles from './styles.scss';
 
@@ -26,7 +26,7 @@ export default class ClinicSignInPopup extends React.Component {
         <div className={styles.title}>
           <H3>Накласти Електронний цифровий підпис кліники</H3>
         </div>
-        <ClinicSignInForm onSubmit={onSubmit} />
+        <SignInForm onSubmit={onSubmit} />
       </Popup>
     );
   }

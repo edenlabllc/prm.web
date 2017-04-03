@@ -5,7 +5,7 @@ import withStyles from 'withStyles';
 
 import Popup, { popup } from 'components/Popup';
 import { H3 } from 'components/Title';
-import DeclarationSignInForm from 'containers/forms/DeclarationSignIn';
+import SignInForm from 'containers/forms/SignIn';
 
 import styles from './styles.scss';
 
@@ -29,7 +29,7 @@ export default class DeclarationSignInPopup extends React.Component {
         <div className={styles.title}>
           <H3>Накласти Електронний цифровий підпис</H3>
         </div>
-        <DeclarationSignInForm onSubmit={onSubmit} />
+        <SignInForm onSubmit={onSubmit} declaration={true} />
       </Popup>
     );
   }
