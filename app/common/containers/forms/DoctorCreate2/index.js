@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
 import Input, { SelectInput } from 'components/Input';
 
@@ -226,6 +226,7 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon>Додати освіту</FormIcon>
 
         <FormBlock title="Кваліфікація">
           <FormRow>
@@ -266,6 +267,7 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon>Додати кваліфікацію</FormIcon>
 
         <FormBlock title="Досвід роботи">
           <FormRow>
@@ -312,6 +314,7 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn />
           </FormRow>
         </FormBlock>
+        <FormIcon>Додати роботу</FormIcon>
       </Form>
     );
   }
