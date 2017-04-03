@@ -10,7 +10,7 @@ import SelectFileInput from 'components/SelectFileInput';
 import styles from './styles.scss';
 
 @reduxForm({
-  form: 'declarationSignIn',
+  form: 'clinicSignIn',
   validate: validate({
     password: {
       required: true,
