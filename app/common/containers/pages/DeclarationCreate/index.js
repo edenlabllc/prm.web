@@ -28,6 +28,27 @@ import { onDataFormSubmit, onLookupSubmit } from './redux';
         number: query.phone_number,
       },
     },
+    birth_place: 'Київ',
+    documents: {
+      PASSPORT: {
+        number: 'АА123456',
+        issued_by: 'Київським МВ УМВС',
+        issue_date: '10/10/92',
+      },
+    },
+    national_id: '1234567890',
+    email: 'email@mail.com',
+    addresses: {
+      REGISTRATION: {
+        region: 'Житомирська',
+        city: 'Житомир',
+        street: 'Шевченка',
+        building: '10',
+        apartment: '13',
+        zip: '02030',
+      },
+    },
+    isRegistrationAddressEqualsResidence: true,
   },
   ...state.pages.DeclarationCreate,
   formValues: getFormValues('declarationCreate')(state),
