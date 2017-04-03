@@ -118,9 +118,7 @@ export default class DoctorCreate1Form extends React.Component {
               }))}
             />
           </FormColumn>
-          <FormColumn>
-            <Field placeholder="Дні та години роботи" type="text" name="days" component={Input} />
-          </FormColumn>
+          <FormColumn />
         </FormRow>
       </Form>
     );

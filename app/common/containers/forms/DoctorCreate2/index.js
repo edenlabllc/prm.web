@@ -268,53 +268,6 @@ export default class DoctorCreate2Form extends React.Component {
           </FormRow>
         </FormBlock>
         <FormIcon>Додати кваліфікацію</FormIcon>
-
-        <FormBlock title="Досвід роботи">
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Країна" type="text" name="WORK.country" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Населений пункт" type="text" name="WORK.city" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Місце роботи" type="text" name="WORK.work_place" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Посада" type="text" name="WORK.work_position" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                label="Дата початку роботи"
-                name="WORK.start_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                label="Дата звільнення"
-                name="WORK.finish_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                placeholder="Кількість років роботи"
-                type="text"
-                name="WORK.work_experience"
-                component={Input}
-              />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
-        </FormBlock>
-        <FormIcon>Додати роботу</FormIcon>
       </Form>
     );
   }
