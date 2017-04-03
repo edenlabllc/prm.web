@@ -7,7 +7,6 @@ import Input, { SelectInput } from 'components/Input';
 
 
 const level = ['Молодший спеціаліст', 'Бакалавр', 'Спеціаліст', 'Магістр'];
-
 const AcademicDegree = ['Старший дослідник', 'Доцент', ' Професор'];
 const ScienceDegree = ['Доктор філософії', 'Доктор наук'];
 const type = [
@@ -17,9 +16,8 @@ const type = [
   'Тематичне вдосконалення',
   'Курси інформації',
   'Стажування'];
-
+const Specialty = ['терапевт', 'педіатр', 'сімейний лікар'];
 const ProfessionalLevel = ['Друга категорія', 'Перша категорія', 'Вища категорія'];
-
 const qualification_type = ['Присвоєння', 'Підтвердження'];
 
 @reduxForm({
@@ -64,6 +62,19 @@ export default class DoctorCreate2Form extends React.Component {
                 component={Datepicker}
               />
             </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="PROFESSIONAL.specialty"
+                placeholder="Спеціальність"
+                options={Specialty.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
 
