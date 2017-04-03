@@ -34,7 +34,7 @@ export default class DeclarationDetails extends React.Component {
         />
         <FormButtons>
           <ButtonsGroup>
-            <Button to="/declaration/search">Назад</Button>
+            <Button to="/declarations">Назад</Button>
             <Button theme="blue" onClick={() => show('declarationSignIn')}>Підписати</Button>
           </ButtonsGroup>
         </FormButtons>

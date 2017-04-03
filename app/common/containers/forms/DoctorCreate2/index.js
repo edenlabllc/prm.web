@@ -1,13 +1,12 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 
-import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
 import Input, { SelectInput } from 'components/Input';
 
 
 const level = ['Молодший спеціаліст', 'Бакалавр', 'Спеціаліст', 'Магістр'];
-
 const AcademicDegree = ['Старший дослідник', 'Доцент', ' Професор'];
 const ScienceDegree = ['Доктор філософії', 'Доктор наук'];
 const type = [
@@ -17,9 +16,8 @@ const type = [
   'Тематичне вдосконалення',
   'Курси інформації',
   'Стажування'];
-
+const Specialty = ['терапевт', 'педіатр', 'сімейний лікар'];
 const ProfessionalLevel = ['Друга категорія', 'Перша категорія', 'Вища категорія'];
-
 const qualification_type = ['Присвоєння', 'Підтвердження'];
 
 @reduxForm({
@@ -30,51 +28,103 @@ export default class DoctorCreate2Form extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Інформація про освіту">
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Країна" type="text" name="EDUCATION.country" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Населений пункт" type="text" name="EDUCATION.city" component={Input} />
-            </FormColumn>
-          </FormRow>
+        <FormBlock title="Професійний рівень">
           <FormRow>
             <FormColumn>
               <Field
-                placeholder="Офіційна повна назва навчального закладу"
-                type="text"
-                name="EDUCATION.university"
-                component={Input}
+                component={SelectInput}
+                name="PROFESSIONAL.degree"
+                placeholder="Професійний рівень"
+                options={ProfessionalLevel.map(item => ({
+                  title: item, name: item,
+                }))}
               />
             </FormColumn>
             <FormColumn>
               <Field
-                label="Рік завершення"
-                name="EDUCATION.finished_date"
+                component={SelectInput}
+                name="PROFESSIONAL.qualification"
+                placeholder="Тип професійного рівня"
+                options={qualification_type.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Місце стажування" type="text" name="PROFESSIONAL.institution_name" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                label="Рік закінчення"
+                name="PROFESSIONAL.issued_date"
                 component={Datepicker}
               />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Номер диплому" type="text" name="EDUCATION.diploma_number" component={Input} />
+              <Field
+                component={SelectInput}
+                name="PROFESSIONAL.specialty"
+                placeholder="Спеціальність"
+                options={Specialty.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
             </FormColumn>
             <FormColumn />
+          </FormRow>
+        </FormBlock>
+
+        <FormBlock title="Наукова ступінь">
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Країна" type="text" name="SCIENCE.country" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Населений пункт" type="text" name="SCIENCE.city" component={Input} />
+            </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
               <Field
                 component={SelectInput}
-                name="EDUCATION.degree"
-                placeholder="Рівень освіти"
-                options={level.map(item => ({
+                name="SCIENCE.degree"
+                placeholder="Науковий ступінь"
+                options={ScienceDegree.map(item => ({
                   title: item, name: item,
                 }))}
               />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="спеціальність за дипломом" type="text" name="EDUCATION.speciality" component={Input} />
+              <Field
+                placeholder="Офіційна повна назва навчального закладу"
+                type="text"
+                name="SCIENCE.institution_name"
+                component={Input}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Номер диплому" type="text" name="SCIENCE.diploma_number" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Спеціальність" type="text" name="SCIENCE.speciality2" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Тема диплому" type="text" name="SCIENCE.diploma_topic" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                label="Рік написання"
+                name="SCIENCE.issued_date"
+                component={Datepicker}
+              />
             </FormColumn>
           </FormRow>
         </FormBlock>
@@ -128,56 +178,96 @@ export default class DoctorCreate2Form extends React.Component {
           </FormRow>
         </FormBlock>
 
-        <FormBlock title="Науковий ступінь">
+        <FormBlock title="Інформація про освіту">
           <FormRow>
             <FormColumn>
-              <Field placeholder="Країна" type="text" name="SCIENCE.country" component={Input} />
+              <Field placeholder="Країна" type="text" name="EDUCATION.country" component={Input} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="Населений пункт" type="text" name="SCIENCE.city" component={Input} />
+              <Field placeholder="Населений пункт" type="text" name="EDUCATION.city" component={Input} />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
               <Field
+                placeholder="Офіційна повна назва навчального закладу"
+                type="text"
+                name="EDUCATION.university"
+                component={Input}
+              />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                label="Рік завершення"
+                name="EDUCATION.finished_date"
+                component={Datepicker}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Номер диплому" type="text" name="EDUCATION.diploma_number" component={Input} />
+            </FormColumn>
+            <FormColumn />
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
                 component={SelectInput}
-                name="SCIENCE.degree"
-                placeholder="Науковий ступінь"
-                options={ScienceDegree.map(item => ({
+                name="EDUCATION.degree"
+                placeholder="Рівень освіти"
+                options={level.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="спеціальність за дипломом" type="text" name="EDUCATION.speciality" component={Input} />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+        <FormIcon>Додати освіту</FormIcon>
+
+        <FormBlock title="Кваліфікація">
+          <FormRow>
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="QUALIFICATION.qualification"
+                placeholder="Кваліфікація"
+                options={type.map(item => ({
                   title: item, name: item,
                 }))}
               />
             </FormColumn>
             <FormColumn>
               <Field
-                placeholder="Офіційна повна назва навчального закладу"
+                placeholder="Місце стажування"
                 type="text"
-                name="SCIENCE.institution_name"
+                name="QUALIFICATION.institution_name"
                 component={Input}
               />
             </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Номер диплому" type="text" name="SCIENCE.diploma_number" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Спеціальність" type="text" name="SCIENCE.speciality2" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Тема диплому" type="text" name="SCIENCE.diploma_topic" component={Input} />
+              <Field
+                placeholder="Спеціальність"
+                type="text"
+                name="QUALIFICATION.speciality"
+                component={Input}
+              />
             </FormColumn>
             <FormColumn>
               <Field
-                label="Рік написання"
-                name="SCIENCE.issued_date"
+                label="Рік закінчення"
+                name="QUALIFICATION.issued_date"
                 component={Datepicker}
               />
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon>Додати кваліфікацію</FormIcon>
 
         <FormBlock title="Досвід роботи">
           <FormRow>
@@ -224,83 +314,7 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn />
           </FormRow>
         </FormBlock>
-
-        <FormBlock title="Кваліфікація">
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="QUALIFICATION.qualification"
-                placeholder="Кваліфікація"
-                options={type.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                placeholder="Місце стажування"
-                type="text"
-                name="QUALIFICATION.institution_name"
-                component={Input}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                placeholder="Спеціальність"
-                type="text"
-                name="QUALIFICATION.speciality"
-                component={Input}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                label="Рік закінчення"
-                name="QUALIFICATION.issued_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-          </FormRow>
-        </FormBlock>
-
-        <FormBlock title="Професійний рівень">
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="PROFESSIONAL.degree"
-                placeholder="Професійний рівень"
-                options={ProfessionalLevel.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="PROFESSIONAL.qualification"
-                placeholder="Тип професійного рівня"
-                options={qualification_type.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Місце стажування" type="text" name="PROFESSIONAL.institution_name" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                label="Рік закінчення"
-                name="PROFESSIONAL.issued_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-          </FormRow>
-        </FormBlock>
+        <FormIcon>Додати роботу</FormIcon>
       </Form>
     );
   }

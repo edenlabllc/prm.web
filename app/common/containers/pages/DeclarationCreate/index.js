@@ -23,6 +23,11 @@ import { onDataFormSubmit, onLookupSubmit } from './redux';
   declarationFormValues: {
     ...query,
     gender: 'FEMALE',
+    phones: {
+      MOBILE: {
+        number: query.phone_number,
+      },
+    },
   },
   ...state.pages.DeclarationCreate,
   formValues: getFormValues('declarationCreate')(state),
