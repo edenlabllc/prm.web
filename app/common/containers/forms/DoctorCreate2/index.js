@@ -7,7 +7,6 @@ import Input, { SelectInput } from 'components/Input';
 
 
 const level = ['Молодший спеціаліст', 'Бакалавр', 'Спеціаліст', 'Магістр'];
-const AcademicDegree = ['Старший дослідник', 'Доцент', ' Професор'];
 const ScienceDegree = ['Доктор філософії', 'Доктор наук'];
 const type = [
   'Інтернатура',
@@ -28,41 +27,7 @@ export default class DoctorCreate2Form extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Професійний рівень">
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="PROFESSIONAL.degree"
-                placeholder="Професійний рівень"
-                options={ProfessionalLevel.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="PROFESSIONAL.qualification"
-                placeholder="Тип професійного рівня"
-                options={qualification_type.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Місце стажування" type="text" name="PROFESSIONAL.institution_name" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                label="Рік закінчення"
-                name="PROFESSIONAL.issued_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-          </FormRow>
+        <FormBlock title="Фаховий рівень">
           <FormRow>
             <FormColumn>
               <Field
@@ -74,11 +39,51 @@ export default class DoctorCreate2Form extends React.Component {
                 }))}
               />
             </FormColumn>
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="PROFESSIONAL.qualification"
+                placeholder="Присвоєння або підтвердження"
+                options={qualification_type.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
+                placeholder="Кваліфікаціїна категорія"
+                type="text"
+                name="PROFESSIONAL.institution_name"
+                component={SelectInput}
+                options={ProfessionalLevel.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                label="Дата отримання"
+                name="PROFESSIONAL.issued_date"
+                component={Datepicker}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
+                placeholder="Орган, що проводив атестацію"
+                type="text"
+                name="PROFESSIONAL.institution_name"
+                component={Input}
+              />
+            </FormColumn>
             <FormColumn />
           </FormRow>
         </FormBlock>
 
-        <FormBlock title="Наукова ступінь">
+        <FormBlock title="Науковий ступінь">
           <FormRow>
             <FormColumn>
               <Field placeholder="Країна" type="text" name="SCIENCE.country" component={Input} />
@@ -126,55 +131,6 @@ export default class DoctorCreate2Form extends React.Component {
                 component={Datepicker}
               />
             </FormColumn>
-          </FormRow>
-        </FormBlock>
-
-        <FormBlock title="Академічна ступінь">
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Країна" type="text" name="ACADEMIC.country" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Населений пункт" type="text" name="ACADEMIC.city" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="ACADEMIC.degree"
-                placeholder="Академічний ступінь"
-                options={AcademicDegree.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                placeholder="Офіційна повна назва навчального закладу"
-                type="text"
-                name="ACADEMIC.university"
-                component={Input}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Номер диплому" type="text" name="ACADEMIC.diploma_number" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Спеціальність" type="text" name="ACADEMIC.speciality" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                label="Рік завершення"
-                name="ACADEMIC.issued_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-            <FormColumn />
           </FormRow>
         </FormBlock>
 
@@ -234,7 +190,7 @@ export default class DoctorCreate2Form extends React.Component {
               <Field
                 component={SelectInput}
                 name="QUALIFICATION.qualification"
-                placeholder="Кваліфікація"
+                placeholder="Вид підготовки"
                 options={type.map(item => ({
                   title: item, name: item,
                 }))}
@@ -242,7 +198,7 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                placeholder="Місце стажування"
+                placeholder="Навчальний заклад"
                 type="text"
                 name="QUALIFICATION.institution_name"
                 component={Input}
@@ -260,7 +216,7 @@ export default class DoctorCreate2Form extends React.Component {
             </FormColumn>
             <FormColumn>
               <Field
-                label="Рік закінчення"
+                label="Дата підв. кваліфікації"
                 name="QUALIFICATION.issued_date"
                 component={Datepicker}
               />

@@ -46,7 +46,7 @@ export default class ClinicCreate2Form extends React.Component {
           </FormRow>
         </FormBlock>
         <FormIcon icon="add">Додати засновника</FormIcon>
-        <FormBlock title="Керівник підписант">
+        <FormBlock title="Керівник (офіційний підписант)">
           <FormRow>
             <FormColumn>
               <Field placeholder="Прізвище" type="text" name="last_name" component={Input} />
@@ -57,7 +57,7 @@ export default class ClinicCreate2Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
+              <Field placeholder="По батькові" type="text" name="second_name" component={Input} />
             </FormColumn>
             <FormColumn>
               <Field
@@ -75,7 +75,7 @@ export default class ClinicCreate2Form extends React.Component {
             <Field
               component={Input}
               name="city"
-              placeholder="Місто народження"
+              placeholder="Місце народження"
             />
           </FormColumn>
           <FormColumn>

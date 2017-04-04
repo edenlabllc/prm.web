@@ -46,7 +46,7 @@ export default class ClinicCreate1Form extends React.Component {
                 name="org_form"
                 placeholder="Організаційно-правова форма"
                 options={forms.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -69,13 +69,13 @@ export default class ClinicCreate1Form extends React.Component {
                 name="type"
                 placeholder="Тип закладу"
                 options={TYPES.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormBlock title="Види діяності">
+        <FormBlock title="Види діяльності">
           <FormRow>
             <FormColumn>
               <Field placeholder="КВЕД" type="text" name="KVED" component={Input} />
@@ -93,14 +93,14 @@ export default class ClinicCreate1Form extends React.Component {
             </FormColumn>
           </FormRow>
         </FormBlock>
-        <FormBlock title="Місцезнаходження">
+        <FormBlock title="Фактичне місцезнаходження">
           <FormSection name="addresses.REGISTRATION">
             <Addresses />
           </FormSection>
         </FormBlock>
         <FormBlock border>
           <FormBlockTitle right={<Field name="checked" label="Співпадає з місцезнаходженням" component={Checkbox} />}>
-            Місцезнаходження реєстрації
+            Місце реєстрації
           </FormBlockTitle>
           <FormSection name="addresses.RESIDENCE">
             <Addresses disabled={values.checked} />
