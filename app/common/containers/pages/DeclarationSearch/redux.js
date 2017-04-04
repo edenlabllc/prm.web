@@ -1,5 +1,6 @@
 import { handleActions, createAction } from 'redux-actions';
 import { combineReducers } from 'redux';
+import { clearTimeZone } from 'helpers/date';
 import { push } from 'react-router-redux';
 import { createUrl } from 'helpers/url';
 import { fetchDeclarations } from 'redux/declarations';
@@ -18,7 +19,7 @@ const setCurrentPersonsList = createAction('CreateDeclarationStep1/SET_CURRENT_P
 export const onSubmit = values => (dispatch) => {
   const options = {
     ...values,
-    birth_date: (new Date(values.birth_date)).toJSON(),
+    birth_date: clearTimeZone(values.birth_date),
     phone_number: values.phone_number && `+38${values.phone_number}`,
   };
 
