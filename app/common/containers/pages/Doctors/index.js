@@ -18,13 +18,13 @@ const doctors = [{
   id: '1231234',
   name: 'Богомолець А. А.',
   birthdate: '01.1967',
-  speciality: 'педианр',
+  speciality: 'педіатр',
   status: 'Працює',
 }, {
   id: '2231234',
   name: 'Богомолець А. А.',
   birthdate: '06.1980',
-  speciality: 'педианр',
+  speciality: 'педіатр',
   status: 'Працює',
 }, {
   id: '1431234',
