@@ -31,7 +31,7 @@ export default class ReportsPage extends React.Component {
     console.log(reports);
     return (
       <section>
-        <H1>Динаміка потрфелю</H1>
+        <H1>Динаміка потрфелю декларацій</H1>
         <div className={styles.options}>
           <Chart data={reports} />
         </div>

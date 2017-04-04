@@ -48,7 +48,7 @@ export default class DoctorCreate1Form extends React.Component {
               <Field placeholder="ІПН" type="number" name="national_id" component={Input} />
             </FormColumn>
             <FormColumn>
-              <Field placeholder="УНЗР" type="text" name="unzr" component={Input} />
+              <Field placeholder="Номер ID картки" type="text" name="unzr" component={Input} />
             </FormColumn>
           </FormRow>
           <FormRow>
@@ -80,14 +80,6 @@ export default class DoctorCreate1Form extends React.Component {
               <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input} />
             </FormColumn>
           </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Виданий" type="text" name="documents.issued_by" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
-            </FormColumn>
-          </FormRow>
         </FormBlock>
         <FormBlock>
           <FormRow>
@@ -98,28 +90,28 @@ export default class DoctorCreate1Form extends React.Component {
               <Field placeholder="Адреса електронної пошти" name="email" component={Input} />
             </FormColumn>
           </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field theme="space-between" label="Працює з:" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="doctor"
+                placeholder="Спеціальність для посади"
+                options={level.map(item => ({
+                  title: item || '', name: item,
+                }))}
+              />
+            </FormColumn>
+            <FormColumn />
+          </FormRow>
         </FormBlock>
-        <FormRow>
-          <FormColumn>
-            <Field placeholder="Посада" type="text" name="birth_place" component={Input} />
-          </FormColumn>
-          <FormColumn>
-            <Field theme="space-between" label="Дата вступу" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn>
-            <Field
-              component={SelectInput}
-              name="doctor"
-              placeholder="Спеціальність"
-              options={level.map(item => ({
-                title: item || '', name: item,
-              }))}
-            />
-          </FormColumn>
-          <FormColumn />
-        </FormRow>
       </Form>
     );
   }

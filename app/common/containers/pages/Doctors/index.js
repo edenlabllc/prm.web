@@ -10,31 +10,31 @@ import styles from './styles.scss';
 
 const doctors = [{
   id: '1231233',
-  name: 'Богомолець А. А.',
+  name: 'Петров І. О.',
   birthdate: '06.1960',
   speciality: 'терапевт',
   status: 'Працює',
 }, {
   id: '1231234',
-  name: 'Богомолець А. А.',
+  name: 'Сало М. Л.',
   birthdate: '01.1967',
   speciality: 'педіатр',
   status: 'Працює',
 }, {
   id: '2231234',
-  name: 'Богомолець А. А.',
+  name: 'Шостка К. О.',
   birthdate: '06.1980',
   speciality: 'педіатр',
   status: 'Працює',
 }, {
   id: '1431234',
-  name: 'Иванов А. А.',
+  name: 'Шевченко Р. Р.',
   birthdate: '06.1985',
   speciality: 'терапевт',
   status: 'Працює',
 }, {
   id: '5231234',
-  name: 'Иванов А. А.',
+  name: 'Котряревський М. І.',
   birthdate: '04.1974',
   speciality: 'терапевт',
   status: 'Звільнено',
