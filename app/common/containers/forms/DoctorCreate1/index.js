@@ -105,7 +105,7 @@ export default class DoctorCreate1Form extends React.Component {
                 name="doctor"
                 placeholder="Спеціальність для посади"
                 options={level.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>

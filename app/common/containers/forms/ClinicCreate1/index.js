@@ -46,7 +46,7 @@ export default class ClinicCreate1Form extends React.Component {
                 name="org_form"
                 placeholder="Організаційно-правова форма"
                 options={forms.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
@@ -69,7 +69,7 @@ export default class ClinicCreate1Form extends React.Component {
                 name="type"
                 placeholder="Тип закладу"
                 options={TYPES.map(item => ({
-                  title: item || '', name: item,
+                  title: item, name: item,
                 }))}
               />
             </FormColumn>
