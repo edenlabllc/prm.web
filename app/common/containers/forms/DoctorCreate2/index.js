@@ -1,5 +1,6 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { reduxForm, Field, getFormValues } from 'redux-form';
 
 import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
@@ -19,12 +20,16 @@ const type = [
 const Specialty = ['терапевт', 'педіатр', 'сімейний лікар'];
 const ProfessionalLevel = ['Друга категорія', 'Перша категорія', 'Вища категорія'];
 
+
 @reduxForm({
   form: 'doctorCreate2',
 })
+@connect(state => ({
+  values: getFormValues('doctorCreate2')(state),
+}))
 export default class DoctorCreate2Form extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, values = {} } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <FormBlock title="Спеціальність">
@@ -42,7 +47,7 @@ export default class DoctorCreate2Form extends React.Component {
             <FormColumn />
           </FormRow>
         </FormBlock>
-        <FormBlock title="Статус атестації">
+        <FormBlock title="Статус атестації" border>
           <FormRow>
             <FormColumn>
               <Field
@@ -53,11 +58,9 @@ export default class DoctorCreate2Form extends React.Component {
                 options={ProfessionalLevel.map(item => ({
                   title: item, name: item,
                 }))}
+                disabled={!values.PROFESSIONAL}
               />
             </FormColumn>
-            <FormColumn />
-          </FormRow>
-          <FormRow>
             <FormColumn>
               <RadioInputGroup
                 name="gender"
@@ -71,6 +74,7 @@ export default class DoctorCreate2Form extends React.Component {
                     label: 'Підтвердження',
                   },
                 ]}
+                disabled={!values.PROFESSIONAL}
               />
             </FormColumn>
           </FormRow>
@@ -80,6 +84,7 @@ export default class DoctorCreate2Form extends React.Component {
                 label="Дата отримання"
                 name="PROFESSIONAL.issued_date"
                 component={Datepicker}
+                disabled={!values.PROFESSIONAL}
               />
             </FormColumn>
             <FormColumn>
@@ -88,10 +93,12 @@ export default class DoctorCreate2Form extends React.Component {
                 type="text"
                 name="PROFESSIONAL.institution_name"
                 component={Input}
+                disabled={!values.PROFESSIONAL}
               />
             </FormColumn>
           </FormRow>
         </FormBlock>
+        <FormIcon>Додати спеціальність</FormIcon>
 
         <FormBlock title="Науковий ступінь">
           <FormRow>
