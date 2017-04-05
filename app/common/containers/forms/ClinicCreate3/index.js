@@ -77,14 +77,6 @@ export default class ClinicCreate3Form extends React.Component {
               <Field placeholder="Номер ліцензії" type="text" name="serialNumber" component={Input} />
             </FormColumn>
           </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.issue_in" component={Datepicker} />
-            </FormColumn>
-            <FormColumn>
-              <Field theme="space-between" label="Орган" placeholder="ДД/ММ/РР" name="organ" component={Datepicker} />
-            </FormColumn>
-          </FormRow>
         </FormBlock>
         <FormBlock title="Контакти закладу">
           <FormRow>

@@ -13,7 +13,7 @@ export default class ClinicCreateStep3Page extends React.Component {
     const { show } = this.props;
     return (
       <section>
-        <PageTitle>Створити профіль Клініки. Крок 3</PageTitle>
+        <PageTitle>Створити профіль медичного закладу. Крок 3</PageTitle>
         <ClinicCreate3Form onSubmit={() => {}} />
         <FormButtons>
           <ButtonsGroup>
