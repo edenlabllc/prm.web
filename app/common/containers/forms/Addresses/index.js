@@ -59,7 +59,7 @@ export default class Addresses extends React.Component {
             />
           </FormColumn>
           <FormColumn>
-            <Field placeholder="Місто" theme="small" type="text" name="city" component={Input} disabled={disabled} />
+            <Field placeholder="Населений пункт" theme="small" type="text" name="city" component={Input} disabled={disabled} />
           </FormColumn>
         </FormRow>
         <FormRow>

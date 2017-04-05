@@ -6,7 +6,7 @@ import Datepicker from 'components/Datepicker';
 import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 
-const level = ['терапевт', 'педіатр', 'сімейний лікар'];
+const document = ['Паспорт', 'Cвідоцтво про народження', 'ІД картка', 'Посвідка'];
 
 @reduxForm({
   form: 'doctorCreate1',
@@ -74,7 +74,14 @@ export default class DoctorCreate1Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input} />
+              <Field
+                component={SelectInput}
+                name="passport"
+                placeholder="Паспорт"
+                options={document.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
             </FormColumn>
             <FormColumn>
               <Field placeholder="Серія та номер" type="text" name="documents.number" component={Input} />
@@ -97,19 +104,6 @@ export default class DoctorCreate1Form extends React.Component {
             <FormColumn>
               <Field theme="space-between" label="Працює з:" placeholder="ДД/ММ/РР" name="documents.issue_date" component={Datepicker} />
             </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="doctor"
-                placeholder="Спеціальність для посади"
-                options={level.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn />
           </FormRow>
         </FormBlock>
       </Form>
