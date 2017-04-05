@@ -4,6 +4,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 
 import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
+import Checkbox from 'components/Checkbox';
 import { RadioInputGroup } from 'components/RadioInput';
 import Input, { SelectInput } from 'components/Input';
 
@@ -40,13 +41,19 @@ export default class DoctorCreate2Form extends React.Component {
               <Field
                 component={SelectInput}
                 name="PROFESSIONAL.specialty"
-                placeholder="Спеціальність для посади"
+                placeholder="Cпеціальність"
                 options={Specialty.map(item => ({
                   title: item, name: item,
                 }))}
               />
             </FormColumn>
-            <FormColumn />
+            <FormColumn>
+              <Field
+                label="Cпеціальність за посадою"
+                name="agree"
+                component={Checkbox}
+              />
+            </FormColumn>
           </FormRow>
         </FormBlock>
         <FormBlock title="Статус атестації" border>
