@@ -10,7 +10,7 @@ const NAV_LIST = [{
   title: 'Декларації',
 }, {
   link: '/clinics/create',
-  title: 'Профіль кліники',
+  title: 'Профіль Медичного Закладу',
 }, {
   link: '/doctors',
   title: 'Реєстр Лікарів',

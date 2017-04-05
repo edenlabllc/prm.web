@@ -15,7 +15,7 @@ const doctors = {
   'be802077-ddf0-4980-a390-6bfb513381ae': {
     updated_by: null,
     status: null,
-    name: 'Alexis Ohanian',
+    name: 'Амосов Іван Іванович',
     mpi_id: null,
     licenses: null,
     jobs: null,
@@ -27,6 +27,8 @@ const doctors = {
     type: 'doctor',
   },
 };
+
+const document = ['Паспорт', 'Cвідоцтво про народження', 'ІД картка', 'Посвідка'];
 
 
 const FORM_NAME = 'declarationCreate';
@@ -172,7 +174,14 @@ export default class CreateDeclarationStep2Form extends React.Component {
         <FormBlock>
           <FormRow>
             <FormColumn>
-              <Field placeholder="Паспорт" disabled={true} type="text" value="PASSPORT" name="documents.type" component={Input} />
+              <Field
+                component={SelectInput}
+                name="passport"
+                placeholder="Паспорт"
+                options={document.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
             </FormColumn>
             <FormColumn>
               <Field placeholder="Серія та номер" type="text" name="documents.PASSPORT.number" component={Input} disabled={disabled} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, getFormValues } from 'redux-form';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
 
 import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
@@ -17,19 +17,21 @@ const type = [
   'Тематичне вдосконалення',
   'Курси інформації',
   'Стажування'];
+
 const Specialty = ['терапевт', 'педіатр', 'сімейний лікар'];
 const ProfessionalLevel = ['Друга категорія', 'Перша категорія', 'Вища категорія'];
 
+const selector = formValueSelector('doctorCreate2');
 
 @reduxForm({
   form: 'doctorCreate2',
 })
 @connect(state => ({
-  values: getFormValues('doctorCreate2')(state),
+  specialtyField: selector(state, 'PROFESSIONAL.specialty'),
 }))
 export default class DoctorCreate2Form extends React.Component {
   render() {
-    const { handleSubmit, values = {} } = this.props;
+    const { handleSubmit, specialtyField } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <FormBlock title="Спеціальність">
@@ -38,7 +40,7 @@ export default class DoctorCreate2Form extends React.Component {
               <Field
                 component={SelectInput}
                 name="PROFESSIONAL.specialty"
-                placeholder="Спеціальність"
+                placeholder="Спеціальність для посади"
                 options={Specialty.map(item => ({
                   title: item, name: item,
                 }))}
@@ -58,7 +60,7 @@ export default class DoctorCreate2Form extends React.Component {
                 options={ProfessionalLevel.map(item => ({
                   title: item, name: item,
                 }))}
-                disabled={!values.PROFESSIONAL}
+                disabled={!specialtyField}
               />
             </FormColumn>
             <FormColumn>
@@ -74,7 +76,7 @@ export default class DoctorCreate2Form extends React.Component {
                     label: 'Підтвердження',
                   },
                 ]}
-                disabled={!values.PROFESSIONAL}
+                disabled={!specialtyField}
               />
             </FormColumn>
           </FormRow>
@@ -84,7 +86,7 @@ export default class DoctorCreate2Form extends React.Component {
                 label="Дата отримання"
                 name="PROFESSIONAL.issued_date"
                 component={Datepicker}
-                disabled={!values.PROFESSIONAL}
+                disabled={!specialtyField}
               />
             </FormColumn>
             <FormColumn>
@@ -93,63 +95,12 @@ export default class DoctorCreate2Form extends React.Component {
                 type="text"
                 name="PROFESSIONAL.institution_name"
                 component={Input}
-                disabled={!values.PROFESSIONAL}
+                disabled={!specialtyField}
               />
             </FormColumn>
           </FormRow>
         </FormBlock>
         <FormIcon>Додати спеціальність</FormIcon>
-
-        <FormBlock title="Науковий ступінь">
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Країна" type="text" name="SCIENCE.country" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Населений пункт" type="text" name="SCIENCE.city" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="SCIENCE.degree"
-                placeholder="Науковий ступінь"
-                options={ScienceDegree.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                placeholder="Офіційна повна назва навчального закладу"
-                type="text"
-                name="SCIENCE.institution_name"
-                component={Input}
-              />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Номер диплому" type="text" name="SCIENCE.diploma_number" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field placeholder="Спеціальність" type="text" name="SCIENCE.speciality2" component={Input} />
-            </FormColumn>
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Тема диплому" type="text" name="SCIENCE.diploma_topic" component={Input} />
-            </FormColumn>
-            <FormColumn>
-              <Field
-                label="Рік написання"
-                name="SCIENCE.issued_date"
-                component={Datepicker}
-              />
-            </FormColumn>
-          </FormRow>
-        </FormBlock>
 
         <FormBlock title="Інформація про освіту">
           <FormRow>
@@ -201,7 +152,58 @@ export default class DoctorCreate2Form extends React.Component {
         </FormBlock>
         <FormIcon>Додати освіту</FormIcon>
 
-        <FormBlock title="Кваліфікація">
+        <FormBlock title="Науковий ступінь">
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Країна" type="text" name="SCIENCE.country" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Населений пункт" type="text" name="SCIENCE.city" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field
+                component={SelectInput}
+                name="SCIENCE.degree"
+                placeholder="Науковий ступінь"
+                options={ScienceDegree.map(item => ({
+                  title: item, name: item,
+                }))}
+              />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                placeholder="Офіційна повна назва навчального закладу"
+                type="text"
+                name="SCIENCE.institution_name"
+                component={Input}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Номер диплому" type="text" name="SCIENCE.diploma_number" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field placeholder="Спеціальність" type="text" name="SCIENCE.speciality2" component={Input} />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <Field placeholder="Тема диплому" type="text" name="SCIENCE.diploma_topic" component={Input} />
+            </FormColumn>
+            <FormColumn>
+              <Field
+                label="Дата видачі"
+                name="SCIENCE.issued_date"
+                component={Datepicker}
+              />
+            </FormColumn>
+          </FormRow>
+        </FormBlock>
+
+        <FormBlock title="Підвищення кваліфікації">
           <FormRow>
             <FormColumn>
               <Field

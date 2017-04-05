@@ -6,9 +6,9 @@ import { RadioInputGroup } from 'components/RadioInput';
 import Input, { MaskedInput, SelectInput } from 'components/Input';
 import Datepicker from 'components/Datepicker';
 
-import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
+import Form, { FormBlock, FormRow, FormColumn } from 'components/Form';
 
-const country = ['ua', 'ru', 'en'];
+const document = ['Паспорт', 'Cвідоцтво про народження', 'ІД картка', 'Посвідка'];
 
 @reduxForm({
   form: 'clinicRegistrationStep2',
@@ -25,27 +25,6 @@ export default class ClinicCreate2Form extends React.Component {
 
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Перелік засновників (учасників)">
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="найменування або ПІБ" type="text" name="name" component={Input} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Місцезнаходження" type="text" name="place" component={Input} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="ідентифікаційний код або ЄДРПОУ" type="text" name="code" component={Input} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
-        </FormBlock>
-        <FormIcon icon="add">Додати засновника</FormIcon>
         <FormBlock title="Керівник (офіційний підписант)">
           <FormRow>
             <FormColumn>
@@ -101,8 +80,7 @@ export default class ClinicCreate2Form extends React.Component {
               component={SelectInput}
               name="passport"
               placeholder="Паспорт"
-              disabled={true}
-              options={country.map(item => ({
+              options={document.map(item => ({
                 title: item, name: item,
               }))}
             />
@@ -113,11 +91,9 @@ export default class ClinicCreate2Form extends React.Component {
         </FormRow>
         <FormRow>
           <FormColumn>
-            <Field placeholder="ІНН" type="number" name="INN" component={Input} />
+            <Field placeholder="ІПН" type="number" name="INN" component={Input} />
           </FormColumn>
-          <FormColumn>
-            <Field placeholder="номер ID карти" type="text" name="cardID" component={Input} />
-          </FormColumn>
+          <FormColumn />
         </FormRow>
         <FormRow>
           <FormColumn>
