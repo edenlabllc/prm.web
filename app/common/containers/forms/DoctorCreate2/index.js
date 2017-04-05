@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 
 import Form, { FormBlock, FormRow, FormColumn, FormIcon } from 'components/Form';
 import Datepicker from 'components/Datepicker';
+import { RadioInputGroup } from 'components/RadioInput';
 import Input, { SelectInput } from 'components/Input';
 
 
@@ -17,7 +18,6 @@ const type = [
   'Стажування'];
 const Specialty = ['терапевт', 'педіатр', 'сімейний лікар'];
 const ProfessionalLevel = ['Друга категорія', 'Перша категорія', 'Вища категорія'];
-const qualification_type = ['Присвоєння', 'Підтвердження'];
 
 @reduxForm({
   form: 'doctorCreate2',
@@ -27,7 +27,7 @@ export default class DoctorCreate2Form extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <FormBlock title="Фаховий рівень">
+        <FormBlock title="Спеціальність">
           <FormRow>
             <FormColumn>
               <Field
@@ -39,17 +39,10 @@ export default class DoctorCreate2Form extends React.Component {
                 }))}
               />
             </FormColumn>
-            <FormColumn>
-              <Field
-                component={SelectInput}
-                name="PROFESSIONAL.qualification"
-                placeholder="Присвоєння або підтвердження"
-                options={qualification_type.map(item => ({
-                  title: item, name: item,
-                }))}
-              />
-            </FormColumn>
+            <FormColumn />
           </FormRow>
+        </FormBlock>
+        <FormBlock title="Статус атестації">
           <FormRow>
             <FormColumn>
               <Field
@@ -62,6 +55,26 @@ export default class DoctorCreate2Form extends React.Component {
                 }))}
               />
             </FormColumn>
+            <FormColumn />
+          </FormRow>
+          <FormRow>
+            <FormColumn>
+              <RadioInputGroup
+                name="gender"
+                items={[
+                  {
+                    value: 'Присвоєння',
+                    label: 'Присвоєння',
+                  },
+                  {
+                    value: 'Підтвердження',
+                    label: 'Підтвердження',
+                  },
+                ]}
+              />
+            </FormColumn>
+          </FormRow>
+          <FormRow>
             <FormColumn>
               <Field
                 label="Дата отримання"
@@ -69,8 +82,6 @@ export default class DoctorCreate2Form extends React.Component {
                 component={Datepicker}
               />
             </FormColumn>
-          </FormRow>
-          <FormRow>
             <FormColumn>
               <Field
                 placeholder="Орган, що проводив атестацію"
@@ -79,7 +90,6 @@ export default class DoctorCreate2Form extends React.Component {
                 component={Input}
               />
             </FormColumn>
-            <FormColumn />
           </FormRow>
         </FormBlock>
 
