@@ -187,12 +187,6 @@ export default class CreateDeclarationStep2Form extends React.Component {
               <Field placeholder="Серія та номер" type="text" name="documents.PASSPORT.number" component={Input} disabled={disabled} />
             </FormColumn>
           </FormRow>
-          <FormRow>
-            <FormColumn>
-              <Field placeholder="Виданий" type="text" name="documents.PASSPORT.issued_by" component={Input} disabled={disabled} />
-            </FormColumn>
-            <FormColumn />
-          </FormRow>
         </FormBlock>
         <FormBlock>
           <FormRow>
