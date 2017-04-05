@@ -10,7 +10,7 @@ export default class ClinicCreateStep2Page extends React.Component {
   render() {
     return (
       <section>
-        <PageTitle>Створити Профіль медичного закладу. Крок 2</PageTitle>
+        <PageTitle>Створити профіль медичного закладу. Крок 2</PageTitle>
         <ClinicCreate2Form onSubmit={() => {}} />
         <FormButtons>
           <ButtonsGroup>
