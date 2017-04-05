@@ -10,7 +10,7 @@ export default class CreateDeclarationStep1 extends React.Component {
   render() {
     return (
       <section>
-        <PageTitle>Створити профіль Клініки. Крок 1</PageTitle>
+        <PageTitle>Створити Профіль медичного закладу. Крок 1</PageTitle>
         <ClinicCreate1Form onSubmit={() => {}} />
         <FormButtons>
           <ButtonsGroup>

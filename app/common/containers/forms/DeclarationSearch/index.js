@@ -36,7 +36,7 @@ export default class DeclarationSearchForm extends React.PureComponent {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={disabled} />
+              <Field placeholder="По батькові" type="text" name="second_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
               <Field

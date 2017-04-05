@@ -31,7 +31,7 @@ export default class DoctorCreate1Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} />
+              <Field placeholder="По батькові" type="text" name="second_name" component={Input} />
             </FormColumn>
             <FormColumn>
               <Field
@@ -47,9 +47,7 @@ export default class DoctorCreate1Form extends React.Component {
             <FormColumn>
               <Field placeholder="ІПН" type="number" name="national_id" component={Input} />
             </FormColumn>
-            <FormColumn>
-              <Field placeholder="Номер ID картки" type="text" name="unzr" component={Input} />
-            </FormColumn>
+            <FormColumn />
           </FormRow>
           <FormRow>
             <FormColumn>

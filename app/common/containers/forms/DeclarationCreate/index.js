@@ -136,7 +136,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="second_name" component={Input} disabled={disabled} />
+              <Field placeholder="По батькові" type="text" name="second_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
               <Field
@@ -191,9 +191,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
             <FormColumn>
               <Field placeholder="Виданий" type="text" name="documents.PASSPORT.issued_by" component={Input} disabled={disabled} />
             </FormColumn>
-            <FormColumn>
-              <Field theme="space-between" label="Дата видачі" placeholder="ДД/ММ/РР" name="documents.PASSPORT.issue_date" component={Datepicker} disabled={disabled} />
-            </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormBlock>
@@ -201,9 +199,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
             <FormColumn>
               <Field placeholder="ІПН" type="number" name="national_id" component={Input} disabled={disabled} />
             </FormColumn>
-            <FormColumn>
-              <Field placeholder="УНЗР" type="number" name="tax_code" component={Input} disabled={disabled} />
-            </FormColumn>
+            <FormColumn />
           </FormRow>
         </FormBlock>
         <FormBlock border>
@@ -252,7 +248,7 @@ export default class CreateDeclarationStep2Form extends React.Component {
           </FormRow>
           <FormRow>
             <FormColumn>
-              <Field placeholder="По-батькові" type="text" name="urgent_contacts[0].second_name" component={Input} disabled={disabled} />
+              <Field placeholder="По батькові" type="text" name="urgent_contacts[0].second_name" component={Input} disabled={disabled} />
             </FormColumn>
             <FormColumn>
               <Field placeholder="Номер мобільного" mask="+38 (111) 111-11-11" name="urgent_contacts[0].phones.MOBILE.number" component={MaskedInput} disabled={disabled} />
