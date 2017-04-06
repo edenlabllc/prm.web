@@ -2,15 +2,14 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 
-import { NEXMO_API_SECRET, NEXMO_API_KEY, SMS_BRAND } from '../config';
+import { SMS_BRAND, NEXMO_API_KEY, NEXMO_API_SECRET } from '../config';
+import { IS_SMS_ENABLED } from '../../common/config';
 
 const router = new Express.Router();
 router.use(bodyParser.json());
 
-const IS_NEXMO_ENABLED = NEXMO_API_KEY && NEXMO_API_SECRET;
-
 router.post('/sms/verify', (req, res) => {
-  if (!IS_NEXMO_ENABLED) {
+  if (!IS_SMS_ENABLED) {
     return res.json({
       request_id: 'ffce2d1036bb4cee8c1b20b36ca109b4',
       status: '0',
@@ -38,7 +37,7 @@ router.post('/sms/verify', (req, res) => {
 });
 
 router.post('/sms/verify/:request_id/check', (req, res) => {
-  if (!IS_NEXMO_ENABLED || req.body.code === '9082') {
+  if (!IS_SMS_ENABLED || req.body.code === '9082') {
     if (['123456', '9082'].indexOf(req.body.code) > -1) {
       return res.json({
         request_id: 'ffce2d1036bb4cee8c1b20b36ca109b4',
