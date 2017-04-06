@@ -17,3 +17,19 @@
     padding: 31px 45px 63px;
   }
 }
+
+.disclaim {
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+  line-height: 1.5;
+
+  & > span {
+    display: block;
+    font-weight: 700;
+  }
+
+  &__red {
+    color: red;
+  }
+}

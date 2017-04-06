@@ -1,6 +1,9 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import { Link } from 'react-router';
+import mis1 from './images/mis_1.png';
+import mis2 from './images/mis_2.png';
+import mis3 from './images/mis_3.png';
 
 import styles from './styles.scss';
 
@@ -15,31 +18,13 @@ export default class NSZModulesPage extends React.Component {
           </div>
           <div className={styles.section__modules}>
             <Link to="/clinics/create">
-              <div />
+              <img className={styles.img} src={mis1} alt="" />
             </Link>
             <Link to="/clinics/create">
-              <div />
+              <img className={styles.img} src={mis2} alt="" />
             </Link>
             <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
-            </Link>
-            <Link to="/clinics/create">
-              <div />
+              <img className={styles.img} src={mis3} alt="" />
             </Link>
           </div>
         </div>
