@@ -27,7 +27,7 @@ export default class LookupConfirm extends React.Component {
           <Field
             type="text"
             name="code"
-            placeholder={IS_SMS_ENABLED ? 'Код з смс' : 'Введите 123456'}
+            placeholder={IS_SMS_ENABLED ? 'Код з смс' : 'Введіть 123456'}
             component={Input}
           />
         </div>
