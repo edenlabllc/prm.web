@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'withStyles';
 import { translate } from 'react-i18next';
 import Nav from 'containers/blocks/Nav';
+import Disclaim from 'components/Disclaim';
 
 import styles from './styles.scss';
 
@@ -15,6 +16,7 @@ export default class NavigationLayout extends React.Component {
         <Nav />
         <div className={styles.main__wrap}>
           { children }
+          <Disclaim />
         </div>
       </section>
     );

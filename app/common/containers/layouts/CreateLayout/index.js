@@ -1,6 +1,7 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import { Link } from 'react-router';
+import Disclaim from 'components/Disclaim';
 
 import styles from './styles.scss';
 
@@ -15,6 +16,7 @@ export default class CreateLayout extends React.Component {
         </header>
         <main className={styles.create__content}>
           { children }
+          <Disclaim />
         </main>
       </section>
     );
