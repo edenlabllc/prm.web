@@ -1,5 +1,5 @@
-
 import moment from 'moment';
+import { NEXMO_API_KEY, NEXMO_API_SECRET } from '../server/config';
 
 let config = {};
 
@@ -25,6 +25,8 @@ export const PRM_PROXY_PATH = '/api.prm';
 export const MPI_PROXY_PATH = '/api.mpi';
 
 export const PUBLIC_INDEX_ROUTE = '/';
+
+export const IS_SMS_ENABLED = NEXMO_API_KEY && NEXMO_API_SECRET;
 
 // for internal app usage. for example for XHR requests or server side rendering
 export const PRM_URL = typeof window !== 'undefined' ? PRM_PROXY_PATH : PRM_HOST;

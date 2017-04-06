@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import validate from 'modules/validate';
+import { IS_SMS_ENABLED } from 'config';
 
 import withStyles from 'withStyles';
 
@@ -26,7 +27,7 @@ export default class LookupConfirm extends React.Component {
           <Field
             type="text"
             name="code"
-            placeholder="Код з смс"
+            placeholder={IS_SMS_ENABLED ? 'Код з смс' : 'Введите 123456'}
             component={Input}
           />
         </div>
