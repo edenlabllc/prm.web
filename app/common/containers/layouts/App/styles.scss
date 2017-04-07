@@ -197,8 +197,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   z-index: 0;
 }
 
-input::placeholder {
-  color: #62758f;
+input {
+  color: #3c4858 !important;
+
+  &::placeholder {
+    color: #62758f;
+  }
 }
 
 /* stylelint-enable */
